@@ -1,0 +1,57 @@
+﻿@{
+                /**/
+
+                ViewBag.Title = "Login";
+}
+@section headcss {
+    <link href="~/Content/bootstrap.min.css" rel="stylesheet">
+    <link href="~/css/mystyle.css" rel="stylesheet" />
+}
+@section headjs {
+    @Scripts.Render("~/bundles/bootstrap")
+}
+
+
+@using (Html.BeginForm())
+{
+    <div class="login-wrapper">
+        <div class="row login_box">
+            <div class="col-sm-6 inner-block">
+                <div class="row ">
+                    <div class="col-md-12">
+                        <h4>Admin Login</h4>
+                    </div>
+                    <div class="form-group col-md-12">
+                        <label class="control-label">Username</label>
+                        <input name="user" id="user" type="text" class="form-control" />
+                    </div>
+                    <div class="form-group col-md-12">
+                        <label class="control-label">Password</label>
+                        <input name="pass" id="pass" type="password" class="form-control" />
+                    </div>
+                    <div class="form-group">
+                        <div class="col-md-offset-2 col-md-10">
+                            <p>@TempData["LoginError"]</p>
+                        </div>
+                    </div>
+                    <div class="form-group col-md-12">
+                        <input type="submit" value="Login" class="btn" />
+                    </div>
+                </div>
+            </div>
+            <div class="col-sm-6">
+                <div class="logo-wrapper">
+                    <img src="https://www.cliffkeen.com/Logo.ashx?storeid=1&amp;x=0.5221308178011168" alt="">
+                </div>
+            </div>
+        </div>
+        </div>
+        }
+        <script>
+            $(document).ready(function () {
+                var id = sessionStorage.getItem('ID_Of_ClickedPanel');
+                if (id != "") {
+                    $('#' + id).addClass('ClickedPanel');
+                }
+            });
+        </script>

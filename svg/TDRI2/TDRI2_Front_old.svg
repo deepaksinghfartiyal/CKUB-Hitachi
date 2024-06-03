@@ -1,0 +1,796 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Generator: Adobe Illustrator 16.0.0, SVG Export Plug-In . SVG Version: 6.00 Build 0)  -->
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd" [
+	<!ENTITY ns_flows "http://ns.adobe.com/Flows/1.0/">
+	<!ENTITY ns_extend "http://ns.adobe.com/Extensibility/1.0/">
+	<!ENTITY ns_ai "http://ns.adobe.com/AdobeIllustrator/10.0/">
+	<!ENTITY ns_graphs "http://ns.adobe.com/Graphs/1.0/">
+]>
+<svg version="1.1" id="Layer_1" xmlns:x="&ns_extend;" xmlns:i="&ns_ai;" xmlns:graph="&ns_graphs;"
+	 xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:a="http://ns.adobe.com/AdobeSVGViewerExtensions/3.0/"
+	 x="0px" y="0px" width="612px" height="792px" viewBox="0 0 472 792" enable-background="new 0 0 612 792" xml:space="preserve">
+
+<g>
+	<defs>
+		<rect id="TDF_SVGID_1_" x="47.037" y="63.021" width="514.248" height="665.497"/>
+	</defs>
+	<clipPath id="TDF_SVGID_2_">
+		<use xlink:href="#TDF_SVGID_1_"  overflow="visible"/>
+	</clipPath>
+	<g clip-path="url(#TDF_SVGID_2_)">
+		<defs>
+			<rect id="TDF_SVGID_3_" x="47.037" y="63.021" width="514.248" height="665.497"/>
+		</defs>
+		<clipPath id="TDF_SVGID_4_">
+			<use xlink:href="#TDF_SVGID_3_"  overflow="visible"/>
+		</clipPath>
+    <g id="mask_TD">
+      <g id="BODY">
+		<path clip-path="url(#TDF_SVGID_4_)" fill="#897F76" d="M252.538,165.375c0,0-4.429,5.286-6.428,6.143c-2,0.857-5.571,1.572-7,1.714
+			c-1.429,0.144-5.716,3-7.001,4.143c-1.284,1.144-5.428,3.857-7.284,4.429c-1.857,0.571-4.857,2.144-5.286,2.571
+			c-0.428,0.428-7.429,2.143-8.429,2.143c-1,0-14.856,8.856-19.284,10.428c-4.429,1.57-30.856,12.714-40.427,18.999
+			c-9.572,6.285-25.144,19.569-26.857,25.569c-1.715,6,0.048,8.537-1.237,11.251c-1.287,2.714-13.906,28.747-17.763,37.461
+			c-3.857,8.713-22.57,54.997-24.571,61.568c-1.999,6.571-5.854,17.287-6.142,18.999c-0.286,1.714-1.714,5.43-1.714,5.43
+			s-1,0.855-1.429,1.429c-0.428,0.57-0.57,2.284-0.857,3c-0.286,0.713-4.711,8.711-4.285,9.284c0.428,0.573,11.429,4.999,16.428,7
+			c5,2,25.428,12.285,30.428,13.144c5,0.855,20.141,5.427,25.57,6.712c5.429,1.286,18.999,3.43,20.857,3.43
+			c1.856,0,6.142-0.715,6.142-0.715s3.286-8.998,3.429-10.143c0.138-1.104,1.49-9.14,1.716-13.545
+			c0.01-0.203,0.016-0.309,0.021-0.513c0.143-4.287-0.023-14.941-0.023-15.655c0-0.713,0.287-3.571,1.001-4.856
+			c0.714-1.287,2.714-2.714,3.285-2.571c0.571,0.141,1,2.428,1,3.57s-1.142,38.997-1.571,45.998s-1.285,24.714-2.286,33.428
+			c-1.001,8.713-4.287,31.426-4.573,35.281c-0.284,3.859,0,41.43,0,41.43s-3,6.713-3.142,7.855
+			c-0.143,1.142-1.285,26.284-2.143,35.855c-0.857,9.572-1.999,23.57-2.714,25.284c-0.715,1.716-1.144,5.144-1.144,5.716
+			c0,0.571-0.57,8.283-0.284,8.855c0.284,0.571,7.855,5.287,13.427,6.43c5.571,1.142,18.861,3.57,63.287,3.57
+			c44.427,0,162.995,0.142,170.28-0.431c7.285-0.569,32.86-4.282,36.431-5.854c3.571-1.572,5.283-2.429,5.283-3.145
+			c0-0.714-0.141-11.427-0.427-12.285c-0.221-0.662-0.776-8.122-1.656-14.708c-0.259-1.938-0.537-4.098-0.603-5.723
+			c-0.285-7.142-2.742-41.565-3.169-43.423c-0.429-1.857-2.999-7.857-2.999-7.857s-0.718-28.285-1.573-42.856
+			c-0.855-14.568-3.999-35.853-4.286-40.425c-0.286-4.57-2.282-27.142-1.142-35.427c1.143-8.285,3.429-19.286,3.429-19.286
+			s1.429,3.145,1.857,4.003c0.428,0.854,0.858,3.569,0.714,4.712c-0.143,1.143-0.286,10.855-0.286,10.855s3.144,1.575,3.573,1.287
+			c0.427-0.284,2.142-1.857,3.712-1.287c1.574,0.572,8.286,2.572,12.856,2.146c4.572-0.431,26.287-4.146,38.572-9.145
+			c12.286-4.999,21.999-8.142,24.285-8.998c2.286-0.858,11.572-4.858,13.286-5.571c1.712-0.715,5.429-2.573,5.57-3.287
+			c0.143-0.714-1.286-2.714-2.001-3.857c-0.714-1.142-1.571-2.141-1.857-3.856c-0.283-1.715-0.429-4.57-0.429-4.57l-1.569-1.428
+			c0,0-2.426-11.573-3.712-14.429c-1.286-2.856-5.285-11.998-6-15.285c-0.715-3.287-3.858-15.999-5.144-19.571
+			c-1.287-3.571-9.286-24.857-14.144-36.999c-4.857-12.141-13.286-29.426-13.572-30.426c-0.287-1-3.287-10-3.715-11
+			c-0.428-1-6.57-10.855-7.57-12.142c-1-1.286-4.286-6.856-7.002-9.143c-2.713-2.285-18.284-12.285-27.856-17.713
+			c-9.571-5.429-24.284-13.714-25.142-14.428c-0.856-0.714-4.429-2-4.856-2c-0.429,0-7.285-1-7.285-1s-2.144-2-3.285-2.857
+			c-1.144-0.857-5.142-1.857-5.714-2.286c-0.572-0.429-2.286-1.285-2.286-1.285s-5.718-1.143-7.574-1.143s-3.857-0.857-4.143-1.428
+			c-0.284-0.572-2.286-1-2.572-1.429c-0.283-0.428-5.142-5.714-6.142-6.285c-0.998-0.571-4.141-0.142-5.143-0.286
+			c-1.001-0.143-2.857-1.714-3.999-1.714c-1.145,0-2.286,0.143-3-0.572c-0.714-0.714-3.429-3.141-4.287-3.428
+			c-0.855-0.287-33.569,0.285-50.427,0.143c-16.855-0.143-40.283-1.428-45.711-2.57
+			C257.397,164.663,252.538,165.375,252.538,165.375"/>
+      <path clip-path="url(#TDF_SVGID_4_)" fill="none" stroke-width="0.75" d="M252.538,165.375
+			c0,0-4.429,5.286-6.428,6.143c-2,0.857-5.571,1.572-7,1.714c-1.429,0.144-5.716,3-7.001,4.143
+			c-1.284,1.144-5.428,3.857-7.284,4.429c-1.857,0.571-4.857,2.144-5.286,2.571c-0.428,0.428-7.429,2.143-8.429,2.143
+			c-1,0-14.856,8.856-19.284,10.428c-4.429,1.57-30.856,12.714-40.427,18.999c-9.572,6.285-25.144,19.569-26.857,25.569
+			c-1.715,6,0.048,8.537-1.237,11.251c-1.287,2.714-13.906,28.747-17.763,37.461c-3.857,8.713-22.57,54.997-24.571,61.568
+			c-1.999,6.571-5.854,17.287-6.142,18.999c-0.286,1.714-1.714,5.43-1.714,5.43s-1,0.855-1.429,1.429
+			c-0.428,0.57-0.57,2.284-0.857,3c-0.286,0.713-4.711,8.711-4.285,9.284c0.428,0.573,11.429,4.999,16.428,7
+			c5,2,25.428,12.285,30.428,13.144c5,0.855,20.141,5.427,25.57,6.712c5.429,1.286,18.999,3.43,20.857,3.43
+			c1.856,0,6.142-0.715,6.142-0.715s3.286-8.998,3.429-10.143c0.138-1.104,1.49-9.14,1.716-13.545
+			c0.01-0.203,0.016-0.309,0.021-0.513c0.143-4.287-0.023-14.941-0.023-15.655c0-0.713,0.287-3.571,1.001-4.856
+			c0.714-1.287,2.714-2.714,3.285-2.571c0.571,0.141,1,2.428,1,3.57s-1.142,38.997-1.571,45.998s-1.285,24.714-2.286,33.428
+			c-1.001,8.713-4.287,31.426-4.573,35.281c-0.284,3.859,0,41.43,0,41.43s-3,6.713-3.142,7.855
+			c-0.143,1.142-1.285,26.284-2.143,35.855c-0.857,9.572-1.999,23.57-2.714,25.284c-0.715,1.716-1.144,5.144-1.144,5.716
+			c0,0.571-0.57,8.283-0.284,8.855c0.284,0.571,7.855,5.287,13.427,6.43c5.571,1.142,18.861,3.57,63.287,3.57
+			c44.427,0,162.995,0.142,170.28-0.431c7.285-0.569,32.86-4.282,36.431-5.854c3.571-1.572,5.283-2.429,5.283-3.145
+			c0-0.714-0.141-11.427-0.427-12.285c-0.221-0.662-0.776-8.122-1.656-14.708c-0.259-1.938-0.537-4.098-0.603-5.723
+			c-0.285-7.142-2.742-41.565-3.169-43.423c-0.429-1.857-2.999-7.857-2.999-7.857s-0.718-28.285-1.573-42.856
+			c-0.855-14.568-3.999-35.853-4.286-40.425c-0.286-4.57-2.282-27.142-1.142-35.427c1.143-8.285,3.429-19.286,3.429-19.286
+			s1.429,3.145,1.857,4.003c0.428,0.854,0.858,3.569,0.714,4.712c-0.143,1.143-0.286,10.855-0.286,10.855s3.144,1.575,3.573,1.287
+			c0.427-0.284,2.142-1.857,3.712-1.287c1.574,0.572,8.286,2.572,12.856,2.146c4.572-0.431,26.287-4.146,38.572-9.145
+			c12.286-4.999,21.999-8.142,24.285-8.998c2.286-0.858,11.572-4.858,13.286-5.571c1.712-0.715,5.429-2.573,5.57-3.287
+			c0.143-0.714-1.286-2.714-2.001-3.857c-0.714-1.142-1.571-2.141-1.857-3.856c-0.283-1.715-0.429-4.57-0.429-4.57l-1.569-1.428
+			c0,0-2.426-11.573-3.712-14.429c-1.286-2.856-5.285-11.998-6-15.285c-0.715-3.287-3.858-15.999-5.144-19.571
+			c-1.287-3.571-9.286-24.857-14.144-36.999c-4.857-12.141-13.286-29.426-13.572-30.426c-0.287-1-3.287-10-3.715-11
+			c-0.428-1-6.57-10.855-7.57-12.142c-1-1.286-4.286-6.856-7.002-9.143c-2.713-2.285-18.284-12.285-27.856-17.713
+			c-9.571-5.429-24.284-13.714-25.142-14.428c-0.856-0.714-4.429-2-4.856-2c-0.429,0-7.285-1-7.285-1s-2.144-2-3.285-2.857
+			c-1.144-0.857-5.142-1.857-5.714-2.286c-0.572-0.429-2.286-1.285-2.286-1.285s-5.718-1.143-7.574-1.143s-3.857-0.857-4.143-1.428
+			c-0.284-0.572-2.286-1-2.572-1.429c-0.283-0.428-5.142-5.714-6.142-6.285c-0.998-0.571-4.141-0.142-5.143-0.286
+			c-1.001-0.143-2.857-1.714-3.999-1.714c-1.145,0-2.286,0.143-3-0.572c-0.714-0.714-3.429-3.141-4.287-3.428
+			c-0.855-0.287-33.569,0.285-50.427,0.143c-16.855-0.143-40.283-1.428-45.711-2.57
+			C257.397,164.663,252.538,165.375,252.538,165.375z"/>
+      </g>
+      </g>
+      <g id="CUSTOM">
+</g>
+		
+		
+			<rect x="213.81" y="260.086" clip-path="url(#TDF_SVGID_4_)" fill="none" stroke="#FFFFFF" stroke-width="0.75" width="187.994" height="244.25"/>
+		
+			<rect x="208.113" y="253.037" clip-path="url(#TDF_SVGID_4_)" fill="none" stroke="#FFFFFF" stroke-width="0.75" width="85.452" height="89.724"/>
+		
+			<rect x="322.048" y="253.037" clip-path="url(#TDF_SVGID_4_)" fill="none" stroke="#FFFFFF" stroke-width="0.75" width="85.452" height="89.724"/>
+	</g>
+	<g clip-path="url(#TDF_SVGID_2_)">
+		<defs>
+			<rect id="TDF_SVGID_5_" x="47.037" y="63.021" width="514.248" height="665.497"/>
+		</defs>
+		<clipPath id="TDF_SVGID_6_">
+			<use xlink:href="#TDF_SVGID_5_"  overflow="visible"/>
+		</clipPath>
+		<g opacity="0.09" clip-path="url(#TDF_SVGID_6_)"  a:adobe-blending-mode="multiply">
+			<g  a:adobe-blending-mode="normal">
+				<defs>
+					<rect id="TDF_SVGID_7_" x="392.994" y="324.61" width="48.4" height="215.321"/>
+				</defs>
+				<clipPath id="TDF_SVGID_8_">
+					<use xlink:href="#TDF_SVGID_7_"  overflow="visible"/>
+				</clipPath>
+				<g clip-path="url(#TDF_SVGID_8_)">
+					<defs>
+						<path id="TDF_SVGID_9_" d="M441.395,539.931c0,0-13.904-34.957-19.161-52.369c-5.256-17.413-17.741-78.52-17.741-81.476
+							c0-2.958-8.213-49.609-9.198-52.565c-0.985-2.956-2.3-9.527-2.3-9.527s7.886-1.643,9.528-3.614
+							c1.642-1.971,3.285-3.286,4.599-6.571c1.314-3.285,4.271-9.198,4.271-9.198s3.613,17.412,1.314,29.896
+							c-2.3,12.484-5.586,32.853-6.243,39.424c-0.656,6.57,2.302,25.954,4.271,39.095c1.972,13.14,10.261,43.994,13.469,52.894
+							c8.415,23.339,9.586,32.273,10.242,34.901C435.104,523.448,441.395,539.931,441.395,539.931"/>
+					</defs>
+					<clipPath id="TDF_SVGID_10_">
+						<use xlink:href="#TDF_SVGID_9_"  overflow="visible"/>
+					</clipPath>
+					
+						<radialGradient id="TDF_SVGID_11_" cx="0.4185" cy="792.4385" r="0.8384" gradientTransform="matrix(238.2364 0 0 -238.2364 294.5156 189102.7813)" gradientUnits="userSpaceOnUse">
+						<stop  offset="0" style="stop-color:#FFFFFF"/>
+						<stop  offset="1" style="stop-color:#006052"/>
+						<a:midPointStop  offset="0" style="stop-color:#FFFFFF"/>
+						<a:midPointStop  offset="0.5" style="stop-color:#FFFFFF"/>
+						<a:midPointStop  offset="1" style="stop-color:#006052"/>
+					</radialGradient>
+					<rect x="392.994" y="324.61" clip-path="url(#TDF_SVGID_10_)" fill="url(#TDF_SVGID_11_)" width="48.4" height="215.321"/>
+				</g>
+			</g>
+		</g>
+		<g opacity="0.3" clip-path="url(#TDF_SVGID_6_)"  a:adobe-blending-mode="multiply">
+			<g  a:adobe-blending-mode="normal">
+				<defs>
+					<rect id="TDF_SVGID_12_" x="164.501" y="405.428" width="32.032" height="139.727"/>
+				</defs>
+				<clipPath id="TDF_SVGID_13_">
+					<use xlink:href="#TDF_SVGID_12_"  overflow="visible"/>
+				</clipPath>
+				<g clip-path="url(#TDF_SVGID_13_)">
+					<defs>
+						<path id="TDF_SVGID_14_" d="M196.533,405.428c0,0-1.314,45.996-7.556,65.378c-6.242,19.384-24.476,74.349-24.476,74.349
+							l0.324-5.368c0,0,1.001-3.228,3.143-7.855c6.281-13.571,11.871-41.171,12.795-43.714c1.314-3.612,7.479-23.573,7.885-25.295
+							C195.219,434.996,196.533,405.428,196.533,405.428"/>
+					</defs>
+					<clipPath id="TDF_SVGID_15_">
+						<use xlink:href="#TDF_SVGID_14_"  overflow="visible"/>
+					</clipPath>
+					
+						<radialGradient id="TDF_SVGID_16_" cx="0.6841" cy="792.5195" r="0.8475" gradientTransform="matrix(103.8143 0 0 -103.8143 120.2598 82677.3125)" gradientUnits="userSpaceOnUse">
+						<stop  offset="0" style="stop-color:#FFFFFF"/>
+						<stop  offset="1" style="stop-color:#AEA8A2"/>
+						<a:midPointStop  offset="0" style="stop-color:#FFFFFF"/>
+						<a:midPointStop  offset="0.5" style="stop-color:#FFFFFF"/>
+						<a:midPointStop  offset="1" style="stop-color:#AEA8A2"/>
+					</radialGradient>
+					<rect x="164.501" y="405.428" clip-path="url(#TDF_SVGID_15_)" fill="url(#TDF_SVGID_16_)" width="32.032" height="139.727"/>
+				</g>
+			</g>
+		</g>
+		<g opacity="0.3" clip-path="url(#TDF_SVGID_6_)"  a:adobe-blending-mode="multiply">
+			<g  a:adobe-blending-mode="normal">
+				<defs>
+					<rect id="TDF_SVGID_17_" x="178.808" y="307.059" width="17.566" height="78.606"/>
+				</defs>
+				<clipPath id="TDF_SVGID_18_">
+					<use xlink:href="#TDF_SVGID_17_"  overflow="visible"/>
+				</clipPath>
+				<g clip-path="url(#TDF_SVGID_18_)">
+					<defs>
+						<path id="TDF_SVGID_19_" d="M178.808,385.665c0,0,8.932-6.029,9.602-8.039c0.67-2.009,2.455-13.4,2.904-18.758
+							c0.447-5.36,6.029-18.311,4.914-24.118c-1.117-5.805-3.575-9.603-4.914-17.42c-1.341-7.815-3.574-10.271-3.574-10.271
+							s-1.34,12.059-0.447,16.525c0.894,4.466,2.455,6.921,3.35,11.836c0.895,4.913,0.223,11.388-0.447,17.417
+							c-0.669,6.03-2.903,23.895-3.572,25.683C185.954,380.305,178.808,385.665,178.808,385.665"/>
+					</defs>
+					<clipPath id="TDF_SVGID_20_">
+						<use xlink:href="#TDF_SVGID_19_"  overflow="visible"/>
+					</clipPath>
+					
+						<radialGradient id="TDF_SVGID_21_" cx="0.7666" cy="792.4443" r="0.8408" gradientTransform="matrix(65.6158 0 0 -65.6158 149.4902 52369.625)" gradientUnits="userSpaceOnUse">
+						<stop  offset="0" style="stop-color:#FFFFFF"/>
+						<stop  offset="1" style="stop-color:#AEA8A2"/>
+						<a:midPointStop  offset="0" style="stop-color:#FFFFFF"/>
+						<a:midPointStop  offset="0.5" style="stop-color:#FFFFFF"/>
+						<a:midPointStop  offset="1" style="stop-color:#AEA8A2"/>
+					</radialGradient>
+					<rect x="178.808" y="307.059" clip-path="url(#TDF_SVGID_20_)" fill="url(#TDF_SVGID_21_)" width="18.535" height="78.606"/>
+				</g>
+			</g>
+		</g>
+		<g opacity="0.1" clip-path="url(#TDF_SVGID_6_)"  a:adobe-blending-mode="multiply">
+			<g  a:adobe-blending-mode="normal">
+				<defs>
+					<rect id="TDF_SVGID_22_" x="139.729" y="302.816" width="36.327" height="70.761"/>
+				</defs>
+				<clipPath id="TDF_SVGID_23_">
+					<use xlink:href="#TDF_SVGID_22_"  overflow="visible"/>
+				</clipPath>
+				<path clip-path="url(#TDF_SVGID_23_)" fill="#AEA8A2" d="M139.729,302.816c0,0,2.901,15.631,6.922,21.438
+					s10.272,10.273,11.389,11.166c1.117,0.894,3.35,2.68,3.35,2.68s7.593,18.089,9.156,22.778c1.563,4.688,2.539,12.7,2.539,12.7
+					s1.85-1.57,2.312-1.354c0.462,0.212,0.66,1.129,0.66,1.129s-4.17-16.272-5.511-18.506c-1.342-2.232-6.924-16.97-7.593-19.204
+					c-0.671-2.232-1.563-5.36-2.904-10.049c-1.339-4.689-7.368-22.777-7.368-22.777s7.592,28.808,7.592,30.371
+					c0,1.563-6.922-4.021-8.262-5.807c-1.34-1.787-5.584-8.933-5.584-10.496S139.729,302.816,139.729,302.816"/>
+			</g>
+		</g>
+		<g opacity="0.1" clip-path="url(#TDF_SVGID_6_)"  a:adobe-blending-mode="multiply">
+			<g  a:adobe-blending-mode="normal">
+				<defs>
+					<rect id="TDF_SVGID_24_" x="143.3" y="406.655" width="26.455" height="13.576"/>
+				</defs>
+				<clipPath id="TDF_SVGID_25_">
+					<use xlink:href="#TDF_SVGID_24_"  overflow="visible"/>
+				</clipPath>
+				<path clip-path="url(#TDF_SVGID_25_)" fill="#AEA8A2" d="M169.755,407.299c0,0-5.58,2.413-13.501,1.144
+					c-4.459-0.714-12.953-1.787-12.953-1.787s6.253,3.573,11.389,4.021c5.137,0.445,1.564,4.243,0,4.913
+					c-1.563,0.67-4.92,3.228-4.92,3.228c0-0.004,7.242,1.264,10.057,1.403c2.052,0.101,5.487-0.631,6.142-0.715
+					c0,0,1.003-2.577,1.227-3.469c0.224-0.895,1.533-4.347,2.047-5.809C169.32,410.004,169.755,407.299,169.755,407.299"/>
+			</g>
+		</g>
+		<g opacity="0.1" clip-path="url(#TDF_SVGID_6_)"  a:adobe-blending-mode="multiply">
+			<g  a:adobe-blending-mode="normal">
+				<defs>
+					<rect id="TDF_SVGID_26_" x="71.396" y="379.414" width="61.759" height="23.696"/>
+				</defs>
+				<clipPath id="TDF_SVGID_27_">
+					<use xlink:href="#TDF_SVGID_26_"  overflow="visible"/>
+				</clipPath>
+				<path clip-path="url(#TDF_SVGID_27_)" fill="#AEA8A2" d="M71.396,379.413c0,0,11.612,6.476,17.642,8.708
+					c6.029,2.233,23.224,8.709,27.243,10.048c4.02,1.341,14.516,4.468,16.749,4.914c2.232,0.447-25.904-4.911-40.643-11.39
+					c-14.739-6.475-20.544-8.931-20.768-9.602C71.396,381.422,71.396,379.413,71.396,379.413"/>
+			</g>
+		</g>
+		<g opacity="0.1" clip-path="url(#TDF_SVGID_6_)"  a:adobe-blending-mode="multiply">
+			<g  a:adobe-blending-mode="normal">
+				<defs>
+					<rect id="TDF_SVGID_28_" x="148.214" y="361.325" width="14.57" height="46.136"/>
+				</defs>
+				<clipPath id="TDF_SVGID_29_">
+					<use xlink:href="#TDF_SVGID_28_"  overflow="visible"/>
+				</clipPath>
+				<path clip-path="url(#TDF_SVGID_29_)" fill="#AEA8A2" d="M148.213,361.325c0,0,6.031,20.544,7.37,25.903
+					c1.34,5.36,4.243,16.303,4.243,16.303s-1.116,1.563-1.787,2.232c-0.669,0.67,3.796,2.455,4.466,1.339
+					c0.67-1.115,0-7.369-0.67-8.708C161.166,397.054,148.213,361.325,148.213,361.325"/>
+			</g>
+		</g>
+		<g opacity="0.1" clip-path="url(#TDF_SVGID_6_)"  a:adobe-blending-mode="multiply">
+			<g  a:adobe-blending-mode="normal">
+				<defs>
+					<rect id="TDF_SVGID_30_" x="151.514" y="347.661" width="19.66" height="52.295"/>
+				</defs>
+				<clipPath id="TDF_SVGID_31_">
+					<use xlink:href="#TDF_SVGID_30_"  overflow="visible"/>
+				</clipPath>
+				<path clip-path="url(#TDF_SVGID_31_)" fill="#AEA8A2" d="M168.088,399.956c0,0-1.339-10.496-2.903-14.292
+					c-1.563-3.795-6.699-15.631-8.038-20.098c-1.34-4.466-6.922-18.758-5.359-17.865c1.563,0.894,10.941,20.546,13.621,24.789
+					c2.679,4.242,5.096,8.479,5.766,11.831l-0.041,11.251l-0.227,2.915C170.238,399.381,168.088,399.956,168.088,399.956"/>
+			</g>
+		</g>
+		<g opacity="0.1" clip-path="url(#TDF_SVGID_6_)"  a:adobe-blending-mode="multiply">
+			<g  a:adobe-blending-mode="normal">
+				<defs>
+					<rect id="TDF_SVGID_32_" x="137.742" y="231.512" width="8.685" height="46.74"/>
+				</defs>
+				<clipPath id="TDF_SVGID_33_">
+					<use xlink:href="#TDF_SVGID_32_"  overflow="visible"/>
+				</clipPath>
+				<path clip-path="url(#TDF_SVGID_33_)" fill="#AEA8A2" d="M140.175,233.144c0,0,0.669,10.049,1.563,13.175
+					c0.894,3.126,3.796,13.844,3.796,17.641c0,3.797,0.893,14.292,0.893,14.292s-2.233-16.748-3.573-20.768
+					c-1.339-4.019-4.689-15.631-4.912-17.642c-0.223-2.009-0.447-6.923,0.446-8.04C139.282,230.687,140.175,233.144,140.175,233.144
+					"/>
+			</g>
+		</g>
+		<g opacity="0.2" clip-path="url(#TDF_SVGID_6_)"  a:adobe-blending-mode="multiply">
+			<g  a:adobe-blending-mode="normal">
+				<defs>
+					<rect id="TDF_SVGID_34_" x="103.857" y="252.725" width="50.093" height="149.479"/>
+				</defs>
+				<clipPath id="TDF_SVGID_35_">
+					<use xlink:href="#TDF_SVGID_34_"  overflow="visible"/>
+				</clipPath>
+				<g clip-path="url(#TDF_SVGID_35_)">
+					<defs>
+						<path id="TDF_SVGID_36_" d="M150.447,381.421c-0.14-0.494-0.442-0.702-0.783-0.782c-5.385-21.958-23.976-98.043-25.122-106.63
+							c-1.339-10.049,1.117-17.865,1.563-16.748c0.447,1.116,13.624,18.981,16.303,23.224c2.679,4.243,4.689,13.846,4.689,13.846
+							s-0.67-9.827-1.117-11.613c-0.446-1.787-8.038-12.504-11.611-16.749c-3.573-4.242-11.065-13.245-11.065-13.245l-7.027,14.85
+							c0,0-5.578,27.873-9.823,58.466c-4.243,30.593-2.009,61.187-2.009,61.187l3.352-38.185c0,0,0.446,2.455,1.563,7.814
+							c1.115,5.358,6.029,19.429,6.029,19.429s-4.689-27.691-5.36-42.206c-0.668-14.515,2.904-34.837,4.689-46.448
+							c1.787-11.613,6.923-24.788,6.923-24.788s0.669,10.495,1.339,23.225c0.563,10.714,20.112,74.583,26.288,94.535
+							c-0.638,0.028-1.276,0.372-1.276,0.372s0.223,5.136,1.117,6.923c0.892,1.785,1.785,7.592-0.225,7.814
+							c-2.009,0.224-16.079-13.845-16.079-13.845s18.313,20.99,20.545,20.321C155.584,401.52,150.894,382.984,150.447,381.421"/>
+					</defs>
+					<clipPath id="TDF_SVGID_37_">
+						<use xlink:href="#TDF_SVGID_36_"  overflow="visible"/>
+					</clipPath>
+					
+						<radialGradient id="TDF_SVGID_38_" cx="0.6563" cy="792.3047" r="0.8403" gradientTransform="matrix(222.0335 0 0 -222.0335 -36.4375 176081.875)" gradientUnits="userSpaceOnUse">
+						<stop  offset="0" style="stop-color:#FFFFFF"/>
+						<stop  offset="1" style="stop-color:#AEA8A2"/>
+						<a:midPointStop  offset="0" style="stop-color:#FFFFFF"/>
+						<a:midPointStop  offset="0.5" style="stop-color:#FFFFFF"/>
+						<a:midPointStop  offset="1" style="stop-color:#AEA8A2"/>
+					</radialGradient>
+					<rect x="102.21" y="252.725" clip-path="url(#TDF_SVGID_37_)" fill="url(#TDF_SVGID_38_)" width="53.374" height="150.133"/>
+				</g>
+			</g>
+		</g>
+		<g opacity="0.3" clip-path="url(#TDF_SVGID_6_)"  a:adobe-blending-mode="multiply">
+			<g  a:adobe-blending-mode="normal">
+				<defs>
+					<rect id="TDF_SVGID_39_" x="214.559" y="165.409" width="41.67" height="42.055"/>
+				</defs>
+				<clipPath id="TDF_SVGID_40_">
+					<use xlink:href="#TDF_SVGID_39_"  overflow="visible"/>
+				</clipPath>
+				<g clip-path="url(#TDF_SVGID_40_)">
+					<defs>
+						<path id="TDF_SVGID_41_" d="M220.319,185.097c0,0,8.824-0.205,12.106,2.257c3.284,2.462,12.516,11.49,14.363,13.338
+							c1.847,1.847,9.44,6.772,9.44,6.772s-14.16-15.391-17.238-18.263c-3.077-2.874-10.053-6.155-12.105-6.361
+							c-2.053-0.205,3.898-1.848,5.129-2.668c1.23-0.821,4.719,4.31,4.719,4.31l1.231-4.31c0,0,2.463-3.077,4.311-3.282
+							c1.846-0.206,4.924-3.078,6.154-3.899c1.231-0.821,4.112-7.582,4.112-7.582s-3.089,3.452-3.998,4.252
+							c-0.332,0.293-1.866,1.661-2.472,1.891c-2.981,1.126-6.962,1.68-6.962,1.68s-2.169,0.579-3.196,1.4
+							c-1.026,0.82-8.631,6.336-10.303,6.844c-2.06,0.626-5.416,2.399-6.18,2.945c-0.747,0.533-4.872,1.454-4.872,1.454
+							L220.319,185.097z"/>
+					</defs>
+					<clipPath id="TDF_SVGID_42_">
+						<use xlink:href="#TDF_SVGID_41_"  overflow="visible"/>
+					</clipPath>
+					
+						<radialGradient id="TDF_SVGID_43_" cx="0.9312" cy="790.9316" r="0.8406" gradientTransform="matrix(24.9104 0 0 -24.9104 212.1948 19888.8926)" gradientUnits="userSpaceOnUse">
+						<stop  offset="0" style="stop-color:#FFFFFF"/>
+						<stop  offset="1" style="stop-color:#AEA8A2"/>
+						<a:midPointStop  offset="0" style="stop-color:#FFFFFF"/>
+						<a:midPointStop  offset="0.5" style="stop-color:#FFFFFF"/>
+						<a:midPointStop  offset="1" style="stop-color:#AEA8A2"/>
+					</radialGradient>
+					<rect x="214.559" y="165.409" clip-path="url(#TDF_SVGID_42_)" fill="url(#TDF_SVGID_43_)" width="41.67" height="42.055"/>
+				</g>
+			</g>
+		</g>
+		<g opacity="0.5" clip-path="url(#TDF_SVGID_6_)"  a:adobe-blending-mode="multiply">
+			<g  a:adobe-blending-mode="normal">
+				<defs>
+					<rect id="TDF_SVGID_44_" x="257.119" y="181.1" width="98.575" height="28.713"/>
+				</defs>
+				<clipPath id="TDF_SVGID_45_">
+					<use xlink:href="#TDF_SVGID_44_"  overflow="visible"/>
+				</clipPath>
+				<g clip-path="url(#TDF_SVGID_45_)">
+					<defs>
+						<path id="TDF_SVGID_46_" d="M257.55,181.103c0,0-2.473-0.294,4.423,5.636c10.571,9.091,31.601,22.161,35.088,22.776
+							c3.489,0.616,16.21,0.41,22.572-1.846c6.362-2.257,30.913-15.913,33.376-20.428c2.464-4.513,2.685-5.99,2.685-5.99
+							s-3.905,0.565-5.476,0.829c-7.402,1.245-14.095,1.642-45.066,0.507C282.184,181.746,257.55,181.103,257.55,181.103"/>
+					</defs>
+					<clipPath id="TDF_SVGID_47_">
+						<use xlink:href="#TDF_SVGID_46_"  overflow="visible"/>
+					</clipPath>
+					
+						<radialGradient id="TDF_SVGID_48_" cx="0.4751" cy="792.0684" r="0.8411" gradientTransform="matrix(109.5527 0 0 -109.5527 254.2188 86915.7969)" gradientUnits="userSpaceOnUse">
+						<stop  offset="0" style="stop-color:#FFFFFF"/>
+						<stop  offset="1" style="stop-color:#AEA8A2"/>
+						<a:midPointStop  offset="0" style="stop-color:#FFFFFF"/>
+						<a:midPointStop  offset="0.5" style="stop-color:#FFFFFF"/>
+						<a:midPointStop  offset="1" style="stop-color:#AEA8A2"/>
+					</radialGradient>
+					<rect x="255.077" y="180.809" clip-path="url(#TDF_SVGID_47_)" fill="url(#TDF_SVGID_48_)" width="100.617" height="29.322"/>
+				</g>
+			</g>
+		</g>
+		<g opacity="0.1" clip-path="url(#TDF_SVGID_6_)"  a:adobe-blending-mode="multiply">
+			<g  a:adobe-blending-mode="normal">
+				<defs>
+					<rect id="TDF_SVGID_49_" x="258.895" y="177.3" width="118.047" height="53.059"/>
+				</defs>
+				<clipPath id="TDF_SVGID_50_">
+					<use xlink:href="#TDF_SVGID_49_"  overflow="visible"/>
+				</clipPath>
+				<path clip-path="url(#TDF_SVGID_50_)" fill="#AEA8A2" d="M376.679,177.3c0,0-0.409,24.622-24.624,38.987
+					c-24.213,14.364-50.827,13.58-63.816,8.823c-14.568-5.334-29.343-14.569-29.343-14.569s14.554,11.963,28.933,16.417
+					c23.187,7.181,47.272,2.435,65.047-9.028C381.192,199.667,376.679,177.3,376.679,177.3"/>
+			</g>
+		</g>
+		<g opacity="0.1" clip-path="url(#TDF_SVGID_6_)"  a:adobe-blending-mode="multiply">
+			<g  a:adobe-blending-mode="normal">
+				<defs>
+					<rect id="TDF_SVGID_51_" x="472.504" y="261.838" width="19.837" height="46.581"/>
+				</defs>
+				<clipPath id="TDF_SVGID_52_">
+					<use xlink:href="#TDF_SVGID_51_"  overflow="visible"/>
+				</clipPath>
+				<path clip-path="url(#TDF_SVGID_52_)" fill="#AEA8A2" d="M491.586,261.839c0,0,0.209,14.364-0.612,16.827
+					c-0.822,2.462-18.47,29.754-18.47,29.754s15.802-16.005,18.47-25.443C493.64,273.536,491.586,261.839,491.586,261.839"/>
+			</g>
+		</g>
+		<g opacity="0.1" clip-path="url(#TDF_SVGID_6_)"  a:adobe-blending-mode="multiply">
+			<g  a:adobe-blending-mode="normal">
+				<defs>
+					<rect id="TDF_SVGID_53_" x="497.656" y="277.64" width="5.066" height="47.605"/>
+				</defs>
+				<clipPath id="TDF_SVGID_54_">
+					<use xlink:href="#TDF_SVGID_53_"  overflow="visible"/>
+				</clipPath>
+				<path clip-path="url(#TDF_SVGID_54_)" fill="#AEA8A2" d="M498.154,278.256c0,0,2.667,21.75,2.463,26.47
+					c-0.206,4.721-1.231,12.928-2.463,14.569c-1.231,1.642,0.206,2.668,0.206,2.668l2.666,3.283c0,0,2.053-16.21,1.642-19.698
+					c-0.409-3.488-0.819-20.931-2.051-22.571c-1.231-1.643-2.257-5.336-2.257-5.336L498.154,278.256z"/>
+			</g>
+		</g>
+		<g opacity="0.1" clip-path="url(#TDF_SVGID_6_)"  a:adobe-blending-mode="multiply">
+			<g  a:adobe-blending-mode="normal">
+				<defs>
+					<rect id="TDF_SVGID_55_" x="439.673" y="341.141" width="13.749" height="26.17"/>
+				</defs>
+				<clipPath id="TDF_SVGID_56_">
+					<use xlink:href="#TDF_SVGID_55_"  overflow="visible"/>
+				</clipPath>
+				<path clip-path="url(#TDF_SVGID_56_)" fill="#AEA8A2" d="M439.673,367.311c0,0,9.235-6.36,10.261-11.08
+					c1.024-4.721,2.052-14.774,2.052-14.774s1.437-1.026,1.437,0.615c0,1.642-0.991,13.857-2.257,16.211
+					C448.291,363.618,439.673,367.311,439.673,367.311"/>
+			</g>
+		</g>
+		<g opacity="0.1" clip-path="url(#TDF_SVGID_6_)"  a:adobe-blending-mode="multiply">
+			<g  a:adobe-blending-mode="normal">
+				<defs>
+					<rect id="TDF_SVGID_57_" x="516.416" y="338.174" width="4.014" height="20.724"/>
+				</defs>
+				<clipPath id="TDF_SVGID_58_">
+					<use xlink:href="#TDF_SVGID_57_"  overflow="visible"/>
+				</clipPath>
+				<path clip-path="url(#TDF_SVGID_58_)" fill="#AEA8A2" d="M520.316,338.173c0,0-1.642,6.361-2.259,8.617
+					c-0.615,2.258-1.642,6.979-1.642,8.414c0,1.438,0.821,3.694,0.821,3.694s0.41-9.029,2.052-11.696
+					C520.932,344.535,520.316,338.173,520.316,338.173"/>
+			</g>
+		</g>
+		<g opacity="0.1" clip-path="url(#TDF_SVGID_6_)"  a:adobe-blending-mode="multiply">
+			<g  a:adobe-blending-mode="normal">
+				<defs>
+					<rect id="TDF_SVGID_59_" x="438.724" y="354.87" width="9.85" height="10.744"/>
+				</defs>
+				<clipPath id="TDF_SVGID_60_">
+					<use xlink:href="#TDF_SVGID_59_"  overflow="visible"/>
+				</clipPath>
+				<path clip-path="url(#TDF_SVGID_60_)" fill="#AEA8A2" d="M448.573,357.815c0,0-5.13-3.487-6.361-2.873
+					c-1.232,0.615-2.462,5.131-2.462,5.746c0,0.615-1.026,4.925-1.026,4.925s2.256-7.797,4.308-7.387
+					C445.084,358.635,448.573,357.815,448.573,357.815"/>
+			</g>
+		</g>
+		<g opacity="0.1" clip-path="url(#TDF_SVGID_6_)"  a:adobe-blending-mode="multiply">
+			<g  a:adobe-blending-mode="normal">
+				<defs>
+					<rect id="TDF_SVGID_61_" x="434.519" y="376.705" width="100.172" height="32.875"/>
+				</defs>
+				<clipPath id="TDF_SVGID_62_">
+					<use xlink:href="#TDF_SVGID_61_"  overflow="visible"/>
+				</clipPath>
+				<path clip-path="url(#TDF_SVGID_62_)" fill="#AEA8A2" d="M534.475,377.982c-0.205-1.642-1.643-1.231-1.643-1.231
+					s-0.82,1.844-1.23,2.461c-0.411,0.617-17.03,7.799-32.421,13.134c-15.389,5.334-23.597,8.618-32.217,9.642
+					c-8.619,1.027-24.419,1.438-24.419,1.438c-0.616-0.822,0.206-2.462,0.206-2.462s-1.437-10.055-3.898-13.543
+					c-2.463-3.487-2.69-6.006-2.69-6.006l-1.644,11.347c0,0,0.164,0.829,0.821,1.567c0.206,0.23,0.709,2.519,1.492,4.158
+					c0.227,0.474,0.42,1.753,0.42,1.753l-0.452-8.099c0,0,0.41-1.232,1.847,0.615c1.436,1.846,3.898,16.823,3.898,16.823
+					s0.206-1.796,0.261-3.464c0.603,0.053,2.16,0.182,2.82,0.182c0.819,0,16.21-1.437,20.518-2.256
+					c4.31-0.822,12.926-2.873,15.8-3.283c2.871-0.412,15.186-5.13,18.057-6.362c2.874-1.23,32.216-12.107,33.653-12.107
+					C535.089,382.29,534.681,379.625,534.475,377.982"/>
+			</g>
+		</g>
+		<g opacity="0.2" clip-path="url(#TDF_SVGID_6_)"  a:adobe-blending-mode="multiply">
+			<g  a:adobe-blending-mode="normal">
+				<defs>
+					<rect id="TDF_SVGID_63_" x="158.517" y="608.715" width="42.336" height="12.228"/>
+				</defs>
+				<clipPath id="TDF_SVGID_64_">
+					<use xlink:href="#TDF_SVGID_63_"  overflow="visible"/>
+				</clipPath>
+				<path clip-path="url(#TDF_SVGID_64_)" fill="#AEA8A2" d="M158.745,608.715c0,0,14.784,6.998,21.443,8.376
+					c6.659,1.379,20.664,3.444,20.664,3.444s-24.338,1.839-32.832-2.296c-8.495-4.134-9.504-5.766-9.504-5.766L158.745,608.715z"/>
+			</g>
+		</g>
+		<g opacity="0.35" clip-path="url(#TDF_SVGID_6_)"  a:adobe-blending-mode="multiply">
+			<g  a:adobe-blending-mode="normal">
+				<defs>
+					<rect id="TDF_SVGID_65_" x="165.724" y="611.81" width="266.558" height="8.448"/>
+				</defs>
+				<clipPath id="TDF_SVGID_66_">
+					<use xlink:href="#TDF_SVGID_65_"  overflow="visible"/>
+				</clipPath>
+				<path clip-path="url(#TDF_SVGID_66_)" fill="#AEA8A2" d="M165.725,611.81c0,0,12.856,5.742,58.086,6.43
+					c45.232,0.688,138.445,1.148,160.487,0c22.041-1.148,47.984-3.674,47.984-3.674s-56.479,6.886-143.266,5.511
+					C202.23,618.699,165.725,611.81,165.725,611.81"/>
+			</g>
+		</g>
+		<g opacity="0.1" clip-path="url(#TDF_SVGID_6_)"  a:adobe-blending-mode="multiply">
+			<g  a:adobe-blending-mode="normal">
+				<defs>
+					<rect id="TDF_SVGID_67_" x="467.727" y="336.591" width="36.934" height="22.794"/>
+				</defs>
+				<clipPath id="TDF_SVGID_68_">
+					<use xlink:href="#TDF_SVGID_67_"  overflow="visible"/>
+				</clipPath>
+				<path clip-path="url(#TDF_SVGID_68_)" fill="#AEA8A2" d="M467.727,350.521c0,0,9.918-0.844,11.816-0.633
+					c1.902,0.212,10.978,1.688,12.453,0.844c1.479-0.844,6.122-4.642,6.333-6.753c0.209-2.11,0.209-7.387,0.209-7.387
+					s1.058,3.797,2.534,3.166c1.478-0.633,3.167-2.532,3.167-2.532s-1.268,5.065-1.689,6.12c-0.424,1.055-3.376,5.065-2.954,6.121
+					c0.422,1.055,5.064,5.698,5.064,5.698s-4.221-1.899-6.964-1.899c-2.744,0-6.331,6.121-6.331,6.121l-1.269-4.01l-6.12,2.322
+					c0,0-0.63-5.277-4.854-5.698C474.901,351.575,467.727,350.521,467.727,350.521"/>
+			</g>
+		</g>
+		<g opacity="0.09" clip-path="url(#TDF_SVGID_6_)"  a:adobe-blending-mode="multiply">
+			<g  a:adobe-blending-mode="normal">
+				<defs>
+					<rect id="TDF_SVGID_69_" x="441.768" y="359.308" width="78.549" height="39.544"/>
+				</defs>
+				<clipPath id="TDF_SVGID_70_">
+					<use xlink:href="#TDF_SVGID_69_"  overflow="visible"/>
+				</clipPath>
+				<g clip-path="url(#TDF_SVGID_70_)">
+					<defs>
+						<path id="TDF_SVGID_71_" d="M518.88,362.591c0.615-1.64,1.437-3.283,1.437-3.283s-2.875,1.847-3.079,3.078
+							c-0.204,1.232-1.231,6.568-1.643,8.207c-0.41,1.644-1.436,5.132-1.436,5.132c-0.512,1.716-4.646,3.709-5.911,3.709
+							s-3.165,2.109-3.165,2.955c0,0.845-1.478,2.744-2.323,2.955c-0.843,0.211-4.431,2.532-4.431,2.532s-0.845-3.167-0.422-4.01
+							c0.422-0.844-2.956-1.477-4.011-1.477c-1.056,0-3.376,0.422-4.222,0.845c-0.846,0.422-2.953,1.898-2.953,1.898
+							s0.21-4.645,2.953-5.065c2.744-0.421,7.81-1.055,8.654-1.477c0.845-0.423,3.166-3.587,3.166-3.587l-3.588-4.433
+							c0,0-4.644,3.165-5.488,2.743c-0.844-0.423-4.221-5.276-4.221-5.276s1.056,6.542-0.211,7.597
+							c-1.266,1.056-4.854,3.377-5.486,4.854c-0.635,1.478,0.422,8.654-1.268,10.976c-1.688,2.321-2.954,4.855-2.954,4.855
+							s-7.386,0.21-8.863-0.846c-1.479-1.055-7.809-4.01-8.654-4.01c-0.844,0-3.588,2.533-7.176,1.477
+							c-3.587-1.055-4.854,0-7.176-2.743c-2.32-2.744-4.643-4.854-4.643-4.854s9.286,11.396,9.709,12.45
+							c0.422,1.058,5.274,1.058,6.752,1.058c1.479,0,14.351-1.267,14.351-1.267s7.811-1.055,9.709-1.9
+							c1.899-0.843,12.664-5.698,14.563-6.122c1.9-0.42,9.917-4.008,10.973-4.431c1.058-0.423,4.434-0.844,5.91-1.267
+							c1.477-0.421,3.589-2.535,3.589-3.588c0-1.055-2.112-2.743-2.112-3.587c0-0.44,1.323-1.673,2.128-4.688
+							C517.899,370.44,518.301,364.142,518.88,362.591"/>
+					</defs>
+					<clipPath id="TDF_SVGID_72_">
+						<use xlink:href="#TDF_SVGID_71_"  overflow="visible"/>
+					</clipPath>
+					
+						<radialGradient id="TDF_SVGID_73_" cx="-0.0176" cy="792.4746" r="0.8404" gradientTransform="matrix(67.4872 0 0 -67.4872 476.7188 53864.9375)" gradientUnits="userSpaceOnUse">
+						<stop  offset="0" style="stop-color:#FFFFFF"/>
+						<stop  offset="1" style="stop-color:#AEA8A2"/>
+						<a:midPointStop  offset="0" style="stop-color:#FFFFFF"/>
+						<a:midPointStop  offset="0.5" style="stop-color:#FFFFFF"/>
+						<a:midPointStop  offset="1" style="stop-color:#AEA8A2"/>
+					</radialGradient>
+					<rect x="441.768" y="359.308" clip-path="url(#TDF_SVGID_72_)" fill="url(#TDF_SVGID_73_)" width="78.549" height="39.544"/>
+				</g>
+			</g>
+		</g>
+		<g opacity="0.1" clip-path="url(#TDF_SVGID_6_)"  a:adobe-blending-mode="multiply">
+			<g  a:adobe-blending-mode="normal">
+				<defs>
+					<rect id="TDF_SVGID_74_" x="451.687" y="340.389" width="19.629" height="25.954"/>
+				</defs>
+				<clipPath id="TDF_SVGID_75_">
+					<use xlink:href="#TDF_SVGID_74_"  overflow="visible"/>
+				</clipPath>
+				<path clip-path="url(#TDF_SVGID_75_)" fill="#AEA8A2" d="M451.687,361.495c0,0,6.119-7.808,6.964-9.286s3.379-11.819,3.379-11.819
+					l-1.057,13.508c0,0,6.334-2.745,7.598-2.745c1.266,0,2.745,1.478,2.745,1.478s-8.865,3.8-10.765,5.488
+					c-1.9,1.687-2.956,3.798-1.9,3.798c1.057,0,4.221,1.688,4.221,1.688s-5.695,4.011-7.808,2.322
+					C452.952,364.239,451.687,361.495,451.687,361.495"/>
+			</g>
+		</g>
+		<g opacity="0.5" clip-path="url(#TDF_SVGID_6_)"  a:adobe-blending-mode="multiply">
+			<g  a:adobe-blending-mode="normal">
+				<defs>
+					<rect id="TDF_SVGID_76_" x="253.656" y="166.014" width="105.309" height="17.361"/>
+				</defs>
+				<clipPath id="TDF_SVGID_77_">
+					<use xlink:href="#TDF_SVGID_76_"  overflow="visible"/>
+				</clipPath>
+				<g clip-path="url(#TDF_SVGID_77_)">
+					<defs>
+						<path id="TDF_SVGID_78_" d="M355.694,181.312c0,0-6.741,0.983-13.867,1.774c-7.125,0.792-30.608-0.264-36.68-0.528
+							c-6.067-0.264-47.807-1.488-47.807-1.488s-2.641-3.957-3.298-7.91c-0.66-3.952-0.277-7.146-0.277-7.146
+							s34.007,2.58,51.503,2.668c17.495,0.087,53.696-0.449,53.696-0.449s-0.727,2.715-1.164,5.372
+							C357.142,177.618,355.694,181.312,355.694,181.312"/>
+					</defs>
+					<clipPath id="TDF_SVGID_79_">
+						<use xlink:href="#TDF_SVGID_78_"  overflow="visible"/>
+					</clipPath>
+					
+						<linearGradient id="TDF_SVGID_80_" gradientUnits="userSpaceOnUse" x1="0.6538" y1="792.084" x2="1.4943" y2="792.084" gradientTransform="matrix(98.0048 21.895 21.895 -98.0048 -17147.6367 77778.1563)">
+						<stop  offset="0" style="stop-color:#FFFFFF"/>
+						<stop  offset="1" style="stop-color:#AEA8A2"/>
+						<a:midPointStop  offset="0" style="stop-color:#FFFFFF"/>
+						<a:midPointStop  offset="0.5" style="stop-color:#FFFFFF"/>
+						<a:midPointStop  offset="1" style="stop-color:#AEA8A2"/>
+					</linearGradient>
+					<polygon clip-path="url(#TDF_SVGID_79_)" fill="url(#TDF_SVGID_80_)" points="258.402,143.547 362.767,166.863 353.946,206.344 
+						249.583,183.028 					"/>
+				</g>
+			</g>
+		</g>
+		
+			<path clip-path="url(#TDF_SVGID_6_)" fill="none" stroke="#676564" stroke-width="0.235" stroke-linecap="round" stroke-linejoin="round" stroke-dasharray="1.564,1.564" d="
+			M71.686,377.652c0,0,7.294,6.578,63.667,25.271c26.521,8.794,34.478,3.49,34.478,3.49"/>
+		
+			<path clip-path="url(#TDF_SVGID_6_)" fill="none" stroke="#676564" stroke-width="0.235" stroke-linecap="round" stroke-linejoin="round" stroke-dasharray="1.564,1.564" d="
+			M237.182,174.205c0,0,6.336,21.054,23.507,34.278c21.144,16.284,39.007,19.437,58.443,17.86
+			c19.436-1.576,40.712-15.102,48.329-26.003c7.617-10.9,7.354-18.386,7.617-19.961c0.263-1.576,0.315-6.146,0.315-6.146"/>
+		
+			<path clip-path="url(#TDF_SVGID_6_)" fill="none" stroke="#676564" stroke-width="0.235" stroke-linecap="round" stroke-linejoin="round" stroke-dasharray="1.564,1.564" d="
+			M158.655,607.625c0,0,16.507,5.912,49.771,7.882c33.266,1.973,160.096,1.339,182.828,0.987
+			c32.033-0.491,55.442-6.653,55.442-6.653"/>
+		<g opacity="0.3" clip-path="url(#TDF_SVGID_6_)"  a:adobe-blending-mode="multiply">
+			<g  a:adobe-blending-mode="normal">
+				<defs>
+					<rect id="TDF_SVGID_81_" x="338.514" y="168.701" width="20.008" height="10.588"/>
+				</defs>
+				<clipPath id="TDF_SVGID_82_">
+					<use xlink:href="#TDF_SVGID_81_"  overflow="visible"/>
+				</clipPath>
+				<g clip-path="url(#TDF_SVGID_82_)">
+					<defs>
+						<path id="TDF_SVGID_83_" d="M338.514,168.885c0,0,12.551,2.326,14.661,4.437c2.11,2.111,3.244,5.967,3.244,5.967
+							s0.547-1.669,1.013-3.709c0.255-1.12,0.397-2.376,0.615-3.471c0.357-1.799,0.669-3.219,0.33-3.409L338.514,168.885z"/>
+					</defs>
+					<clipPath id="TDF_SVGID_84_">
+						<use xlink:href="#TDF_SVGID_83_"  overflow="visible"/>
+					</clipPath>
+					
+						<radialGradient id="TDF_SVGID_85_" cx="-0.6309" cy="788.1504" r="0.8405" gradientTransform="matrix(9.5247 0 0 -9.5247 354.5288 7680.9131)" gradientUnits="userSpaceOnUse">
+						<stop  offset="0" style="stop-color:#FFFFFF"/>
+						<stop  offset="1" style="stop-color:#AEA8A2"/>
+						<a:midPointStop  offset="0" style="stop-color:#FFFFFF"/>
+						<a:midPointStop  offset="0.5" style="stop-color:#FFFFFF"/>
+						<a:midPointStop  offset="1" style="stop-color:#AEA8A2"/>
+					</radialGradient>
+					<rect x="338.514" y="168.701" clip-path="url(#TDF_SVGID_84_)" fill="url(#TDF_SVGID_85_)" width="20.202" height="10.588"/>
+				</g>
+			</g>
+		</g>
+		<g opacity="0.2" clip-path="url(#TDF_SVGID_6_)"  a:adobe-blending-mode="multiply">
+			<g  a:adobe-blending-mode="normal">
+				<defs>
+					<rect id="TDF_SVGID_86_" x="434.296" y="248.575" width="54.009" height="145.231"/>
+				</defs>
+				<clipPath id="TDF_SVGID_87_">
+					<use xlink:href="#TDF_SVGID_86_"  overflow="visible"/>
+				</clipPath>
+				<g clip-path="url(#TDF_SVGID_87_)">
+					<defs>
+						<path id="TDF_SVGID_88_" d="M487.263,248.575c0,0-4.293,7.313-5.319,8.545c-1.025,1.231-7.182,9.029-7.182,9.029l-0.574,5.179
+							c-0.854,2.418-4.87,13.908-5.787,19.034c-1.025,5.744-7.798,18.877-8.002,20.519c-0.206,1.642-2.462,3.489-2.462,4.719
+							c0,1.231-3.49,4.515-4.515,5.747c-1.025,1.232-1.027,7.592-1.027,7.592L442.34,340.84c0,0,1.027-7.181,1.027-8.208
+							c0-1.025,5.54-24.418,6.36-30.368c0.821-5.953,4.308-31.19,5.745-30.986c1.438,0.205,1.232,19.904,1.232,19.904
+							s1.846-19.083,1.025-21.956c-0.394-1.381-1.848-3.694-4.103-0.411c-3.47,5.043-13.135,79.001-13.135,79.001
+							s0.065-0.08,0.179-0.219l-6.376,46.208l7.533-47.615c3.358-4.089,11.959-14.54,12.617-15.2c0.82-0.82,0.822-3.49,0.822-4.719
+							c0-1.232,1.437-5.129,2.872-6.978c1.435-1.845,4.31-6.361,4.31-7.592s5.746-12.926,6.155-14.569
+							c0.411-1.643,2.669-7.182,3.077-9.028c0.33-1.488,1.862-11.777,2.445-15.709c0.821-1.213,9.711-14.297,10.688-15.275
+							c1.026-1.027,3.489-4.72,3.489-5.541L487.263,248.575z"/>
+					</defs>
+					<clipPath id="TDF_SVGID_89_">
+						<use xlink:href="#TDF_SVGID_88_"  overflow="visible"/>
+					</clipPath>
+					
+						<radialGradient id="TDF_SVGID_90_" cx="-1.0869" cy="791.792" r="0.8401" gradientTransform="matrix(21.8606 0 0 -21.8606 498.0742 17619.4023)" gradientUnits="userSpaceOnUse">
+						<stop  offset="0" style="stop-color:#FFFFFF"/>
+						<stop  offset="1" style="stop-color:#AEA8A2"/>
+						<a:midPointStop  offset="0" style="stop-color:#FFFFFF"/>
+						<a:midPointStop  offset="0.5" style="stop-color:#FFFFFF"/>
+						<a:midPointStop  offset="1" style="stop-color:#AEA8A2"/>
+					</radialGradient>
+					<rect x="434.296" y="248.575" clip-path="url(#TDF_SVGID_89_)" fill="url(#TDF_SVGID_90_)" width="54.009" height="145.231"/>
+				</g>
+			</g>
+		</g>
+		<g opacity="0.3" clip-path="url(#TDF_SVGID_6_)"  a:adobe-blending-mode="multiply">
+			<g  a:adobe-blending-mode="normal">
+				<defs>
+					<rect id="TDF_SVGID_91_" x="257.548" y="181.004" width="97.964" height="2.502"/>
+				</defs>
+				<clipPath id="TDF_SVGID_92_">
+					<use xlink:href="#TDF_SVGID_91_"  overflow="visible"/>
+				</clipPath>
+				<path clip-path="url(#TDF_SVGID_92_)" fill="none" stroke="#676564" stroke-width="0.235" stroke-dasharray="1.564,1.564" d="
+					M257.551,181.103c0,0,41.738,1.225,47.807,1.488c6.069,0.264,29.555,1.319,36.678,0.528c7.128-0.791,13.46-1.847,13.46-1.847"/>
+			</g>
+		</g>
+		<g opacity="0.25" clip-path="url(#TDF_SVGID_6_)"  a:adobe-blending-mode="multiply">
+			<g  a:adobe-blending-mode="normal">
+				<defs>
+					<rect id="TDF_SVGID_93_" x="253.449" y="166.1" width="105.159" height="44.005"/>
+				</defs>
+				<clipPath id="TDF_SVGID_94_">
+					<use xlink:href="#TDF_SVGID_93_"  overflow="visible"/>
+				</clipPath>
+				<path clip-path="url(#TDF_SVGID_94_)" fill="none" stroke="#676564" stroke-width="0.235" d="M253.715,166.205
+					c0,0-2.05,11.287,8.208,20.725c10.26,9.439,31.601,22.16,35.088,22.777c3.488,0.616,16.21,0.41,22.571-1.847
+					c6.361-2.257,30.984-15.801,33.447-20.315c2.463-4.514,4.311-10.465,4.72-13.748c0.41-3.283,1.229-4.925,0.41-4.925
+					c-0.82,0-29.96,0.41-52.941,0C282.236,168.462,253.715,166.205,253.715,166.205z"/>
+			</g>
+		</g>
+		
+			<path clip-path="url(#TDF_SVGID_6_)" fill="none" stroke="#676564" stroke-width="0.235" stroke-linecap="round" stroke-linejoin="round" stroke-dasharray="1.564,1.564" d="
+			M533.054,375.727c0,0-1.426,3.243-2.126,3.833c-0.479,0.404-10.388,6.616-57.999,21.608c-8.479,2.668-35.534,2.497-35.534,2.497"
+			/>
+		<path clip-path="url(#TDF_SVGID_6_)" fill="#EF6548" d="M318.567,201.16h-23.803l0.057-18.991c5.722,0.262,14.609,0.668,23.666,0.794
+			L318.567,201.16z"/>
+		<path clip-path="url(#TDF_SVGID_6_)" fill="none" stroke="#242120" stroke-width="0.054" stroke-miterlimit="3.864" d="
+			M318.567,201.16h-23.803l0.057-18.991c5.722,0.262,14.609,0.668,23.666,0.794L318.567,201.16z"/>
+		<rect x="294.745" y="197.202" clip-path="url(#TDF_SVGID_6_)" fill="#FFFFFF" width="23.802" height="3.937"/>
+		
+			<rect x="294.745" y="197.202" clip-path="url(#TDF_SVGID_6_)" fill="none" stroke="#242120" stroke-width="0.021" stroke-miterlimit="3.864" width="23.802" height="3.937"/>
+		<path clip-path="url(#TDF_SVGID_6_)" fill-rule="evenodd" clip-rule="evenodd" fill="#FFFFFF" d="M310.356,183.701
+			c2.171,0,3.932,1.761,3.932,3.933c0,2.171-1.761,3.931-3.932,3.931h-7.624c-2.173,0-3.933-1.759-3.933-3.931
+			c0-2.172,1.76-3.933,3.931-3.933H310.356z"/>
+		<path clip-path="url(#TDF_SVGID_6_)" fill="none" stroke="#242120" stroke-width="0.98" stroke-miterlimit="3.864" d="
+			M310.356,183.701c2.171,0,3.932,1.761,3.932,3.933c0,2.171-1.761,3.931-3.932,3.931h-7.624c-2.173,0-3.933-1.759-3.933-3.931
+			c0-2.172,1.76-3.933,3.931-3.933H310.356z"/>
+		<path clip-path="url(#TDF_SVGID_6_)" fill="#0072B7" d="M300.01,187.622c0-1.518,1.181-2.761,2.671-2.862v5.723
+			C301.191,190.382,300.01,189.139,300.01,187.622"/>
+		<polygon clip-path="url(#TDF_SVGID_6_)" fill-rule="evenodd" clip-rule="evenodd" fill="#0072B7" points="305.648,187.247 
+			303.157,184.754 305.648,184.754 		"/>
+		<polygon clip-path="url(#TDF_SVGID_6_)" fill-rule="evenodd" clip-rule="evenodd" fill="#0072B7" points="305.648,187.996 
+			303.157,190.49 305.648,190.49 		"/>
+		<polygon clip-path="url(#TDF_SVGID_6_)" fill-rule="evenodd" clip-rule="evenodd" fill="#EF6548" points="308.777,187.247 
+			311.27,184.754 308.777,184.754 		"/>
+		<polygon clip-path="url(#TDF_SVGID_6_)" fill-rule="evenodd" clip-rule="evenodd" fill="#EF6548" points="308.777,187.996 
+			311.27,190.49 308.777,190.49 		"/>
+		<rect x="306.179" y="184.754" clip-path="url(#TDF_SVGID_6_)" fill="#EF6548" width="2.069" height="5.735"/>
+		<path clip-path="url(#TDF_SVGID_6_)" fill="#FFFFFF" d="M297.516,193.958c0-0.778,0.117-1.022,0.292-1.022
+			c0.164,0,0.291,0.149,0.291,0.891c0,0.628-0.049,1.048-0.291,1.048C297.562,194.875,297.516,194.455,297.516,193.958
+			 M297.16,193.904c0,0.636,0.06,1.277,0.648,1.277c0.525,0,0.647-0.601,0.647-1.277c0-0.633-0.06-1.276-0.647-1.276
+			C297.279,192.628,297.16,193.228,297.16,193.904"/>
+		<path clip-path="url(#TDF_SVGID_6_)" fill="#FFFFFF" d="M299.76,195.132h-0.307v-0.244h-0.007c-0.081,0.201-0.197,0.272-0.356,0.272
+			c-0.178,0-0.333-0.163-0.333-0.395v-1.428h0.324v1.298c0,0.14,0.065,0.219,0.156,0.219c0.129,0,0.201-0.123,0.201-0.252v-1.265
+			h0.323V195.132z"/>
+		<path clip-path="url(#TDF_SVGID_6_)" fill="#FFFFFF" d="M300.672,193.627h-0.176v1.057c0,0.089,0.052,0.14,0.134,0.14h0.042v0.291
+			c-0.054,0.01-0.105,0.017-0.154,0.017c-0.208,0-0.345-0.098-0.345-0.325v-1.18h-0.171v-0.291h0.171v-0.445h0.323v0.445h0.176
+			V193.627z"/>
+		<path clip-path="url(#TDF_SVGID_6_)" fill="#FFFFFF" d="M301.302,195.132h-0.322v-1.504h-0.173v-0.291h0.173v-0.267
+			c0-0.263,0.053-0.423,0.342-0.423c0.058,0,0.112,0.003,0.153,0.011v0.306c-0.013-0.006-0.029-0.01-0.06-0.01
+			c-0.062,0-0.113,0.041-0.113,0.141v0.242h0.172v0.291h-0.172V195.132z"/>
+		<path clip-path="url(#TDF_SVGID_6_)" fill="#FFFFFF" d="M301.717,193.337h0.325v1.795h-0.325V193.337z M301.878,192.719
+			c0.118,0,0.21,0.094,0.21,0.205c0,0.119-0.092,0.211-0.21,0.211c-0.112,0-0.208-0.092-0.208-0.211
+			C301.67,192.813,301.766,192.719,301.878,192.719"/>
+		<path clip-path="url(#TDF_SVGID_6_)" fill="#FFFFFF" d="M302.955,193.627h-0.173v1.057c0,0.089,0.05,0.14,0.134,0.14h0.039v0.291
+			c-0.052,0.01-0.104,0.017-0.152,0.017c-0.207,0-0.343-0.098-0.343-0.325v-1.18h-0.174v-0.291h0.174v-0.445h0.323v0.445h0.173
+			V193.627z"/>
+		<path clip-path="url(#TDF_SVGID_6_)" fill="#FFFFFF" d="M303.759,193.627h-0.174v1.057c0,0.089,0.051,0.14,0.135,0.14h0.04v0.291
+			c-0.055,0.01-0.108,0.017-0.154,0.017c-0.207,0-0.344-0.098-0.344-0.325v-1.18h-0.172v-0.291h0.172v-0.445h0.323v0.445h0.174
+			V193.627z"/>
+		<path clip-path="url(#TDF_SVGID_6_)" fill="#FFFFFF" d="M304.003,193.337h0.323v1.795h-0.323V193.337z M304.161,192.719
+			c0.117,0,0.211,0.094,0.211,0.205c0,0.119-0.094,0.211-0.211,0.211c-0.112,0-0.205-0.092-0.205-0.211
+			C303.956,192.813,304.049,192.719,304.161,192.719"/>
+		<path clip-path="url(#TDF_SVGID_6_)" fill="#FFFFFF" d="M304.68,193.337h0.306v0.244h0.007c0.079-0.199,0.196-0.273,0.355-0.273
+			c0.177,0,0.333,0.164,0.333,0.396v1.428h-0.323v-1.297c0-0.141-0.066-0.22-0.154-0.22c-0.132,0-0.2,0.123-0.2,0.252v1.265h-0.323
+			V193.337z"/>
+		<path clip-path="url(#TDF_SVGID_6_)" fill="#FFFFFF" d="M306.734,194.235c0,0.55-0.117,0.637-0.209,0.637
+			c-0.091,0-0.207-0.087-0.207-0.637c0-0.551,0.116-0.638,0.207-0.638C306.617,193.597,306.734,193.684,306.734,194.235
+			 M306.753,193.337v0.294h-0.007c-0.078-0.207-0.171-0.323-0.362-0.323c-0.213,0-0.405,0.184-0.405,0.922
+			c0,0.576,0.137,0.93,0.419,0.93c0.175,0,0.271-0.115,0.332-0.323h0.005v0.154c0,0.354-0.05,0.524-0.238,0.524
+			c-0.108,0-0.193-0.066-0.241-0.149l-0.26,0.18c0.11,0.169,0.264,0.243,0.501,0.243c0.363,0,0.546-0.24,0.546-0.547v-1.904H306.753
+			z"/>
+		<path clip-path="url(#TDF_SVGID_6_)" fill="#FFFFFF" d="M308.504,194.235c0-0.551,0.113-0.638,0.207-0.638
+			c0.092,0,0.209,0.087,0.209,0.638c0,0.549-0.117,0.636-0.209,0.636C308.617,194.872,308.504,194.785,308.504,194.235
+			 M308.195,195.768h0.309v-0.935l0.004,0.003c0.062,0.208,0.157,0.323,0.335,0.323c0.279,0,0.415-0.355,0.415-0.93
+			c0-0.738-0.192-0.921-0.405-0.921c-0.191,0-0.283,0.116-0.36,0.323h-0.008v-0.294h-0.289V195.768z"/>
+		<path clip-path="url(#TDF_SVGID_6_)" fill="#FFFFFF" d="M309.792,194.615c0-0.175,0.033-0.347,0.339-0.347h0.084v0.237
+			c0,0.266-0.151,0.383-0.249,0.383C309.821,194.888,309.792,194.775,309.792,194.615 M310.521,195.132v-1.354
+			c0-0.333-0.184-0.469-0.494-0.469c-0.251,0-0.458,0.096-0.51,0.419l0.287,0.08c0.017-0.156,0.078-0.227,0.207-0.227
+			c0.15,0,0.203,0.09,0.203,0.211v0.229h-0.119c-0.444,0-0.628,0.16-0.628,0.633c0,0.438,0.241,0.506,0.366,0.506
+			c0.166,0,0.281-0.082,0.375-0.292h0.006v0.264H310.521z"/>
+		<path clip-path="url(#TDF_SVGID_6_)" fill="#FFFFFF" d="M311.039,194.637c0.001,0.128,0.082,0.251,0.218,0.251
+			c0.123,0,0.184-0.094,0.184-0.18c0-0.087-0.046-0.18-0.199-0.3l-0.169-0.133c-0.221-0.175-0.296-0.303-0.296-0.494
+			c0-0.292,0.208-0.472,0.478-0.472c0.277,0,0.413,0.152,0.492,0.35l-0.278,0.167c-0.006-0.125-0.077-0.244-0.217-0.244
+			c-0.103,0-0.165,0.067-0.165,0.164c0,0.076,0.031,0.139,0.199,0.265l0.203,0.158c0.208,0.163,0.275,0.326,0.275,0.503
+			c0,0.263-0.182,0.489-0.513,0.489c-0.235,0-0.393-0.1-0.493-0.346L311.039,194.637z"/>
+		<path clip-path="url(#TDF_SVGID_6_)" fill="#FFFFFF" d="M312.214,194.637c0,0.128,0.081,0.251,0.217,0.251
+			c0.121,0,0.184-0.094,0.184-0.18c0-0.087-0.047-0.18-0.2-0.3l-0.17-0.133c-0.217-0.175-0.291-0.303-0.291-0.494
+			c0-0.292,0.207-0.472,0.476-0.472c0.277,0,0.41,0.152,0.489,0.35l-0.276,0.167c-0.007-0.125-0.077-0.244-0.218-0.244
+			c-0.103,0-0.167,0.067-0.167,0.164c0,0.076,0.034,0.139,0.2,0.265l0.206,0.158c0.208,0.163,0.274,0.326,0.274,0.503
+			c0,0.263-0.182,0.489-0.514,0.489c-0.235,0-0.391-0.1-0.492-0.346L312.214,194.637z"/>
+		<path clip-path="url(#TDF_SVGID_6_)" fill="#FFFFFF" d="M313.197,193.337h0.326v1.795h-0.326V193.337z M313.359,192.719
+			c0.116,0,0.209,0.094,0.209,0.205c0,0.119-0.093,0.211-0.209,0.211c-0.114,0-0.208-0.092-0.208-0.211
+			C313.151,192.813,313.245,192.719,313.359,192.719"/>
+		<path clip-path="url(#TDF_SVGID_6_)" fill="#FFFFFF" d="M314.378,194.888c-0.15,0-0.221-0.251-0.221-0.739
+			c0-0.327,0.051-0.567,0.221-0.567c0.171,0,0.22,0.241,0.22,0.567C314.598,194.637,314.526,194.888,314.378,194.888
+			 M314.378,195.16c0.423,0,0.56-0.413,0.56-0.925c0-0.514-0.137-0.927-0.56-0.927c-0.425,0-0.561,0.413-0.561,0.927
+			C313.817,194.748,313.953,195.16,314.378,195.16"/>
+		<path clip-path="url(#TDF_SVGID_6_)" fill="#FFFFFF" d="M315.234,193.337h0.308v0.244h0.007c0.079-0.199,0.195-0.273,0.355-0.273
+			c0.178,0,0.333,0.164,0.333,0.396v1.428h-0.321v-1.297c0-0.141-0.069-0.22-0.157-0.22c-0.131,0-0.2,0.123-0.2,0.252v1.265h-0.324
+			V193.337z"/>
+	</g>
+	<g clip-path="url(#TDF_SVGID_2_)">
+		<text transform="matrix(1 0 0 1.1235 295.9043 200.1792)" fill="#0072B7" font-family="'Arial-Black'" font-size="1.7069">CLIFF KEEN A</text>
+	</g>
+	<g clip-path="url(#TDF_SVGID_2_)">
+		<text transform="matrix(1 0 0 1.1235 308.9697 200.1792)" fill="#0072B7" font-family="'Arial-Black'" font-size="1.7069">THLETIC</text>
+	</g>
+</g>
+
+</svg>

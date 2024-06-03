@@ -1,0 +1,64 @@
+﻿@model IEnumerable<UBuilder.Models.DealerViewModel>
+
+@*<div class="row">
+    <div class="col-lg-12">
+        <div class="yellow-background">
+            <div class="pull-right" style="padding-right: 40px;">
+                @if (Model.PageCount > 1)
+                {
+                    <span class="text-right" style="float:left; padding-top: 10px; margin:20px;">
+                        <div class="pagination-container">
+                            Page @(Model.PageCount < Model.PageNumber ? 0 : Model.PageNumber) of @Model.PageCount &nbsp;
+                        </div>
+                    </span>
+
+                }
+                @if (Model.PageCount > 1)
+                {
+                    <span style="float:left"> @Html.PagedListPager(Model, page => Url.Action("", new { page }))</span>
+                }
+            </div>
+        </div>
+    </div>
+</div>*@
+<div class="row">&nbsp;</div>
+<div class="row">
+    <div id="dealerListByPage" class="col-md-10 col-xs-12">
+        @if (!Model.Any())
+        {
+            <h3>No dealers found.</h3>
+        }
+        else
+        {
+            <table id="dealers" class="table-bordered table">
+                <thead>
+                    <tr>
+                        <th><strong>Dealer ID</strong></th>
+                        <th><strong>Dealer Name</strong></th>
+                        <th><strong>Dealer Email</strong></th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach (var item in Model)
+                    {
+                        <tr>
+                            <td>@item.DealerID</td>
+                            <td>@item.DealerName</td>
+                            <td>@item.DealerEmail</td>
+                        </tr>
+                    }
+                </tbody>
+            </table>
+        }
+
+    </div>
+</div>
+
+<script type="text/javascript">
+    $(document).ready(function () {
+        $('#dealers').DataTable({
+            "lengthMenu": [[25, 50, -1], [25, 50, "All"]], // What options are in the paging dropdown
+            "order": [[1, "asc"]], // default column sorting,
+        });
+    });
+</script>

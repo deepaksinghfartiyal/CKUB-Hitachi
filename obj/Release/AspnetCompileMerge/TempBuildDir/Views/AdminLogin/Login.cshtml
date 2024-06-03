@@ -1,0 +1,45 @@
+﻿@{
+    ViewBag.Title = "Login";
+}
+@section headcss {
+    <link href="~/Content/bootstrap.min.css" rel="stylesheet">
+<link href="~/css/mystyle.css" rel="stylesheet" />
+}
+@section headjs {
+    @Scripts.Render("~/bundles/bootstrap")
+}
+
+<h4>Admin Login</h4>
+
+@using (Html.BeginForm())
+{
+    <div class="form-horizontal">
+        <hr />
+        <div class="form-group">
+            <label class="control-label col-md-2">Username</label>
+            <div class="col-md-4">
+                <input name="user" id="user" type="text" class="form-control" />
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label class="control-label col-md-2">Password</label>
+            <div class="col-md-4">
+                <input name="pass" id="pass" type="password" class="form-control" />
+            </div>
+        </div>
+
+        <div class="form-group">
+            <div class="col-md-offset-2 col-md-10">
+                <p>@TempData["LoginError"]</p>
+            </div>
+        </div>
+
+        <div class="form-group">
+            <div class="col-md-offset-2 col-md-10">
+                <input type="submit" value="Login" class="btn btn-success" />
+            </div>
+        </div>
+    </div>
+}
+

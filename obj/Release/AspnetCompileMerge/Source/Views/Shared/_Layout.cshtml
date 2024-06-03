@@ -1,0 +1,156 @@
+﻿@{ 
+    string storeURL = System.Configuration.ConfigurationManager.AppSettings["CKStoreURL"];
+    string servicesURL = System.Configuration.ConfigurationManager.AppSettings["CKServicesURL"];
+    string deepLinkUrl = System.Configuration.ConfigurationManager.AppSettings["DEEPLINKURL"];
+}
+<html>
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+   
+<title>@ViewBag.Title</title>
+
+    <link href="/css/ck.css" rel="stylesheet" type="text/css" />
+
+    @RenderSection("headcss", false)
+
+    <script type="text/javascript">
+        var ckstoreURL = '@storeURL';
+        var ckservicesURL = '@servicesURL';
+        var deepURL = '@deepLinkUrl';
+        
+    </script>
+
+    <script type="text/javascript" src="/js/jquery-1.11.3.min.js"></script>
+    <script type="text/javascript" src="/js/ck.content.js"></script>
+    <script type="text/javascript" src="/js/ck.api.js"></script>
+    <script type="text/javascript" src="/js/ck.locker.js"></script>
+    @*<script type="text/javascript" src="/js/ck.request.js"></script>*@
+    <script type="text/javascript" src="/js/ck.js"></script>
+
+    <!-- Global site tag (gtag.js) - Google Analytics -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=UA-133681645-1"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag() { dataLayer.push(arguments); }
+        gtag('js', new Date());
+        gtag('config', 'UA-133681645-1');
+    </script>
+    @RenderSection("headjs", false)
+
+</head>
+<body>
+
+<div id="page-wrapper">
+	<div class="container">
+		<header>
+            <div class="top-head-wrapper">
+                <div class="logo">               
+                    <a onclick="goToURL();"><img src="~/Content/images/logo.png" /></a>                   
+                </div>
+                <div class="titles">
+                    <span class="ub">UNIFORM BUILDER</span>
+                    @if (Session[UBuilder.Helper.Constants.AdminSessionName] != null && Session[UBuilder.Helper.Constants.AdminSessionName].ToString() == "true")
+                    {
+                        <div class="user-info-header">
+                            <div class="name">
+                                Hello, ADMIN ::
+                                <a href="/adminlogin/kill" id="logout" class="logout">Log Out</a>
+                            </div>
+                        </div>
+                    }
+                    else
+                    {
+                        <div class="user-info-header">
+                            <div class="name">Hello, <span></span>! :: <a href="@storeURL/account/logoff">Log Out</a></div>
+                            <a href="@storeURL/account/login?returnurl=@deepLinkUrl" class="button login">Log In</a>
+                        </div>
+                    }
+                </div>
+               
+             
+
+                @*<div class="prev-next-wrapper">
+                    <a href="#" class="disabled button prev" data-nav="prev">&lt; PREV</a><a href="#" class="button next" data-nav="next">NEXT &gt;</a>
+                </div>*@
+            </div>
+			<div class="navigation">
+				<div class="row">
+					<ul>						
+						<li>
+							<a href="#">UNIFORMS</a>
+							<ul>
+                                <li><a href="/Templates/Index/CustomUniFormKit">Custom Uniform Kits</a></li>
+								<li><a href="/Templates/Index/CustomSublimatedSinglets">Custom Sublimated Singlets</a></li>
+								<li><a href="/Templates/Index/CustomScreenPrintSinglets">Custom Screen Printed Singlets</a></li>
+								<li><a href="/Templates/Index/StockSinglets">Stock Singlets</a></li>
+                                <li><a href="/Templates/Index/CustomCompetitionGear">Custom Competition Gear</a></li>
+                                <li><a href="/Templates/Index/StockCompetitionGear">Stock Competition Gear</a></li>
+							</ul>
+						</li>
+                        <li>
+                            <a href="/Templates/Index/Headgear">HEADGEAR</a>
+                        </li>
+                        <li>
+                            <a href="/Templates/Index/WomenGear">WOMEN'S GEAR</a>
+                        </li>  
+						<li>
+							<a href="#">WARM-UP’S</a>
+							<ul>
+                                <li><a href="/Templates/Index/CustomWarm-ups">Custom Warm-ups</a></li>
+								<li><a href="/Templates/Index/StockWarm-ups">Stock Warm-ups</a></li>								
+							</ul>
+						</li>
+						<li>
+							<a href="#">PERFORMANCE APPAREL</a>
+							<ul>
+								<li><a href="/Templates/Index/CustomTraining">Custom Sublimated Training Gear</a></li>
+								<li><a href="/Templates/Index/StockTraining">Stock Training Gear</a></li>
+							</ul>
+						</li>
+                        <li>
+                            <a href="/Templates/Index/Accessories">ACCESSORIES</a>
+                        </li>
+						
+						<li> ::&nbsp;&nbsp;&nbsp;&nbsp;<a href="/locker">MY LOCKER</a></li>
+                        @if (Session[UBuilder.Helper.Constants.AdminSessionName] != null && Session[UBuilder.Helper.Constants.AdminSessionName].ToString() == "true")
+                        {
+                            <li>::</li>
+                            <li>
+                                <a href="#">ADMIN</a>
+                                <ul>
+                                    <li>@Html.ActionLink("Edit Designs", "Index", "DesignViewModels")</li>
+                                    <li>@Html.ActionLink("Edit Dealers", "Index", "DealerViewModels")</li>
+                                    <li>@Html.ActionLink("Manage Requests", "Index", "Request")</li>
+                                </ul>
+                            </li>
+                        }
+					</ul>
+				</div>
+			</div>
+			
+		</header>
+		
+		<div class="main">
+			  @RenderBody()
+		</div>
+	</div>
+</div>
+
+
+</body>
+</html>
+<script>
+    $("#logout").click(function () {
+        localStorage.clear();
+    });
+    function goToURL() {       
+        var WebSiteUrl=window.location.origin + window.location.pathname.split("/")[0];
+        if(WebSiteUrl=="http://ub.ckatesting.com")
+        {
+            location.href = 'http://ckstore.ckatesting.com/';
+        }
+        else {
+            location.href = 'http://www.cliffkeen.com/';
+        }
+    }      
+</script>

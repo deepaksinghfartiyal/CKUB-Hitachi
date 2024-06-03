@@ -1,0 +1,14 @@
+﻿@model UBuilder.Models.LoginModal
+
+
+<div class="form-group">
+    @Html.LabelFor(m => m.LoginEmail, "Enter your email")
+    @Html.TextBoxFor(m => m.LoginEmail, new { @class = "form-control" })
+    @Html.ValidationMessageFor(m => m.LoginEmail, "", new { @class = "text-danger" })
+</div>
+<div class="form-group">
+    @Html.LabelFor(m => m.LoginPassword, "Enter your password")
+    @Html.PasswordFor(m => m.LoginPassword, new {@class = "form-control" })
+    @Html.ValidationMessageFor(m => m.LoginPassword, "", new { @class = "text-danger" })
+</div>
+

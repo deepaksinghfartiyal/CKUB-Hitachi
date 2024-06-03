@@ -1,0 +1,15 @@
+﻿
+   <script type="text/javascript">
+   		jQuery(document).ready(function($){
+   			Api.call(Api.endpoints.getUser, JSON.stringify({}), function(data) {
+				//Builder.loadProduct(data);
+				console.log("get user", data);
+                
+				if(data.ID > 0){
+					location.href="/locker";
+				}else{
+					location.href="/Templates/Index/CustomSublimatedSinglets";
+				}
+			});
+   		});
+   </script>

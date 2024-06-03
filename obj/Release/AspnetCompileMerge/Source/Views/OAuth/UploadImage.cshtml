@@ -1,0 +1,43 @@
+﻿@model UBuilder.Models.TweetViewModel
+@{
+Layout = null;
+
+}
+<style>
+    .success:before {
+    content: "";
+    width: 228px;
+    height: 5px;
+    position: absolute;
+    background: #FFC107;
+    bottom: -28px;
+    left: 0;
+    right: 0;
+    margin: 0 auto;
+}
+p.success {
+    font-size: 22px;
+    line-height: 34px;
+    font-weight: 600;
+    margin-bottom: 50px;
+    position: relative;
+}
+.success-page {
+    text-align: center;
+    font-size: 17px;
+    max-width: 600px;
+    margin: 0 auto;
+    padding: calc(1 / 1 * 15%) 0;
+    position: absolute;
+    top: 50%;
+    transform: translatey(-50%);
+    left: 0;
+    right: 0;
+}
+</style>
+<div class="success-page">   
+    <p  class="success"> You post has been successfully posted on twitter. Please close the browser window</p>
+</div>
+<script type="text/javascript">  
+    setTimeout(window.close, 1500);
+</script>

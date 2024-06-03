@@ -1,0 +1,124 @@
+﻿@{
+    ViewBag.Title = "Cliff Keen Athletic - Uniform Builder";
+    ViewBag.TemplateCat = ViewContext.RouteData.Values["id"];
+
+    //19/8/2019
+    string storeURL = System.Configuration.ConfigurationManager.AppSettings["CKStoreURL"];
+    string thisUrl = Request.Url.AbsoluteUri;
+}
+
+<div id="templateList">
+    @if (ViewBag.TemplateCat == "CustomUniFormKit")
+    {
+        Html.RenderAction("GetAllKits", "Templates", new { category = ViewBag.TemplateCat });
+    }
+    else
+    {
+        Html.RenderAction("GetAllTemplates", "Templates", new { category = ViewBag.TemplateCat });
+    }
+
+    @*19/8/2019*@
+    @if (Session[UBuilder.Helper.Constants.AdminSessionName] != null && Session[UBuilder.Helper.Constants.AdminSessionName].ToString() == "true")
+    {
+        <form id="frmLogout" action="/adminlogin/kill" method="post">
+            <input type="hidden" value="true" id="hdnLoggedOff" name="inActivityLogout" />
+        </form>
+        if (HttpContext.Current.Request.Cookies.AllKeys.Contains("Clifkeen_UserNameInfo"))
+        {
+            if (HttpContext.Current.Request.Cookies["Clifkeen_UserNameInfo"].Value != null)
+            {
+                var Data = HttpContext.Current.Request.Cookies["Clifkeen_UserNameInfo"].Value;
+            }
+        }
+    }
+    else
+    {
+        if (UBuilder.Helper.Constants.CookieName != null)
+        {
+
+            if (HttpContext.Current.Request.Cookies.AllKeys.Contains("Clifkeen_UserNameInfo"))
+            {
+
+                if (HttpContext.Current.Request.Cookies["Clifkeen_UserNameInfo"].Value != null)
+                {
+                    var Data = HttpContext.Current.Request.Cookies["Clifkeen_UserNameInfo"].Value;
+                    <form id="frmLogout" action="@Url.Action("Logout", "Builder")" method="post">
+                        <input type="hidden" value="@storeURL/account/login?returnurl=@thisUrl" id="hdnLoggedOff" name="inActivityLogout" />
+                    </form>
+                }
+            }
+
+        }
+    }
+</div>
+<script>
+
+    //19/8/2019
+    var _idleSecondsCounter = 0;
+    var ShowNotifyPopup = 1800;   //30 minutes  and 1 min=60
+    var _notificationSecondsCounter = 0;
+    var Box;
+
+    document.onclick = function () {
+        _idleSecondsCounter = 0;
+    };
+    //for scrolling
+    document.onwheel = function () {       
+        _idleSecondsCounter = 0;
+    };
+    document.onmousemove = function () {
+        _idleSecondsCounter = 0;
+    };
+    document.onkeypress = function () {
+        _idleSecondsCounter = 0;
+    };
+    var myInterval = window.setInterval(CheckIdleTime, 1000);
+
+    //19/8/2019
+    function CheckIdleTime() {
+        _idleSecondsCounter++;
+        if (_idleSecondsCounter == ShowNotifyPopup) {
+            //CheckTimeOut.NotifyUser();
+            CheckTimeOut.logout();
+        }
+        //if (_idleSecondsCounter >= IDLE_TIMEOUT)
+        //{
+        //    CheckTimeOut.logout();
+        //    window.clearInterval(myInterval);
+        //}
+    }
+    var CheckTimeOut =
+    {
+        logout: function () {
+            $("#frmLogout").submit();
+        },
+        // To notify user about session ending
+        NotifyUser: function () {
+            Box = bootbox.confirm({
+                message: "Your session has been inactive and will end soon!",
+                buttons: {
+                    confirm:
+                    {
+                        label: 'Keep Active'
+                    },
+                    cancel:
+                    {
+                        label: 'Log Off'
+                    }
+                },
+                callback: function (result) {
+                    // result  [ true = Keep Active] [false = Log Off]
+                    if (result) {
+                        _idleSecondsCounter = 0;
+                        window.clearInterval(NotifyInterval);
+                    }
+                    else {
+                        CheckTimeOut.logout();
+                        window.clearInterval(myInterval);
+                    }
+                }
+            });
+            var NotifyInterval = window.setInterval(CheckNotificationTime, 1000);
+        }
+    };
+</script>

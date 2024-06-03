@@ -1,0 +1,228 @@
+﻿@model UBuilder.Models.HomeViewModal
+@{
+    string thisUrl = Request.Url.AbsoluteUri;
+    ViewBag.Title = "UserLogin";
+    Layout = null;
+}
+<!DOCTYPE html>
+<html lang="en">
+
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <title>Cliff Keen Uniform Builder</title>
+    <!-- Bootstrap core CSS -->
+    <link href="~/RegistrtionLogin/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet" />
+    <!-- Custom styles for this template -->
+    <link href="~/RegistrtionLogin/css/style.css" rel="stylesheet" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+</head>
+<body>
+    <header class="d-flex justify-content-center align-items-center" id="seaction-head">
+        <img src="https://www.cliffkeen.com/Logo.ashx?storeid=1&x=0.5221308178011168" alt="">
+    </header> 
+    <style>  
+        a {
+            cursor: pointer;
+        }
+    </style>
+    <script src="~/RegistrtionLogin/vendor/jquery/jquery.min.js"></script>
+
+    <script src="~/RegistrtionLogin/JS/jquery.validate.min.js"></script>
+    <script src="~/RegistrtionLogin/JS/jquery.validate.unobtrusive.min.js"></script>
+
+    <script src="~/RegistrtionLogin/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+    <script src="~/RegistrtionLogin/vendor/jquery-easing/jquery.easing.min.js"></script>
+    <script src="~/RegistrtionLogin/js/scrolling-nav.js"></script>
+
+    <section id="main-area">
+        <div class="container">
+            <div class="row justify-content-center">
+                <div class="col-sm-5">
+                    <div class="inner-block">
+                        <div class="form-head">
+                            <div class="head-text">
+                                <h3>Login</h3>
+                                <p>Enter username and password to log on:</p>
+                            </div>
+                            <div class="head-icon">
+                                <i class="fa fa-key" aria-hidden="true"></i>
+                            </div>
+                        </div>
+                        @using (Html.BeginForm("SignIn", "Builder", FormMethod.Post))
+                        {
+                            <div class="form-body">
+                                <div>
+                                    @if (ViewData["LoginStatus"] != null)
+                                    {
+                                        <span class="ErrormessLogin">@ViewData["LoginStatus"]</span>
+                                    }
+                                    @Html.Partial("_LoginView", new UBuilder.Models.LoginModal())
+                                </div>
+                                <div class="action-wrapper d-flex align-items-center justify-content-between">
+                                    <input type="submit" value="LOGIN" />
+                                    <a onclick="OpenForgetPassword();">Forgot your Password?</a>
+                                </div>
+                            </div>
+                        }
+                    </div>
+                </div>
+                <div class="col-sm-5">
+                    <div class="inner-block">
+                        <div class="form-head">
+                            <div class="head-text">
+                                <h3>Create Your Account</h3>
+                            </div>
+                            <div class="head-icon">
+                                <i class="fa fa-pencil" aria-hidden="true"></i>
+                            </div>
+                        </div>
+                        @using (Html.BeginForm("SignUp", "Builder", new { id = "RegistrationForm", CurretUrl = @thisUrl }, FormMethod.Post))
+                        {
+                            <div class="form-body">
+                                <div>
+                                    @if (ViewData["RegistrtionStatus"] != null)
+                                    {
+                                        <span class="ErrormessLogin">@Html.Raw(ViewData["RegistrtionStatus"])</span>
+                                    }
+                                </div>
+                                @Html.Partial("_RegistrationView", new UBuilder.Models.RegistrationModal())
+                                <div class="action-wrapper d-flex align-items-center justify-content-between">
+                                    <input type="submit" value="REGISTER" />
+                                </div>
+                            </div>
+                        }
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    @using (Html.BeginForm())
+    {
+        <div class="modal fade" data-backdrop="static" data-keyboard="false" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+            <div class="modal-dialog" role="document">
+                <img id="LoaderForPopupModal" style="display:none;" src="data:image/gif;base64,R0lGODlhEAAQAPIAAP///wAAAMLCwkJCQgAAAGJiYoKCgpKSkiH/C05FVFNDQVBFMi4wAwEAAAAh/hpDcmVhdGVkIHdpdGggYWpheGxvYWQuaW5mbwAh+QQJCgAAACwAAAAAEAAQAAADMwi63P4wyklrE2MIOggZnAdOmGYJRbExwroUmcG2LmDEwnHQLVsYOd2mBzkYDAdKa+dIAAAh+QQJCgAAACwAAAAAEAAQAAADNAi63P5OjCEgG4QMu7DmikRxQlFUYDEZIGBMRVsaqHwctXXf7WEYB4Ag1xjihkMZsiUkKhIAIfkECQoAAAAsAAAAABAAEAAAAzYIujIjK8pByJDMlFYvBoVjHA70GU7xSUJhmKtwHPAKzLO9HMaoKwJZ7Rf8AYPDDzKpZBqfvwQAIfkECQoAAAAsAAAAABAAEAAAAzMIumIlK8oyhpHsnFZfhYumCYUhDAQxRIdhHBGqRoKw0R8DYlJd8z0fMDgsGo/IpHI5TAAAIfkECQoAAAAsAAAAABAAEAAAAzIIunInK0rnZBTwGPNMgQwmdsNgXGJUlIWEuR5oWUIpz8pAEAMe6TwfwyYsGo/IpFKSAAAh+QQJCgAAACwAAAAAEAAQAAADMwi6IMKQORfjdOe82p4wGccc4CEuQradylesojEMBgsUc2G7sDX3lQGBMLAJibufbSlKAAAh+QQJCgAAACwAAAAAEAAQAAADMgi63P7wCRHZnFVdmgHu2nFwlWCI3WGc3TSWhUFGxTAUkGCbtgENBMJAEJsxgMLWzpEAACH5BAkKAAAALAAAAAAQABAAAAMyCLrc/jDKSatlQtScKdceCAjDII7HcQ4EMTCpyrCuUBjCYRgHVtqlAiB1YhiCnlsRkAAAOwAAAAAAAAAAAA==" />
+                <div class="modal-content">
+                    <div class="inner-block">
+                        <div class="form-head">
+                            <div class="head-text">
+                                <h3>Forgot Password</h3>
+                                <p>You can reset your password here:</p>
+                            </div>
+                            <div class="head-icon">
+                                <button type="button" class="close" onclick="CloseModal();">
+                                    <span aria-hidden="true">×</span>
+                                </button>
+                                <i class="fa fa-lock" aria-hidden="true"></i>
+                            </div>
+                        </div>
+                        <div class="form-body">
+                            <div>
+                                <span id="LoginPopUpID" class="ErrormessLoginPopUp"></span>
+                            </div>
+
+                            <div class="form-group">
+                                <label>Enter your email</label>
+                                @Html.TextBoxFor(m => m.registrtionModal.Email, new { id = "CheckEmailid", @class = "form-control" })
+                                <span id="EmailForPopUp" class="text-danger" style="display:none"></span>
+                            </div>
+                            <div class="action-wrapper d-flex align-items-center justify-content-between">
+                                <button class="btn" onclick="CloseModal();">BACK TO PREVIOUS</button>
+                                <input type="submit" value="SEND" id="btnCheck" />
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    }
+
+
+    <script type="text/javascript">
+        $('#CheckEmailid').on('change', function () {
+        var Email = $('#CheckEmailid').val();
+        if (Email.length > 0) {
+            var reg = /^[_a-z0-9-]+(\.[_a-z0-9-]+)*@@[a-z0-9-]+(\.[a-z0-9-]+)*(\.[a-z]{2,4})$/;
+            if (reg.test(Email) != true) {
+                $('#EmailForPopUp').css('display', 'block');
+                $('#EmailForPopUp').text('Please provide valid email.');
+            }
+            else {
+                $('#EmailForPopUp').css('display', 'none');
+            }
+        }
+        else {
+            $('#EmailForPopUp').css('display', 'block');
+            $('#EmailForPopUp').text('Email is mandatory.');
+        }
+        });     
+        function OpenForgetPassword() {
+            $('#CheckEmailid').val('');
+            $('.ErrormessLoginPopUp').text('');
+            $('.SuccessmessLoginPopUp').text('');
+            $('.text-danger.field-validation-error span').html('');
+            $('#EmailForPopUp').css('display', 'none');
+            $("#exampleModal").modal('show');
+            $("#CheckEmailid").focus();
+        }
+        function CloseModal() {
+            $('.ErrormessLoginPopUp').text('');
+            $('.SuccessmessLoginPopUp').text('');
+            $('.text-danger.field-validation-error span').html('');
+            $('#CheckEmailid').val('');
+            $("#exampleModal").modal('hide');
+        }
+
+        $(document).ready(function () {
+            $('#btnCheck').click(function (e) {
+                e.preventDefault();
+                $('.ErrormessLoginPopUp').text('');
+                $('.SuccessmessLoginPopUp').text('');
+                var Email = $('#CheckEmailid').val();
+               if (Email.length === 0) {
+                   $('#EmailForPopUp').css('display', 'block');
+                   $('#EmailForPopUp').text('Email is mandatory.');
+                   return false;
+                }
+                var reg = /^[_a-z0-9-]+(\.[_a-z0-9-]+)*@@[a-z0-9-]+(\.[a-z0-9-]+)*(\.[a-z]{2,4})$/;
+                if (reg.test(Email) != true) {
+                    return false;
+                }
+                $('#LoaderForPopupModal').css('display', 'block');
+                var origin = window.location.origin;
+                origin = origin + "/Builder/IsEmailExist";
+                $.ajax({
+                    url: origin,
+                    dataType: 'json',
+                    type: 'POST',
+                    cache: false,
+                    data: { email: Email },
+                    success: function (data) {
+                        if (data.Status == false) {
+                            $('#LoginPopUpID').removeClass('SuccessmessLoginPopUp').addClass('ErrormessLoginPopUp');
+                            $('#LoaderForPopupModal').css('display', 'none')
+                            $('.ErrormessLoginPopUp').text(data.Result);
+                        }
+                        else {
+
+                            $.post("/Builder/SendEmail", { EmailId: Email, UserName: data.UserName, Password: data.Password, HostName: window.location.hostname }, function (data) {
+                                if (data.Status) {
+                                    $('#LoaderForPopupModal').css('display', 'none')
+                                    $('#LoginPopUpID').removeClass('ErrormessLoginPopUp').addClass('SuccessmessLoginPopUp').text(data.Result);
+                                }
+                            });
+                        }
+                    },
+                    error: function () {
+                    }
+                });
+            });
+        });
+    </script>
+</body>
+</html>
+
+

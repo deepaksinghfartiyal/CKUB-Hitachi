@@ -1,0 +1,302 @@
+﻿@{
+    Layout = null;
+    string storeURL = System.Configuration.ConfigurationManager.AppSettings["CKStoreURL"];
+    string servicesURL = System.Configuration.ConfigurationManager.AppSettings["CKServicesURL"];
+    string deepLinkUrl = System.Configuration.ConfigurationManager.AppSettings["DEEPLINKURL"];
+}
+
+<!DOCTYPE html>
+<html>
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Cliff Keen Uniform Builder</title>
+
+    <link href="/css/ck.css" rel="stylesheet" type="text/css" />
+    <link href="~/Content/bootstrap.min.css" rel="stylesheet">
+    <link href="~/css/mystyle.css" rel="stylesheet" />
+    @*<link href="~/css/request.css" rel="stylesheet" />*@
+    <link href="/css/easy-autocomplete.css" rel="stylesheet" type="text/css" />
+    <link href="/css/easy-autocomplete.themes.css" rel="stylesheet" type="text/css" />
+
+    <link rel="stylesheet" href="//code.jquery.com/ui/1.11.2/themes/smoothness/jquery-ui.css">
+  
+    <script type="text/javascript">
+        var ckstoreURL = '@storeURL';
+        var ckservicesURL = '@servicesURL';
+        var deepURL = '@deepLinkUrl';
+    </script>
+
+    <script type="text/javascript" src="/js/jquery-1.11.3.min.js"></script>
+
+    @*<script src="//code.jquery.com/jquery-1.10.2.js"></script>*@
+    <script src="//code.jquery.com/ui/1.11.2/jquery-ui.js"></script>
+
+    <script type="text/javascript" src="/js/ck.content.js"></script>
+    <script type="text/javascript" src="/js/ck.api.js"></script>
+    <script type="text/javascript" src="/js/ck.request.js"></script>
+    <script type="text/javascript" src="/js/ck.js"></script>
+    <script src="~/js/jquery.easy-autocomplete.min.js"></script>
+
+    <!-- Global site tag (gtag.js) - Google Analytics -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=UA-133681645-1"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag() { dataLayer.push(arguments); }
+        gtag('js', new Date());
+        gtag('config', 'UA-133681645-1');
+    </script>
+
+   <style>
+       #pagination-here a {
+    color: #e6a413;
+    border-color: #e6a413;
+}
+p#pagination-here {
+    text-align: center;
+}
+#pagination-here .active a {
+    background: #e6a413;
+    color: #fff;
+    border-color: #e6a413;
+}
+.navigation a {
+    font-size: 15px !important;
+
+}
+.row{
+    margin:0px !important;
+}
+   </style>
+  
+
+</head>
+<body class="locker-page">
+
+    <div id="page-wrapper">
+        <div class="container">
+            <header>
+                <div class="titles">
+                    <span class="ub">UNIFORM BUILDER3 &raquo;</span>
+                    <span class="category">Manage Requests</span>
+                    @if (Session[UBuilder.Helper.Constants.AdminSessionName] != null && Session[UBuilder.Helper.Constants.AdminSessionName].ToString() == "true")
+                    {
+                        <div class="user-info-header">
+                            <div class="name">
+                                Hello, ADMIN :: 
+                                <a href="/adminlogin/kill" id="logout" class="logout">Log Out</a>
+                            </div>
+                        </div>
+
+                    }
+                    else
+                    {
+                        <div class="user-info-header">
+                            <div class="name">Hello, <span></span>! :: <a href="@storeURL/account/logoff">Log Out</a></div>
+                            <a href="@storeURL/account/login?returnurl=@deepLinkUrl" class="button login">Log In</a>
+                        </div>
+                    }
+                </div>
+                <div class="navigation">
+                    <div class="row">
+                        <ul>
+                            <li>
+                                <a href="#">UNIFORMS</a>
+                                <ul>
+                                    <li><a href="/Templates/Index/CustomUniFormKit">Custom Uniform Kits</a></li>
+                                    <li><a href="/Templates/Index/CustomSublimatedSinglets">Custom Sublimated Singlets</a></li>
+                                    <li><a href="/Templates/Index/CustomScreenPrintSinglets">Custom Screen Printed Singlets</a></li>
+                                    <li><a href="/Templates/Index/StockSinglets">Stock Singlets</a></li>
+                                    <li><a href="/Templates/Index/CustomCompetitionGear">Custom Competition Gear</a></li>
+                                    <li><a href="/Templates/Index/StockCompetitionGear">Stock Competition Gear</a></li>
+                                </ul>
+                            </li>
+                            <li>
+                                <a href="/Templates/Index/Headgear">HEADGEAR</a>
+                            </li>
+                            <li>
+                                <a href="/Templates/Index/WomenGear">WOMEN'S GEAR</a>
+                            </li>
+                            <li>
+                                <a href="#">WARM-UP’S</a>
+                                <ul>
+                                    <li><a href="/Templates/Index/CustomWarm-ups">Custom Warm-ups</a></li>
+                                    <li><a href="/Templates/Index/StockWarm-ups">Stock Warm-ups</a></li>
+                                </ul>
+                            </li>
+                            <li>
+                                <a href="#">TRAINING GEAR</a>
+                                <ul>
+                                    <li><a href="/Templates/Index/CustomTraining">Custom Sublimated Training Gear</a></li>
+                                    <li><a href="/Templates/Index/StockTraining">Stock Training Gear</a></li>
+
+                                </ul>
+                            </li>
+                            <li>
+                                <a href="/Templates/Index/Accessories">ACCESSORIES</a>
+                            </li>
+
+                            <li> ::&nbsp;&nbsp;&nbsp;&nbsp;<a href="/locker">MY LOCKER</a></li>
+                            @if (Session[UBuilder.Helper.Constants.AdminSessionName] != null && Session[UBuilder.Helper.Constants.AdminSessionName].ToString() == "true")
+                            {
+                                <li>::</li>
+                                <li>
+                                    <a href="#">ADMIN</a>
+                                    <ul>
+                                        <li>@Html.ActionLink("Edit Designs", "Index", "DesignViewModels")</li>
+                                        <li>@Html.ActionLink("Edit Dealers", "Index", "DealerViewModels")</li>
+                                        <li>@Html.ActionLink("Manage Requests", "Index", "Request")</li>
+                                    </ul>
+                                </li>
+                            }
+                        </ul>
+                    </div>
+                </div>
+                <input type="hidden" data-id="@ViewBag.isAdmin" id="hiddenSessionVal" />
+                <div class="logo">
+
+                    <a href="http://cliffkeen.com"><img src="~/Content/images/logo.png" /></a>
+                </div>
+            </header>
+
+            <form class="request-form">
+                <h3>Search By:</h3>
+                <div class="col-md-4 col-sm-4 col-xs-12">
+                    <div class="form-group">
+
+                        <label for="file" class="control-label"><strong>ProductID:</strong></label>
+                        <div class="col">
+                            <input type="text" class="form-control" id="ProductID" />
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4 col-sm-4 col-xs-12">
+                    <div class="form-group">
+
+                        <label for="file" class="control-label"><strong>Category:</strong></label>
+                        <div class="col">
+                            <select name="Category" id="DesignCategory" class="form-control">
+                                <option value="0">Select Category</option>
+                            </select>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4 col-sm-4 col-xs-12">
+                    <div class="form-group">
+
+                        <label for="file" class="control-label"><strong>Status:</strong></label>
+                        <div class="col">
+                            <select name="Category" id="Cartstatus" class="form-control">
+                                <option value="">Select Status</option>
+                                <option value="in-cart">in-cart</option>
+                                <option value="with-dealer">with-dealer</option>
+                            </select>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4 col-sm-4 col-xs-12">
+                    <div class="form-group">
+
+                        <label for="file" class="control-label"><strong>Start Date:</strong></label>
+                        <div class="col">
+                            <input type="text" class="form-control date" id="startDate" />
+                        </div>
+                    </div>
+                </div>               
+              
+                <div class="col-md-4 col-sm-4 col-xs-12">
+                    <div class="form-group">
+                        <label for="file" class="control-label"><strong>End Date:</strong></label>
+                        <div class="col">
+                            <input type="text" class="form-control date" id="endDate" />
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4 col-sm-4 col-xs-12">
+                    <div class="form-group">
+                        <label for="file" class="control-label"><strong>Design ID:</strong></label>
+                        <div class="col">
+                            <input type="text" class="form-control" id="designID" />
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4 col-sm-4 col-xs-12"></div>
+                <div class="col-md-4 col-sm-4 col-xs-12"></div>
+                <div class="col-md-4 col-sm-4 col-xs-6">
+                    <div class="form-group last-button">
+                        <input type="button" name="search" id="CategorySearch" value="Search" class="button" />
+                    </div>
+                </div>
+                </form>
+                    <div class="main" style="margin-top:198px;">
+
+                        @*<div class="loading"><h2>Loading Requests</h2><img src="/images/loader-bar.gif" /></div>*@
+
+                        @*<div class="login no-designs-login"><h2>If you already have a uniform builder account, please log in.</h2></div>*@
+
+
+                        <div class="locker"></div>
+                        @*<div class="loading"><h2>Loading Requests</h2><img src="/images/loader-bar.gif" /></div>*@
+                        <div class="no-designs"><h2>There are no more design requests to display.</h2></div>
+                        <div id="lockerpage">
+                            <p id="pagination-here"></p>
+                        </div>
+                    </div>
+                </div>
+    </div>
+</body>
+</html>
+<script src="~/Scripts/ASPSnippets_Pager.min.js"></script>
+<script type="text/javascript">
+    var pageSize = 10;
+    var pageIndex = 0;
+    var EncValue = null;
+    var Search = 0;
+    var counter = 0;
+    var pagenum = 1;
+
+
+    $(document).ready(function () {
+        
+        EncValue = $('#hiddenSessionVal').attr('data-id');
+        if (typeof (Request) != "undefined") Request.init();
+        $('#pagination-here').on("page", function (event, num) {
+            debugger;
+            pagenum = num;
+            pageIndex = num - 1;
+            $("#lockerpage #pagination-here .bootpag [data-lp='" + num + "']").addClass("active");
+                if (Search == 0) {
+
+                    if (counter == 0) {
+                        if (typeof (Request) != "undefined") Request.init();
+                    }
+                }
+                else {
+                    if (counter == 0) {
+                        if (typeof (Request) != "undefined") Request.loadSearchResult();
+                    }
+                }
+            
+        });
+    });
+
+    $(function () {
+        $(".date").datepicker({
+            dateFormat: "dd-mm-yy"
+        })
+         .on('blur', function () { // This check is for dd/mm/yyyy format but can be easily adapted to any other
+             val = $(this).val();
+             val1 = Date.parse(val);
+             if (isNaN(val1) == true && val !== '') {
+                 alert("Invalid date.")
+                 $(this).val('');
+             }
+             else {
+                 console.log(val1);
+             }
+         });
+    });
+    $("#logout").click(function () {
+        localStorage.clear();
+    });
+</script>
+

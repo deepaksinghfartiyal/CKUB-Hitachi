@@ -1,0 +1,9 @@
+﻿
+@{
+    ViewBag.Title = "Templates";
+    ViewBag.TemplateCat = ViewContext.RouteData.Values["id"]; 
+}
+
+<div id="templateList">
+    @{ Html.RenderAction("GetTemplatesByCategory", "Templates", new { category=ViewBag.TemplateCat }); }
+</div>

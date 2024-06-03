@@ -1,0 +1,123 @@
+﻿@{
+    ViewBag.Title = "tweet";
+    Layout = null;
+    string storeURL = System.Configuration.ConfigurationManager.AppSettings["CKStoreURL"];
+    string servicesURL = System.Configuration.ConfigurationManager.AppSettings["CKServicesURL"];
+    string deepLinkUrl = System.Configuration.ConfigurationManager.AppSettings["DEEPLINKURL"];
+    string thisUrl = Request.Url.AbsoluteUri;
+}
+
+<!DOCTYPE html>
+<html>
+<head>
+    @*2-3-2019  Start *@
+    <title>Cliff Keen Uniform Builder</title>
+    <meta charset="utf-8">
+    <meta property="fb:app_id" content="576302226186147" /> 
+    <meta property="og:url" content="@thisUrl">
+    <meta property="og:type" content="article">
+    <meta property="og:title" content="Cliff Keen Uniform Builder">
+    <meta property="og:description" content="">
+
+    <meta property="og:image" id="ShareImagePath" content="http://ub.ckatesting.com/Content/CartImages/0d21a2a4-0bd7-4b8d-8732-490bdf89a8f3.png">
+    <meta property="og:image:width" content="3000">
+    <meta property="og:image:height" content="10000">
+ 
+   
+
+    <script type="text/javascript">
+        var ckstoreURL = '@storeURL';
+        var ckservicesURL = '@servicesURL';
+        var deepURL = '@thisUrl';
+        var deepSiteUrl = '@deepLinkUrl';
+        var IsImagePathGet = false;
+    </script>
+    
+
+
+    <script type="text/javascript">
+
+      
+
+        //sharethis async load if not on locker
+        var switchTo5x = true;
+        if (!jQuery.QueryString['f']) {
+            jQuery.getScript("//ws.sharethis.com/button/buttons.js", function (data, textStatus, jqxhr) {
+                console.log('loading sharethis');
+                stLight.options({ publisher: "2fadb529-3564-447c-b56f-1038ffdda5c2", doNotHash: false, doNotCopy: false, hashAddressBar: false });
+            });
+        }
+
+
+
+
+    </script>
+    <script type="text/javascript" src="http://w.sharethis.com/button/buttons.js"></script>
+    <script type="text/javascript">stLight.options({ publisher: '12345' });</script>
+    <script type='text/javascript' src='//platform-api.sharethis.com/js/sharethis.js#property=5c6a338f70e9220011ed1d1b&product=inline-follow-buttons' async='async'></script>
+</head>
+<body class="builder">
+    <div style="display:none;" class="lds-wrapper">
+        <div class="lds-spinner"><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div></div>
+    </div>
+    <div id="page-wrapper">
+        <div class="container">
+         
+         
+            <div class="main">
+                
+
+
+           
+
+                <div class="option-wrapper">
+                    
+                    <div class="save-next-wrapper">
+                        <div class="persistent-nav">
+                            <div class="share">
+                                @*2-3-2019   Share on Facebook with Image Url and Web site Url*@
+                                @*<span class='st_facebook_large' displayText='Facebook' st_url="@thisUrl" st_image=""></span>*@
+                                @*<input type="submit" value="FB testing" onclick="return submitAndShare();">*@
+                                <button type="button" class="btn btn-primary fb" onclick="return submitAndShare('@thisUrl');"><span><i class="fab fa-facebook-f"></i></span></button>
+                                @*<button displayText="Facebook" onclick="shareOverrideOGMeta('@thisUrl','Cliff Keen Uniform Builder','Facebook share')">Facebook</button>*@
+                                <span class='st_twitter_large' displayText='Tweet' st_url="@thisUrl" st_image="http://ub.ckatesting.com/Content/CartImages/0d21a2a4-0bd7-4b8d-8732-490bdf89a8f3.png"></span>
+                                <span class='st_email_large' displayText='Email' st_url="@thisUrl" st_image=""></span>
+                            </div>
+                           
+                        </div>
+                        @*21/2/2019*@
+                        @*start*@
+                        <button type="button" class="btn save-share">
+                            save and share
+                            <i class="fab fa-facebook-f"></i>
+                            <i class="fab fa-twitter"></i>
+                            <i class="far fa-envelope"></i>
+                        </button>
+                        <a href="#" class="CheckLogin" title=""></a>
+                        <a href="#" class="CheckLoginInKit" title=""></a>
+                        @*End*@
+
+                        <div class="prev-next-wrapper">
+                            <a href="#" class="button prev" data-nav="prev">&lt; PREV</a><a href="#" class="button next" data-nav="next">NEXT &gt;</a>
+                        </div>
+                    </div>
+                </div>
+
+                
+
+            </div>
+        </div>
+
+        
+
+   
+
+        
+
+
+      
+     
+    </div>
+    
+</body>
+</html>

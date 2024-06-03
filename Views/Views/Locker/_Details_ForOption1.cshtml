@@ -1,0 +1,292 @@
+﻿@model UBuilder.Domain.Results.DesignKit_0_Detail
+<style>
+    #page-wrapper .modal-body {
+        padding: 20px;
+    }
+
+    .view-cart-wrapper {
+        font-family: 'Roboto', sans-serif;
+        display: flex;
+        max-width: 750px;
+        justify-content: space-between;
+        margin-bottom: 20px;
+    }
+
+    .right-block table {
+        width: 315px;
+        text-align: left;
+        border-collapse: collapse;
+    }
+
+        .right-block table thead th {
+            padding: 7px 5px;
+            font-weight: 500;
+            color: #000;
+        }
+
+    .right-block tbody td {
+        padding: 7px 5px;
+        color: #000;
+    }
+
+    .right-block {
+        margin-left: 22px;
+        padding: 20px;
+        background: #f1f1f1;
+        color: #000;
+    }
+
+    .left-block .product-img {
+        display: flex;
+        align-items: self-start;
+    }
+
+    .left-block ul.productDetailedDesc {
+        margin: 0;
+        padding: 0;
+        list-style: none;
+        display: flex;
+        flex-direction: column;
+        line-height: 30px;
+        margin-left: 20px;
+    }
+
+        .left-block ul.productDetailedDesc li:first-child {
+            font-size: 18px;
+            font-weight: 500;
+            color: #000;
+        }
+
+        .left-block ul.productDetailedDesc li {
+            color: #6f6f6f;
+            font-size: 15px;
+        }
+
+    .left-block h3 {
+        font-weight: 600;
+        border-bottom: 2px solid;
+        padding-bottom: 9px;
+    }
+
+    .view-cart-wrapper h3 {
+        margin-top: 0;
+        border-bottom: 1px solid;
+        padding-bottom: 12px;
+        letter-spacing: 2px;
+        margin-bottom: 20px;
+        font-weight: 600;
+    }
+
+    .right-block tbody tr td:last-child, .right-block thead tr th:last-child {
+        text-align: right;
+    }
+
+    #demoModal {
+        width: 780px;
+    }
+
+        #demoModal .modal-dialog {
+            width: 780px;
+        }
+
+    .total tbody {
+        background: #e6a413;
+    }
+
+        .total tbody td {
+            color: #fff;
+            padding: 8px 20px;
+            word-break: break-all;
+        }
+
+    .locker-page #demoModal {
+        width: 780px;
+        position: absolute;
+        left: 50%;
+        top: 50%;
+        transform: translate(-50%,-50%);
+        margin: 0;
+        background: #fff;
+    }
+
+    .note span {
+        color: #e6a413;
+        font-weight: 600;
+        margin-right: 3px;
+    }
+
+    .note {
+        margin: 20px 0;
+    }
+
+    .product-img .productDetailedDesc span {
+        color: #e6a413;
+    }
+
+    .left-block {
+        padding: 20px 0;
+    }
+
+    .productBlock__img img {
+        max-width: 120px;
+        margin-left: -15px;
+    }
+
+    .right-block p {
+        padding: 7px 12px;
+        background: #fff;
+        font-weight: 500;
+    }
+
+    #page-wrapper .modal-header {
+        text-align: right;
+        padding: 10px;
+    }
+</style>
+@if (Model != null)
+{
+    var index = 0;
+    var indexforW = 0;
+    var price = "";
+    var wprice = "";
+  //  var sumtotal = 0.0;
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+            </div>
+            <div class="modal-body">
+                <div class="view-cart-wrapper">
+                    <div class="left-block">
+                        <h3>CART</h3>
+                        <div class="product-img">
+                            <div class="productBlock__img">
+                                <img src="@Model.RootObject.ImagePath" class="img-responsive b-error" alt="American Eagle">
+                            </div>
+                            <div class="productBlock__desc">
+                                <ul class="productDetailedDesc">
+                                    <li>Product: <span>@Model.productId</span></li>
+                                    <li>Category: <span>@Model.category</span></li>
+                                    <li>DesignGuid: <span>@Model.DesignGuid</span></li>
+                                    <li>Status: <span>@Model.Status</span></li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="right-block">
+                        <h3>ORDER SUMMARY</h3>
+                        <table>
+                            <thead>
+                                <p>Men's Sizing</p>
+                                <tr>
+                                    <th>Size</th>
+                                    <th>Quantity</th>
+                                    <th>Price</th>
+                                    <th>Total</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+
+                                @foreach (KeyValuePair
+                          <string, object>
+                              size in Model.RootObject.sizes)
+                                {
+
+                                    <tr>
+                                        @if (!string.IsNullOrEmpty(size.Value.ToString()) && size.Value.ToString() != "0")
+                                        {
+
+                                            <td>@size.Key</td>
+                                            <td>@size.Value</td>
+                                            if (Model.prices.Count > 0)
+                                            {
+                                                <td>@Model.prices[index].value</td>
+                                            }
+                                            else
+                                            {
+                                                <td>0</td>
+                                            }
+                                            price = Convert.ToString(Model.prices[index].value);
+                                            <td>@(Convert.ToInt32(size.Value) * Convert.ToDouble(price))</td>
+                                          //  sumtotal = Convert.ToDouble(Model.RootObject.Total);
+                                        }
+                                    </tr>
+                                    index++;
+                                }
+
+                            </tbody>
+                        </table>
+
+                        <table>
+
+                            <thead>
+                                <p>Women's Sizing</p>
+                                <tr>
+                                    <th>Size</th>
+                                    <th>Quantity</th>
+                                    <th>Price</th>
+                                    <th>Total</th>
+                                </tr>
+                            </thead>
+
+                            <tbody>
+
+                                @if (Model.RootObject.wSizes != null)
+                                {
+
+                                    foreach (KeyValuePair
+                                <string, object>
+                                    wsize in Model.RootObject.wSizes)
+                                    {
+
+                                        <tr>
+                                            @if (!string.IsNullOrEmpty(wsize.Value.ToString()) && wsize.Value.ToString() != "0")
+                                            {
+
+                                                <td>@wsize.Key</td>
+                                                <td>@wsize.Value</td>
+                                                if (Model.wprices.Count > 0)
+                                                {
+                                                    <td>@Model.wprices[indexforW].wvalue</td>
+                                                }
+                                                else
+                                                {
+                                                    <td>0</td>
+                                                }
+                                                wprice = Convert.ToString(Model.wprices[indexforW].wvalue);
+                                                <td>@(Convert.ToInt32(wsize.Value) * Convert.ToDouble(wprice))</td>
+                                               // sumtotal = Convert.ToDouble(Model.RootObject.Total);
+                                            }
+                                        </tr>
+                                        indexforW++;
+                                    }
+                                }
+
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+                <div class="total">
+                    <table>
+                        <tr>
+                            @*<td>SubTotal(Including printing fee)</td>*@
+                            <td>SubTotal</td>
+                            <td>SetupFee</td>
+                            <td></td>
+                            <td>Total</td>
+                        </tr>
+                        <tr>
+                            <td>$@Model.total</td>
+                            <td>$@Model.SetuFee<td>
+                            <td></td>
+                            <td>$@Model.SubTotal</td>
+                        </tr>
+                    </table>
+                </div>
+                <div class="note">
+                    <p><span>Note:</span>We have saved your order details, Our team will contact you soon. Thanks</p>
+                </div>
+            </div>
+        </div>
+    </div>
+}

@@ -1,0 +1,15 @@
+﻿body {
+}
+.user-info-header span.row {
+    float: left;
+    margin-right: 10px;
+}
+
+#page-wrapper .container {
+    width: 100%;
+}
+.logout{ color:#e6a413; text-decoration: none;  }
+form.request-form .last-button {
+    margin: 0 0 0;
+    float: right;
+}

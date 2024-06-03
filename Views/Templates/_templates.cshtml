@@ -1,0 +1,70 @@
+﻿@model IEnumerable<UBuilder.Models.DesignViewModel>
+
+<div class="row">
+    <div id="templateListByPage">
+        @if (!Model.Any())
+        {
+            <h3>No templates found. is this conflicted</h3>
+        }
+        else
+        {
+            <div class="product-grid">
+                @{ 
+                    //var sorting = Model.OrderByDescending(x => x.ID);
+                    var sorting = Model.OrderByDescending(x => x.Sort);
+                }
+                @foreach (var item in sorting)
+                {
+                    <div class="col-lg-3 template">
+                        @*<a href="#" class="button customize" data-id="@item.ID">*@
+                            <a href="#" data-id="@item.ID">
+                                <img src="@item.Image_path" alt="@item.ProductId" class="imgTemplate customize" data-id="@item.ID" />
+                            </a>
+
+                            @if (item.ProductId == "100-UNIQUE")
+                            {
+                                <span>100%-Unique</span>
+                            }
+                            else
+                            {
+                                <span>@item.ProductId</span>
+                            }
+                            @*<div class="hover">
+                <div class="title">@item.ProductId</div>
+                <div class="thumbs">
+                    <img src="@item.Image_path" />
+                    <ul>
+                        @foreach (var img in item.Thumbnails)
+                        {
+                            <li><img src="@img" alt="thumbnail" /></li>
+                        }
+                    </ul>
+                </div>
+                <p>
+                    @item.Description
+                    <br><br><a href="#" class="button customize" data-id="@item.ID">Customize</a>
+                </p>
+            </div>*@
+</div>
+                }
+            </div>
+        }
+
+    </div>
+</div>
+
+<script type="text/javascript">
+    //$(window).load(function () {      
+    //    var id = sessionStorage.getItem('ID_Of_ClickedPanel');  
+    //    if (id != "") {
+    //        $('#' + id).addClass('ClickedPanel');
+    //    }
+    //}); 
+    $(document).ready(function () {
+        var id = sessionStorage.getItem('ID_Of_ClickedPanel');
+        if (id != "") {
+            $('#' + id).addClass('ClickedPanel');
+        }
+    });
+    localStorage.setItem('key', 0);
+</script>

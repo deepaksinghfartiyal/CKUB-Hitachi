@@ -1,0 +1,48 @@
+﻿
+@{
+    ViewBag.Title = "Designs Test";
+}
+
+@section headcss {
+    <link href="https://cdn.datatables.net/1.10.16/css/jquery.dataTables.min.css" rel="stylesheet" type="text/css" />
+}
+
+@section headjs {
+    <script type="text/javascript" src="https://cdn.datatables.net/1.10.16/js/jquery.dataTables.min.js"></script>
+}
+
+<div id="dealerList">
+    @{ Html.RenderAction("GetAllDesigns", "DesignViewModels"); }
+</div>
+
+
+@*<hr />
+    <div>
+        <div class="row">
+            <div class="col-md-2 col-xs-12"></div>
+            <div class="col-md-10 col-xs-12">
+                <form name="form1" method="post" action="/api/designs/uploadimage?id=6103" enctype="multipart/form-data">
+
+                    <label for="file"><strong>Upload Image:</strong></label>
+                    <input type="file" name="file" id="file" /><br /><br />
+                    <input type="submit" value="Upload File" />
+                    <br /><br />
+
+                </form>
+            </div>
+
+        </div>
+
+        <div class="row">
+            <div class="col-md-2 col-xs-12"></div>
+            <div class="col-md-10 col-xs-12">
+                <form name="form2" method="post" action="/api/designs/uploadzip?id=6103" enctype="multipart/form-data">
+                    <label for="zipfile"><strong>Upload Zip:</strong></label>
+                    <input type="file" name="zipfile" id="zipfile" /><br /><br />
+                    <input type="submit" value="Upload Zip File" />
+                </form>
+            </div>
+        </div>
+    </div>*@
+
+ 

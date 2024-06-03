@@ -1,0 +1,12 @@
+﻿<?xml version='1.0' encoding='utf-8'?>
+<SettingsFile xmlns="http://schemas.microsoft.com/VisualStudio/2004/01/settings" CurrentProfile="(Default)" GeneratedClassNamespace="UBuilder.Properties" GeneratedClassName="Settings">
+  <Profiles />
+  <Settings>
+    <Setting Name="UBuilder_com_ckatesting_ckstore_ItemPricing" Type="System.String" Scope="Application">
+      <Value Profile="(Default)">http://ckstore.ckatesting.com/ItemPricing.asmx</Value>
+    </Setting>
+    <Setting Name="UBuilder_com_cliffkeen_www_ItemPricing" Type="(Web Service URL)" Scope="Application">
+      <Value Profile="(Default)">https://www.cliffkeen.com/ItemPricing.asmx</Value>
+    </Setting>
+  </Settings>
+</SettingsFile>

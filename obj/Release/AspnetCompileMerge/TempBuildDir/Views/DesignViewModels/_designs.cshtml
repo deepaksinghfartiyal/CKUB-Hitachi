@@ -1,0 +1,57 @@
+﻿@model IEnumerable<UBuilder.Models.DesignViewModel>
+
+<div class="row">&nbsp;</div>
+<div class="row">
+    <div id="designListByPage" class="col-md-12 col-xs-12">
+        @if (!Model.Any())
+        {
+            <h3>No designs found.</h3>
+        }
+        else
+        {
+            <table id="designs" class="table-bordered table">
+                <thead>
+                    <tr>
+                        <th></th>
+                        <th><strong>Design GUID</strong></th>
+                        <th><strong>Product ID</strong></th>
+                        @*<th><strong>Customization</strong></th>*@
+                        <th><strong>Category</strong></th>
+                        @*<th><strong>Zip Path</strong></th>*@
+                        @*<th><strong>Image Path</strong></th>*@
+                        @*<th><strong>Notes</strong></th>*@
+                        <th><strong>Description</strong></th>
+                        <th><strong>Sort</strong></th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach (var item in Model)
+                {
+                        <tr>
+                            <td>@Html.ActionLink("Edit", "EditDesign", new { id = item.ID }) </td>
+                            <td>@item.DesignGUID</td>
+                            <td>@item.ProductId</td>
+                            @*<td>@item.Customization</td>*@
+                            <td>@item.Category</td>
+                            @*<td>@item.Zip_path</td>*@
+                            @*<td>@item.Image_path</td>*@
+                            @*<td>@item.Notes</td>*@
+                            <td>@item.Description</td>
+                            <td>@item.Sort</td>
+                        </tr>
+                    }
+                </tbody>
+            </table>
+        }
+
+    </div>
+</div>
+
+<script type="text/javascript">
+    $(document).ready(function () {
+        $('#designs').DataTable({
+            "lengthMenu": [[25, 50, -1], [25, 50, "All"]], // What options are in the paging dropdown
+            "order": [[1, "asc"]], // default column sorting,
+        });
+    });
+</script>

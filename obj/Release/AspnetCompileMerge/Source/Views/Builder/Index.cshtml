@@ -1,0 +1,2597 @@
+﻿@{
+    Layout = null;
+    string storeURL = System.Configuration.ConfigurationManager.AppSettings["CKStoreURL"];
+    string servicesURL = System.Configuration.ConfigurationManager.AppSettings["CKServicesURL"];
+    string deepLinkUrl = System.Configuration.ConfigurationManager.AppSettings["DEEPLINKURL"];
+    string thisUrl = Request.Url.AbsoluteUri;   
+}
+<!DOCTYPE html>
+<html>
+<head>
+    @*2-3-2019  Start *@
+     <title>Cliff Keen Uniform Builder</title>
+    @*<script type="text/javascript" src="//connect.facebook.net/en_US/sdk.js"></script>*@
+
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <meta charset="utf-8">
+    <meta property="fb:app_id" content="2045440062427669" />  @*576302226186147*@
+    <meta property="og:url" content="@thisUrl">
+    <meta property="og:type" content="article">
+    <meta property="og:title" content="Cliff Keen Uniform Builder">
+    <meta property="og:description" content="">
+    <meta property="og:image" id="ShareImagePath" content="">    
+    @*<meta property="og:image" id="ShareImagePath" content="http://ub.ckatesting.com/Content/CartImages/0d21a2a4-0bd7-4b8d-8732-490bdf89a8f3.png">*@
+    <meta property="og:image:width" content="3000">
+    <meta property="og:image:height" content="10000">   
+    @*2-3-2019 End*@
+    <script type="text/javascript" src="~/js/ntc.js"></script>
+    <link href="/css/svg_text.css" rel="stylesheet" type="text/css" />
+    <link href="/css/fonts/stylesheet.css" rel="stylesheet" type="text/css" />
+    <link href="/css/easy-autocomplete.css" rel="stylesheet" type="text/css" />
+    <link href="/css/easy-autocomplete.themes.css" rel="stylesheet" type="text/css" />
+    <link href="/css/ck.css" rel="stylesheet" type="text/css" />
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
+    <script>
+        window.fbAsyncInit = function () {
+            FB.init({
+                appId: '2045440062427669',  @*576302226186147*@
+                autoLogAppEvents: true,
+                xfbml: true,
+                version: 'v2.10'
+            });
+            FB.AppEvents.logPageView();
+        };
+        (function (d, s, id) {
+            var js, fjs = d.getElementsByTagName(s)[0];
+            if (d.getElementById(id)) { return; }
+            js = d.createElement(s); js.id = id;
+            js.src = "//connect.facebook.net/en_US/sdk.js";
+            fjs.parentNode.insertBefore(js, fjs);
+        }(document, 'script', 'facebook-jssdk'));
+    </script>
+    <script type="text/javascript">
+        var ckstoreURL = '@storeURL';
+        var ckservicesURL = '@servicesURL';
+        var deepURL = '@thisUrl';
+        var deepSiteUrl = '@deepLinkUrl';
+       // var IsImagePathGet = false;       
+    </script>
+
+
+    <script type="text/javascript" src="/js/jquery-1.11.3.min.js"></script>
+    <script type="text/javascript" src="/js/interact-1.2.6.min.js"></script>
+    <script type="text/javascript" src="/js/nouislider.min.js"></script>
+    <script type="text/javascript" src="/js/svg_polyfills.js"></script>
+    <script type="text/javascript" src="/js/ck.content.js"></script>
+    <script type="text/javascript" src="/js/ck.api.js"></script>
+    <script type="text/javascript" src="/js/svg_text.js"></script>
+    <script type="text/javascript" src="/js/ck.builder.js"></script>
+    <script type="text/javascript" src="/js/jquery.easy-autocomplete.min.js"></script>
+    <script type="text/javascript" src="/js/ck.js"></script>
+  
+
+    @*28-2-2019   Share on Facebook with Image Url and Web site Url *@
+    @*Start*@
+    @*<meta property="og:url" content="@thisUrl" />
+        <meta property="og:type" content="website" />
+        <meta property="og:title" content="Your Website Title" />
+        <meta property="og:description" content="Your description" />
+        <meta property="og:image" id="ShareImagePath" content="@TempData["ImagePath"]" />*@
+
+    <script type="text/javascript">
+        //21/2/2019
+        // Important-- Remove Share icone(Facebook,Twitter,mail) when we click otside of  "save and share"  Button
+        //Start
+        $(document).click(function (e) {
+            //var StepNo = $('.row.steps span.active').attr('data-nav');
+            //if (StepNo == 4)
+            //    $(".share").show();
+            //else
+                $('.share').hide();
+        });
+        var IsLogin = false;
+        $(document).on('click', '.save-share', function () {
+            console.log('Save Artwork(Text,Image and Logo) while we click on facebook share button')
+            var StepNo = $('.row.steps span.active').attr('data-nav');
+            if (StepNo == 2 || StepNo == 3) {
+                //$('.next').click();    //never use next because it will create Problem after login
+                // Check Use is Loged in Or not
+                $('.CheckLogin').click();
+            }
+        });
+        $(document).on('click', '.save-share', function () {
+            console.log('Save Artwork(Text,Image and Logo) while we click on facebook share button')
+            var StepNo = $('.row.steps span.active').attr('data-nav');
+            //var ActiveKit = $('.kit.active span.active').attr('data-count');
+
+            //if (ActiveKit != "undefined") {
+            $('.CheckLoginInKit').click();
+            // }
+        });
+
+
+        // If we click on save and share button,at first it will be save
+        //19/2/2019
+        //Facebook share
+        //$(document).on('click', '.st_facebook_large', function () {
+        //    console.log($("#ShareImagePath").attr('content'));
+        //    shareUrl = $("#shareurl").val();
+        //    var stepno = $('.row.steps span.active').attr('data-nav');
+        //    if (stepno == 2 || stepno == 1) {
+        //        $('.facebookshare').click();
+        //    }
+        //});
+        //19/2/2019
+        //Twitter share
+        //$(document).on('click', '.st_twitter_large', function () {
+        //    console.log('Save Artwork(Text,Image and Logo) while we click on facebook share button')
+        //    var StepNo = $('.row.steps span.active').attr('data-nav');
+        //    if (StepNo == 2 || StepNo==1) {
+        //       // $('.TwitterShare').click();
+        //    }
+        //});
+        //19/2/2019
+        //Email share
+        //$(document).on('click', '.st_email_large', function () {
+        //    console.log('Save Artwork(Text,Image and Logo) while we click on facebook share button')
+        //    var StepNo = $('.row.steps span.active').attr('data-nav');
+        //    if (StepNo == 2 || StepNo==1) {
+        //      // $('.EmailShare').click();
+        //    }
+        //});
+
+        //End
+
+        //sharethis async load if not on locker
+        var switchTo5x = true;
+        if (!jQuery.QueryString['f']) {
+            jQuery.getScript("//ws.sharethis.com/button/buttons.js", function (data, textStatus, jqxhr) {
+                console.log('loading sharethis');
+                stLight.options({ publisher: "2fadb529-3564-447c-b56f-1038ffdda5c2", doNotHash: false, doNotCopy: false, hashAddressBar: false });
+            });
+        }
+
+
+
+
+    </script>
+    <script type="text/javascript" src="http://w.sharethis.com/button/buttons.js"></script>
+    <script type="text/javascript">stLight.options({ publisher: '12345' });</script>
+    <script type='text/javascript' src='//platform-api.sharethis.com/js/sharethis.js#property=5c6a338f70e9220011ed1d1b&product=inline-follow-buttons' async='async'></script>
+
+    <!-- Global site tag (gtag.js) - Google Analytics  -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=UA-133681645-1"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag() { dataLayer.push(arguments); }
+        gtag('js', new Date());
+        gtag('config', 'UA-133681645-1');
+    </script>
+
+</head>
+<body class="builder">
+    <div style="display:none;" class="lds-wrapper">
+        <div class="lds-spinner"><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div></div>
+    </div>
+    @*19/8/2019*@
+    @if (Session[UBuilder.Helper.Constants.AdminSessionName] != null && Session[UBuilder.Helper.Constants.AdminSessionName].ToString() == "true")
+    {
+        <form id="frmLogout" action="/adminlogin/kill" method="post">
+            <input type="hidden" value="true" id="hdnLoggedOff" name="inActivityLogout" />
+        </form>
+        if (HttpContext.Current.Request.Cookies.AllKeys.Contains("Clifkeen_UserNameInfo"))
+        {
+            if (HttpContext.Current.Request.Cookies["Clifkeen_UserNameInfo"].Value != null)
+            {
+                var Data = HttpContext.Current.Request.Cookies["Clifkeen_UserNameInfo"].Value;
+            }
+        }
+    }
+    else
+    {
+        if (UBuilder.Helper.Constants.CookieName != null)
+        {
+
+            if (HttpContext.Current.Request.Cookies.AllKeys.Contains("Clifkeen_UserNameInfo"))
+            {
+
+                if (HttpContext.Current.Request.Cookies["Clifkeen_UserNameInfo"].Value != null)
+                {
+                    var Data = HttpContext.Current.Request.Cookies["Clifkeen_UserNameInfo"].Value;
+                                       <form id="frmLogout" action="@Url.Action("Logout", "Builder")" method="post">
+                        <input type="hidden" value="@storeURL/account/login?returnurl=@thisUrl" id="hdnLoggedOff" name="inActivityLogout" />
+                    </form>
+                }
+            }
+
+        }
+    }
+    <div id="page-wrapper">
+        <div class="container">
+            <header>
+                <div class="top-head-wrapper">
+                    <div class="logo">          
+                        @*<a href="https://ckstore.ckatesting.com/"><img src="~/Content/images/logo.png" /></a>*@ 
+                        <a onclick="goToURL();"><img src="~/Content/images/logo.png" /></a>          
+                    </div>
+                    <div class="titles">
+                        <span class="ub">UNIFORM BUILDER</span>
+                        @if (Session[UBuilder.Helper.Constants.AdminSessionName] != null && Session[UBuilder.Helper.Constants.AdminSessionName].ToString() == "true")
+                        {
+                            <div class="user-info-header">
+                                <div class="name">
+                                    Hello, ADMIN ::
+                                    <a href="/adminlogin/kill" id="logout" class="logout">Log Out</a>
+                                </div>
+                            </div>
+
+                        }
+                        else
+                        {
+                            <div class="user-info-header">
+                                <div class="name">Hello, <span></span>! :: <a href="@storeURL/account/logoff">Log Out</a></div>
+                                @*<a href="@storeURL/account/login?returnurl=@thisUrl" class="button login">Log In</a>*@
+                                <a class="button login" onclick="Builder.SaveCutomizedDataOnLoginClick('@storeURL/account/login?returnurl=@thisUrl')">Log In</a>
+                            </div>
+                        }
+
+                    </div>
+
+
+                </div>
+
+                <div class="navigation">
+                    <div class="row">
+                        <ul>
+                            <li>
+                                <a href="#">UNIFORMS</a>
+                                <ul>
+                                    <li><a href="/Templates/Index/CustomUniFormKit">Custom Uniform Kits</a></li>
+                                    <li><a href="/Templates/Index/CustomSublimatedSinglets">Custom Sublimated Singlets</a></li>
+                                    <li><a href="/Templates/Index/CustomScreenPrintSinglets">Custom Screen Printed Singlets</a></li>
+                                    <li><a href="/Templates/Index/StockSinglets">Stock Singlets</a></li>
+                                    <li><a href="/Templates/Index/CustomCompetitionGear">Custom Competition Gear</a></li>
+                                    <li><a href="/Templates/Index/StockCompetitionGear">Stock Competition Gear</a></li>
+                                </ul>
+                            </li>
+                            <li>
+                                <a href="/Templates/Index/Headgear">HEADGEAR</a>
+                            </li>
+                            <li>
+                                <a href="/Templates/Index/WomenGear">WOMEN'S GEAR</a>
+                            </li>
+                            <li>
+                                <a href="#">WARM-UP’S</a>
+                                <ul>
+                                    <li><a href="/Templates/Index/CustomWarm-ups">Custom Warm-ups</a></li>
+                                    <li><a href="/Templates/Index/StockWarm-ups">Stock Warm-ups</a></li>
+                                </ul>
+                            </li>
+                            <li>
+                                <a href="#">PERFORMANCE APPAREL</a>
+                                <ul>
+                                    <li><a href="/Templates/Index/CustomTraining">Custom Sublimated Training Gear</a></li>
+                                    <li><a href="/Templates/Index/StockTraining">Stock Training Gear</a></li>
+                                </ul>
+                            </li>
+                            <li>
+                                <a href="/Templates/Index/Accessories">ACCESSORIES</a>
+                            </li>
+
+                            <li> ::&nbsp;&nbsp;&nbsp;&nbsp;<a href="/locker">MY LOCKER</a></li>
+                            @if (Session[UBuilder.Helper.Constants.AdminSessionName] != null && Session[UBuilder.Helper.Constants.AdminSessionName].ToString() == "true")
+                            {
+                                <li>::</li>
+                                <li>
+                                    <a href="#">ADMIN</a>
+                                    <ul>
+                                        <li>@Html.ActionLink("Edit Designs", "Index", "DesignViewModels")</li>
+                                        <li>@Html.ActionLink("Edit Dealers", "Index", "DealerViewModels")</li>
+                                        <li>@Html.ActionLink("Manage Requests", "Index", "Request")</li>
+                                    </ul>
+                                </li>
+                            }
+                        </ul>
+                    </div>
+                    <div class="row steps">
+                        <span>STEPS</span> <em>//</em>
+                        <span data-nav="0">Fabric</span> <em>//</em>
+                        <span data-nav="1">Colors</span> <em>//</em>
+                        <span data-nav="2">Artwork</span> <em>//</em>
+                        <span data-nav="3">Quantity &amp; Sizes</span> <em>//</em>
+                        <span data-nav="4">Review Order</span>
+                    </div>
+                    <div class="kit option-menu-head" style="display: none !important">
+                        <div class="option-menu">
+                            <span data-kit="kit_0" data-count="0" class="active" onclick="Builder.kitClick('0')">OPTION 1</span> 
+                            <p class="kit_0_active">Singlet</p> 
+                          </div>
+                        <em>//</em>
+                        <div class="option-menu">
+                            <span data-kit="kit_1" data-count="1" onclick="Builder.kitClick('1')">OPTION 2</span>
+                            <p class="kit_1_active">Compression Top and Shorts</p> 
+                        </div>
+                        <em>//</em>
+                        <div class="option-menu">
+                            <span data-kit="kit_2" data-count="2" onclick="Builder.kitClick('2')">OPTION 3</span> 
+                            <p class="kit_2_active">Singlet and Board Shorts </p> 
+                        </div>
+                        <em>//</em>
+                        <div class="option-menu">
+                            <span data-kit="kit_3" data-count="3" onclick="Builder.kitClick('3')">OPTION 4</span>
+                            <p class="kit_3_active">Compression Top and Board Shorts</p> 
+                        </div>
+                    </div>
+
+                </div>
+
+
+            </header>
+            <div class="loading"><h2>Loading Design</h2><img src="/images/loader-bar.gif" /></div>
+            <div class="main">
+                <div id="option1center" class="preview">
+                    <div class="svg-masks">
+
+                    </div>
+                    <div class="single">
+                        <div class="product-title"><span class="text"></span><img src="/images/ajax-loader-small.gif" class="status" /></div>
+                    </div>
+                    <div class="kits kit_0" id="QuantityAndSizeForOption1">
+                        <div class="product-title"><span class="text"></span><img src="/images/ajax-loader-small.gif" class="status" /></div>
+                    </div>
+                    <div class="kits kit_1" id="QuantityAndSizeForOption2">
+                        <div class="product-title"><span class="text"></span><img src="/images/ajax-loader-small.gif" class="status" /></div>
+                    </div>
+                    <div class="kits kits_option_2" id="QuantityAndSizeForOption3">
+                        <div class="product-title"><span class="text"></span><img src="/images/ajax-loader-small.gif" class="status" /></div>
+                    </div>
+                    <div class="kits kit_3" id="QuantityAndSizeForOption4">
+                        <div class="product-title"><span class="text"></span><img src="/images/ajax-loader-small.gif" class="status" /></div>
+                    </div>
+
+                    <div id="boundingbox_holder">
+                        <div id="boundingbox_deselect"></div>
+                        <div id="boundingbox">
+                            <div style="display:none;" class="lds-wrapper-canvas">
+                                <div class="lds-spinner"><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div></div>
+                            </div>
+                            <div class="bbhandles bbhandles1"></div>
+                            <div class="bbhandles bbhandles2"></div>
+                            <div class="bbhandles bbhandles3"></div>
+                            <div class="bbhandles bbhandles4"></div>
+                            <div class="bblines bbtoplines bblines1"></div>
+                            <div class="bblines bbtoplines bblines2"></div>
+                            <div class="bblines bbsidelines bblines3"></div>
+                            <div class="bblines bbsidelines bblines4"></div>
+                            <div class="resize-handle"><div class="resize-handle-inner"></div></div>
+                        </div>
+                    </div>
+                    <div class="single" id="GetAllSvg">
+                        <div class="canvas-wrapper front active" data-view="_Front">
+                            <div class="svg" id="ForSingleProduct_Front"></div>
+                        </div>
+                        <div class="canvas-wrapper back" data-view="_Back">
+                            <div class="svg" id="ForSingleProduct_Back"></div>
+                        </div>
+                        <div class="canvas-wrapper left" data-view="_Left">
+                            <div class="svg" id="ForSingleProduct_Left"></div>
+                        </div>
+                        <div class="canvas-wrapper right" data-view="_Right">
+                            <div class="svg" id="ForSingleProduct_Right"></div>
+                        </div>
+                    </div>
+                    <div class="kits kit_0 rev" id="option1ForKit_0Center">
+                        <div class="canvas-wrapper front active" id="option1Frontcenter" data-view="_Front">
+                            <div class="svg" id="option1ForKit_0_Front"></div>
+                        </div>
+                        <div class="canvas-wrapper back" id="option1Backcenter" data-view="_Back">
+                            <div class="svg" id="option1ForKit_0_Back"></div>
+                        </div>
+                        <div class="canvas-wrapper left" id="option1Leftcenter" data-view="_Left">
+                            <div class="svg" id="option1ForKit_0_Left"></div>
+                        </div>
+                        <div class="canvas-wrapper right" id="option1Rightcenter" data-view="_Right">
+                            <div class="svg" id="option1ForKit_0_Right"></div>
+                        </div>
+                    </div>
+                    <div class="kits kit_1 rev">
+                        <div class="canvas-wrapper front active" data-view="_Front">
+                            <div class="svg" id="option2ForKit_1_Front"></div>
+                        </div>
+                        <div class="canvas-wrapper back" data-view="_Back">
+                            <div class="svg" id="option2ForKit_1_Back"></div>
+                        </div>
+                        <div class="canvas-wrapper left" data-view="_Left">
+                            <div class="svg" id="option2ForKit_1_Left"></div>
+                        </div>
+                        <div class="canvas-wrapper right" data-view="_Right">
+                            <div class="svg" id="option2ForKit_1_Right"></div>
+                        </div>
+                    </div>
+                    <div class="kits kit_2 rev" id="option3ForKit_2Center">
+                        <div class="canvas-wrapper front active" id="option2Frontcenter" data-view="_Front">
+                            <div class="svg" id="option3ForKit_2_Front"></div>
+                        </div>
+                        <div class="canvas-wrapper back" id="option2Backcenter" data-view="_Back">
+                            <div class="svg" id="option3ForKit_2_Back"></div>
+                        </div>
+                        <div class="canvas-wrapper left" id="option2Leftcenter" data-view="_Left">
+                            <div class="svg" id="option3ForKit_2_Left"></div>
+                        </div>
+                        <div class="canvas-wrapper right" id="option2Rightcenter" data-view="_Right">
+                            <div class="svg" id="option3ForKit_2_Right"></div>
+                        </div>
+                    </div>
+                    <div class="kits kit_3 rev">
+                        <div class="canvas-wrapper front active" data-view="_Front">
+                            <div class="svg" id="option4ForKit_3_Front"></div>
+                        </div>
+                        <div class="canvas-wrapper back" data-view="_Back">
+                            <div class="svg" id="option4ForKit_3_Back"></div>
+                        </div>
+                        <div class="canvas-wrapper left" data-view="_Left">
+                            <div class="svg" id="option4ForKit_3_Left"></div>
+                        </div>
+                        <div class="canvas-wrapper right" data-view="_Right">
+                            <div class="svg" id="option4ForKit_3_Right"></div>
+                        </div>
+                    </div>
+                    <div class="kits kit_4 rev">
+                        <div class="product-title"><span class="text"></span><img src="/images/ajax-loader-small.gif" class="status" /></div>
+                        <div id="boundingbox_holder_kit">
+                            <div id="boundingbox_deselect_kit"></div>
+                            <div id="boundingbox_kit">
+                                <div style="display:none;" class="lds-wrapper-canvas">
+                                    <div class="lds-spinner"><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div></div>
+                                </div>
+                                <div class="bbhandles_kit bbhandles1_kit"></div>
+                                <div class="bbhandles_kit bbhandles2_kit"></div>
+                                <div class="bbhandles_kit bbhandles3_kit"></div>
+                                <div class="bbhandles_kit bbhandles4_kit"></div>
+                                <div class="bblines_kit bbtoplines_kit bblines1_kit"></div>
+                                <div class="bblines_kit bbtoplines_kit bblines2_kit"></div>
+                                <div class="bblines_kit bbsidelines_kit bblines3_kit"></div>
+                                <div class="bblines_kit bbsidelines_kit bblines4_kit"></div>
+                                <div class="resize-handle_kit"><div class="resize-handle-inner_kit"></div></div>
+                            </div>
+                        </div>
+                        <div class="canvas-wrapper front active" data-view="_Front">
+                            <div class="svg" id="option3ForKit_4_Front"></div>
+                        </div>
+                        <div class="canvas-wrapper back" data-view="_Back">
+                            <div class="svg" id="option3ForKit_4_Back"></div>
+                        </div>
+                        <div class="canvas-wrapper left" data-view="_Left">
+                            <div class="svg" id="option3ForKit_4_Left"></div>
+                        </div>
+                        <div class="canvas-wrapper right" data-view="_Right">
+                            <div class="svg" id="option3ForKit_4_Right"></div>
+                        </div>
+                    </div>
+                    <div class="details">
+                        <div class="zoom"><a href="#"><img src="/images/enhance.png" /></a></div>
+
+                        <div class="price">Total: $<span>0.00</span></div>
+                    </div>
+                    <div class="notes mockupnotes"><strong>Note:</strong> Mockup is not to scale</div>
+                </div>           
+
+                <div class="design-details">
+                    <div class="buttons">
+                        <div class="share">
+                            <!-- <a href="#" class="facebook" title="Share on Facebook"></a> <a href="#" class="twitter" title="Share on Twitter"></a> <a href="#" class="email" title="Share via Email"></a>  -->
+                            <!-- Go to www.addthis.com/dashboard to customize your tools -->
+                            <!-- <div class="addthis_custom_sharing"></div> -->
+                            <span class='st_facebook_large' displayText='Facebook' st_url="@thisUrl"></span>
+                            <span class='st_twitter_large' displayText='Tweet' st_url="@thisUrl"></span>
+                            <span class='st_email_large' displayText='Email' st_url="@thisUrl"></span>
+                        </div>
+                        <a href="#" class="button" id="HideItFormViewOnlyMode">Log In</a>
+                    </div>
+                    <h2>Custom <span class="sku"></span> <span class="category"></span><!--  by <span class="name">JOHN DOE</span> --></h2>
+                </div>
+
+                @*20-3-2019
+                Start
+                *@
+                <div class="single" id="ForDealerForViewOnly" style="display:none">
+                <div class="option-set review" id="ForDealer" data-step="4" >
+                    <div class="sub-title">Design Details</div>
+                    <div class="did">Design Id: <span>2015729155747</span></div>
+                    <div class="sizing-chart">
+                        <div class="row design">
+                            <h3>DESIGN</h3>
+                            <div class="rev-container">
+                                <ul>
+                                    <li class="category">
+                                        <strong>Design Type</strong>: <span></span>
+                                    </li>
+                                    <li class="sku">
+                                        <strong>Product Id</strong>: <span></span>
+                                    </li>
+                                    <li class="fabric">
+                                        <strong>Body Fabric Type</strong>: <span></span>
+                                    </li>
+                                    <li class="CustInfoViewOnlySendToDealerLink" id="HidePringTypeOfWithOutColor">
+                                        <strong>Printing Type</strong>: <span></span>
+                                    </li>
+                                      <li class="CustInfoViewOnlySendToDealerLinkBasedOnColor" style="display:none">                                      
+                                            <strong>Printing Type</strong>: <span></span>
+                                        </li>   
+                                </ul>
+                            </div>
+                        </div>
+                        <div class="row colors">
+                            <h3>COLORS</h3>
+                            <div class="rev-container">
+                                <ul></ul>
+                            </div>
+                        </div>
+                        <div class="row lettering">
+                            <h3>ARTWORK</h3>
+                            <div class="rev-container">
+                                <ul></ul>
+                            </div>
+                        </div>
+
+                        <div class="row quantity">
+                            <h3>QUANTITY</h3>
+                            <div class="rev-container">
+                                <div class="header">
+                                    <span>Size</span>
+                                    <span>Quantity</span>
+                                    <span>Unit Price</span>
+                                    <span>Total Price</span>
+                                </div>
+
+                                <div class="table"></div>
+
+                                <div class="total-quantity">
+                                    <strong>Total Quantity:</strong> <span>6</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row setup-fee">
+                            <h3>STANDARD SETUP FEE</h3>
+                            <div class="rev-container">
+                                <ul>
+                                    <li id="setup_fee">
+                                        <strong>Setup Fee</strong>: <span>$70.00</span>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                        <div class="row setup-fee">
+                            <h3>TOTAL PRICE</h3>
+                            <div class="rev-container total-price">
+                                <ul>
+                                    <li id="price_total">
+                                        <strong>Total Price</strong>: <span>$0.00</span>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                </div>
+                @*
+                End
+         20-3-2019*@
+
+                <div class="option-wrapper">
+                    <div class="options">
+                        <div class="preview-nav single active" id="HideQuantitySizesInSinglet">
+                            <a href="#" class="front active" data-view="_Front"><span></span><br>FRONT</a>
+                            <a href="#" class="back" data-view="_Back"><span></span><br>BACK</a>
+                            <a href="#" class="left hide" data-view="_Left"><span></span><br>LEFT</a>
+                            <a href="#" class="right hide" data-view="_Right"><span></span><br>RIGHT</a>
+                        </div>
+                        <div class="single">
+                            <div class="option-set fabric" data-step="0">
+                                Fabric step
+                            </div>
+                            <div class="option-set color" data-step="1"></div>
+                            <div class="option-set patterns sub-option">
+                                <h3 class="sub-title knit">Leg Band Patterns</h3>
+                                <ul></ul>
+                                <div class="pattern-colors">
+                                    <h3 class="sub-title">Pattern Colors</h3>
+                                    <div class="c">
+
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="option-set patternsSecond sub-option">
+                                <h3 class="sub-title">Leg Band Patterns</h3>
+                                <ul></ul>
+                                <div class="pattern-colorSecond">
+                                    <h3 class="sub-title">Pattern Colors</h3>
+                                    <div class="c">
+
+                                    </div>
+                                </div>
+                            </div>
+
+                        </div>
+
+
+                        <div class="preview-nav kits kit_0" id="HideQuantityAndSizesForKit0">
+                            <a href="#" class="front active" data-view="_Front"><span></span><br />FRONT</a>
+                            <a href="#" class="back" data-view="_Back"><span></span><br />BACK</a>
+                            <a href="#" class="left" data-view="_Left"><span></span><br />LEFT</a>
+                            <a href="#" class="right" data-view="_Right"><span></span><br />RIGHT</a>
+                        </div>
+
+                        <div class="preview-nav kits kit_1" id="HideQuantityAndSizesForKit1">
+                            <a href="#" class="front active" data-view="_Front"><span></span><br />FRONT</a>
+                            <a href="#" class="back" data-view="_Back"><span></span><br />BACK</a>
+                            <a href="#" class="left" data-view="_Left"><span></span><br />LEFT</a>
+                            <a href="#" class="right" data-view="_Right"><span></span><br />RIGHT</a>
+                        </div>
+
+                        <div class="preview-nav kits kit_2" id="HideQuantityAndSizesForKit2">
+                            <a href="#" class="front active" data-view="_Front"><span></span><br />FRONT</a>
+                            <a href="#" class="back" data-view="_Back"><span></span><br />BACK</a>
+                            <a href="#" class="left" data-view="_Left"><span></span><br />LEFT</a>
+                            <a href="#" class="right" data-view="_Right"><span></span><br />RIGHT</a>
+                        </div>
+
+                        <div class="preview-nav kits kit_3" id="HideQuantityAndSizesForKit3">
+                            <a href="#" class="front active" data-view="_Front"><span></span><br />FRONT</a>
+                            <a href="#" class="back" data-view="_Back"><span></span><br />BACK</a>
+                            <a href="#" class="left" data-view="_Left"><span></span><br />LEFT</a>
+                            <a href="#" class="right" data-view="_Right"><span></span><br />RIGHT</a>
+                        </div>
+
+                        <div class="kits kit_0">
+                            <div class="option-set fabric" data-step="0">
+                                Fabric step
+                            </div>
+                            <div class="option-set color" data-step="1"></div>
+                            <div class="option-set patterns sub-option">
+                                <h3 class="sub-title">Leg Band Patterns</h3>
+                                <ul></ul>
+                                <div class="pattern-colors">
+                                    <h3 class="sub-title">Pattern Colors</h3>
+                                    <div class="c">
+
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="option-set content" data-step="2">
+                                <div class="row" style="font-size: 14px; line-height: 16px; font-weight: 600; font-style: italic;">
+                                    To add text to your garment enter the text in the box shown and press add text. In the panel drop down please select the area where you want it added. To lock it in place please select either front or back from the small icons to the right of the garment you are customizing. Follow the same procedure when adding your own logo or one of ours from the stock logos listed.
+                                </div>
+
+                                <div class="row">
+                                    <span>Add Text: </span>
+                                    <input type="text" id="thetext_0" class="kitText" value="" placeholder="CUSTOM TEXT" />
+
+
+                                    <a href="#" id="thebutton_0" class="button light">Place Text</a>
+                                </div>
+                                <div class="row">
+                                    <span>Add Logo: </span>
+                                    <div class="buttons">
+                                        <form id="uploadImageForm">
+                                            <input type="text" name="ID" id="ID" />
+                                            <input type="file" name="upload-image" id="upload-image_0" accept="image/jpeg, image/png" />
+                                            <!-- <input type="submit" value="submit test" /> -->
+                                        </form>
+                                        <a href="#" class="button custom-browse">BROWSE</a> <a href="#" class="button stock-logos">STOCK LOGOS</a>
+                                        <input type="button" value="BROWSE" class="add-image_0 hide" /> <input type="button" class="hide" value="STOCK LOGOS" />
+                                    </div>
+                                    <div class="embroidery-note"><strong>NOTE:</strong> Text and stock logos are also available in embroidery or tackle twill. You will need to <strong>call</strong> Customer Support at <strong>1-800-992-0799</strong> for accurate pricing. The prices shown here will only be an approximation.</div>
+                                </div>
+                                <!-- <div class="copy">
+                                    *Note: Please do not use either copyrighted or low resolution images.<br />
+                                    (Supported formats are: .jpg, .png, .gif and .swf)<br />
+                                    *When custom <strong>logos/images</strong> are added and or <strong>Embroidery</strong> and or <strong>Tackle Twill</strong> are selected you will need to <strong>call</strong> Customer Support at <strong>1-800-992-0799</strong> for accurate pricing. The prices shown here will only be an approximation.
+                                </div-->
+                                <div class="sub-title">@*Asset List*@</div>
+                                <div id="text_palette_0">
+                                    <div id="text_palette_0_Front_0" class="palette_view"></div>
+                                    <div id="text_palette_0_Back_0" class="palette_view"></div>
+                                    <div id="text_palette_0_Left_0" class="palette_view"></div>
+                                    <div id="text_palette_0_Right_0" class="palette_view"></div>
+                                </div>
+                                <div id="print_type_0">
+                                    <h4>Print Type:</h4>
+
+                                    <input type="radio" name="print_option" id="print_option_screen_printing" value="Screen Printing" checked>
+                                    <label for="print_option_screen_printing">Screen Printing</label>
+
+                                    <input type="radio" name="print_option" id="print_option_sublimation_printing" value="Sublimation Printing">
+                                    <label for="print_option_sublimation_printing">Sublimation Printing</label>
+
+                                </div>
+                                <div id="pricing_chart_0" class="disabled">
+                                    <h4>Lettering Price: <div id="pricing_chart_total_0">Total: $0</div></h4>
+                                    <div class="price-chart-heading">Location <span> Price (in $)</span></div>
+                                    <div class="price-chart-heading">Location <span> Price (in $)</span></div>
+                                    <div id="pricing_chart_content_0">
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="kits kit_1">
+                            <div class="option-set fabric" data-step="0">
+                                Fabric step
+                            </div>
+                            <div class="option-set color" data-step="1"></div>
+                            <div class="option-set patterns sub-option">
+                                <h3 class="sub-title">Leg Band Patterns</h3>
+                                <ul></ul>
+                                <div class="pattern-colors">
+                                    <h3 class="sub-title">Pattern Colors</h3>
+                                    <div class="c">
+
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="option-set content" data-step="2">
+                                <div class="row" style="font-size: 14px; line-height: 16px; font-weight: 600; font-style: italic;">
+                                    To add text to your garment enter the text in the box shown and press add text. In the panel drop down please select the area where you want it added. To lock it in place please select either front or back from the small icons to the right of the garment you are customizing. Follow the same procedure when adding your own logo or one of ours from the stock logos listed.
+                                </div>
+
+                                <div class="row">
+                                    <span>Add Text: </span>
+                                    <input type="text" id="thetext_1" class="kitText" value="" placeholder="CUSTOM TEXT" />
+
+
+                                    <a href="#" id="thebutton_1" class="button light">Add Text</a>
+                                </div>
+                                <div class="row">
+                                    <span>Add Imagery*: </span>
+                                    <div class="buttons">
+                                        <form id="uploadImageForm">
+                                            <input type="text" name="ID" id="ID" />
+                                            <input type="file" name="upload-image_1" id="upload-image_1" accept="image/jpeg, image/png" />
+                                            <!-- <input type="submit" value="submit test" /> -->
+                                        </form>
+                                        <a href="#" class="button custom-browse">BROWSE</a> <a href="#" class="button stock-logos">STOCK LOGOS</a>
+                                        <input type="button" value="BROWSE" class="add-image_1 hide" /> <input type="button" class="hide" value="STOCK LOGOS" />
+                                    </div>
+                                    <div class="embroidery-note"><strong>NOTE:</strong> Text and stock logos are also available in embroidery or tackle twill. You will need to <strong>call</strong> Customer Support at <strong>1-800-992-0799</strong> for accurate pricing. The prices shown here will only be an approximation.</div>
+                                </div>
+                                <div class="sub-title">Asset List</div>
+                                <div id="text_palette_1">
+                                    <div id="text_palette_1_Front_1" class="palette_view"></div>
+                                    <div id="text_palette_1_Back_1" class="palette_view"></div>
+                                    <div id="text_palette_1_Left_1" class="palette_view"></div>
+                                    <div id="text_palette_1_Right_1" class="palette_view"></div>
+                                </div>
+                                <div id="print_type_1">
+                                    <h4>Print Type:</h4>
+
+                                    <input type="radio" name="print_option" id="print_option_screen_printing" value="Screen Printing" checked>
+                                    <label for="print_option_screen_printing">Screen Printing</label>
+
+                                    <input type="radio" name="print_option" id="print_option_sublimation_printing" value="Sublimation Printing">
+                                    <label for="print_option_sublimation_printing">Sublimation Printing</label>
+
+                                </div>
+                                <div id="pricing_chart_1" class="disabled">
+                                    <h4>Lettering Price: <div id="pricing_chart_total_1">Total: $0</div></h4>
+                                    <div class="price-chart-heading">Location <span> Price (in $)</span></div>
+                                    <div class="price-chart-heading">Location <span> Price (in $)</span></div>
+                                    <div id="pricing_chart_content_1">
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="kits kit_2 option3_scroll">
+                            <div class="option-set fabric" data-step="0">
+                                Fabric step
+                            </div>
+                            <div class="option-set color" id="option3top" data-step="1"></div>
+                            <div class="option-set patterns sub-option">
+                                <h3 class="sub-title">Leg Band Patterns</h3>
+                                <ul></ul>
+                                <div class="pattern-colors">
+                                    <h3 class="sub-title">Pattern Colors</h3>
+                                    <div class="c">
+
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="option-set content" data-step="2">
+                                <div class="row" style="font-size: 14px; line-height: 16px; font-weight: 600; font-style: italic;">
+                                    To add text to your garment enter the text in the box shown and press add text. In the panel drop down please select the area where you want it added. To lock it in place please select either front or back from the small icons to the right of the garment you are customizing. Follow the same procedure when adding your own logo or one of ours from the stock logos listed.
+                                </div>
+
+                                <div class="row">
+                                    <span>Add Text: </span>
+                                    <input type="text" id="thetext_2" class="kitText" value="" placeholder="CUSTOM TEXT" />
+
+
+                                    <a href="#" id="thebutton_2" class="button light">Add Text</a>
+                                </div>
+                                <div class="row">
+                                    <span>Add Imagery*: </span>
+                                    <div class="buttons">
+                                        <form id="uploadImageForm">
+                                            <input type="text" name="ID" id="ID" />
+                                            <input type="file" name="upload-image_2" id="upload-image_2" accept="image/jpeg, image/png" />
+                                            <!-- <input type="submit" value="submit test" /> -->
+                                        </form>
+                                        <a href="#" class="button custom-browse">BROWSE</a> <a href="#" class="button stock-logos">STOCK LOGOS</a>
+                                        <input type="button" value="BROWSE" class="add-image_2 hide" /> <input type="button" class="hide" value="STOCK LOGOS" />
+                                    </div>
+                                    <div class="embroidery-note"><strong>NOTE:</strong> Text and stock logos are also available in embroidery or tackle twill. You will need to <strong>call</strong> Customer Support at <strong>1-800-992-0799</strong> for accurate pricing. The prices shown here will only be an approximation.</div>
+                                </div>
+                                <!-- <div class="copy">
+                                    *Note: Please do not use either copyrighted or low resolution images.<br />
+                                    (Supported formats are: .jpg, .png, .gif and .swf)<br />
+                                    *When custom <strong>logos/images</strong> are added and or <strong>Embroidery</strong> and or <strong>Tackle Twill</strong> are selected you will need to <strong>call</strong> Customer Support at <strong>1-800-992-0799</strong> for accurate pricing. The prices shown here will only be an approximation.
+                                </div-->
+                                <div class="sub-title">Asset List</div>
+                                <div id="text_palette_2">
+                                    <div id="text_palette_2_Front_2" class="palette_view"></div>
+                                    <div id="text_palette_2_Back_2" class="palette_view"></div>
+                                    <div id="text_palette_2_Left_2" class="palette_view"></div>
+                                    <div id="text_palette_2_Right_2" class="palette_view"></div>
+                                </div>
+                                <div id="print_type_2">
+                                    <h4>Print Type:</h4>
+
+                                    <input type="radio" name="print_option" id="print_option_screen_printing" value="Screen Printing" checked>
+                                    <label for="print_option_screen_printing">Screen Printing</label>
+
+                                    <input type="radio" name="print_option" id="print_option_sublimation_printing" value="Sublimation Printing">
+                                    <label for="print_option_sublimation_printing">Sublimation Printing</label>
+
+                                </div>
+                                <div id="pricing_chart_2" class="disabled">
+                                    <h4>Lettering Price: <div id="pricing_chart_total_2">Total: $0</div></h4>
+                                    <div class="price-chart-heading">Location <span> Price (in $)</span></div>
+                                    <div class="price-chart-heading">Location <span> Price (in $)</span></div>
+                                    <div id="pricing_chart_content_2">
+                                    </div>
+                                </div>
+                            </div>
+
+                        </div>
+
+
+
+
+                        <div class="kits kit_3">
+                            <div class="option-set fabric" data-step="0">
+                                Fabric step
+                            </div>
+                            <div class="option-set color" data-step="1"></div>
+                            <div class="option-set patterns sub-option">
+                                <h3 class="sub-title">Leg Band Patterns</h3>
+                                <ul></ul>
+                                <div class="pattern-colors">
+                                    <h3 class="sub-title">Pattern Colors</h3>
+                                    <div class="c">
+
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="option-set content" data-step="2">
+                                <div class="row" style="font-size: 14px; line-height: 16px; font-weight: 600; font-style: italic;">
+                                    To add text to your garment enter the text in the box shown and press add text. In the panel drop down please select the area where you want it added. To lock it in place please select either front or back from the small icons to the right of the garment you are customizing. Follow the same procedure when adding your own logo or one of ours from the stock logos listed.
+                                </div>
+
+                                <div class="row">
+                                    <span>Add Text: </span>
+                                    <input type="text" id="thetext_3" class="kitText" value="" placeholder="CUSTOM TEXT" />
+
+
+                                    <a href="#" id="thebutton_3" class="button light">Add Text</a>
+                                </div>
+                                <div class="row">
+                                    <span>Add Imagery*: </span>
+                                    <div class="buttons">
+                                        <form id="uploadImageForm">
+                                            <input type="text" name="ID" id="ID" />
+                                            <input type="file" name="upload-image_3" id="upload-image_3" accept="image/jpeg, image/png" />
+                                            <!-- <input type="submit" value="submit test" /> -->
+                                        </form>
+                                        <a href="#" class="button custom-browse">BROWSE</a> <a href="#" class="button stock-logos">STOCK LOGOS</a>
+                                        <input type="button" value="BROWSE" class="add-image_3 hide" /> <input type="button" class="hide" value="STOCK LOGOS" />
+                                    </div>
+                                    <div class="embroidery-note"><strong>NOTE:</strong> Text and stock logos are also available in embroidery or tackle twill. You will need to <strong>call</strong> Customer Support at <strong>1-800-992-0799</strong> for accurate pricing. The prices shown here will only be an approximation.</div>
+                                </div>
+                                <!-- <div class="copy">
+                                    *Note: Please do not use either copyrighted or low resolution images.<br />
+                                    (Supported formats are: .jpg, .png, .gif and .swf)<br />
+                                    *When custom <strong>logos/images</strong> are added and or <strong>Embroidery</strong> and or <strong>Tackle Twill</strong> are selected you will need to <strong>call</strong> Customer Support at <strong>1-800-992-0799</strong> for accurate pricing. The prices shown here will only be an approximation.
+                                </div-->
+                                <div class="sub-title">Asset List</div>
+                                <div id="text_palette_3">
+                                    <div id="text_palette_3_Front_3" class="palette_view"></div>
+                                    <div id="text_palette_3_Back_3" class="palette_view"></div>
+                                    <div id="text_palette_3_Left_3" class="palette_view"></div>
+                                    <div id="text_palette_3_Right_3" class="palette_view"></div>
+                                </div>
+                                <div id="print_type_3">
+                                    <h4>Print Type:</h4>
+
+                                    <input type="radio" name="print_option" id="print_option_screen_printing" value="Screen Printing" checked>
+                                    <label for="print_option_screen_printing">Screen Printing</label>
+
+                                    <input type="radio" name="print_option" id="print_option_sublimation_printing" value="Sublimation Printing">
+                                    <label for="print_option_sublimation_printing">Sublimation Printing</label>
+
+                                </div>
+                                <div id="pricing_chart_3" class="disabled">
+                                    <h4>Lettering Price: <div id="pricing_chart_total_3">Total: $0</div></h4>
+                                    <div class="price-chart-heading">Location <span> Price (in $)</span></div>
+                                    <div class="price-chart-heading">Location <span> Price (in $)</span></div>
+                                    <div id="pricing_chart_content_3">
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="kits kit_4 option3" id="DSFSSYYSF">
+                            <div class="preview-nav bottom-nav kits kit_4">
+                                <a href="#" class="front active" data-view="_Front"><br>FRONT</a>
+                                <a href="#" class="back" data-view="_Back"><br>BACK</a>
+                                <a href="#" class="left" data-view="_Left"><br>LEFT</a>
+                                <a href="#" class="right" data-view="_Right"><br>RIGHT</a>
+                            </div>
+
+                        </div>
+
+                        <div class="kits kit_4">
+                            <div class="option-set fabric" data-step="0">
+                                Fabric step
+                            </div>
+                            <div class="option-set color" id="MaxHeightOption3" data-step="1"></div>
+                            <div class="option-set patterns sub-option">
+                                <h3 class="sub-title">Leg Band Patterns</h3>
+                                <ul></ul>
+                                <div class="pattern-colors">
+                                    <h3 class="sub-title">Pattern Colors</h3>
+                                    <div class="c">
+
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="option-set content" data-step="2">
+                                <div class="row" style="font-size: 14px; line-height: 16px; font-weight: 600; font-style: italic;">
+                                    To add text to your garment enter the text in the box shown and press add text. In the panel drop down please select the area where you want it added. To lock it in place please select either front or back from the small icons to the right of the garment you are customizing. Follow the same procedure when adding your own logo or one of ours from the stock logos listed.
+                                </div>
+
+                                <div class="row">
+                                    <span>Add Text: </span>
+                                    <input type="text" id="thetext_4" class="kitText" value="" placeholder="CUSTOM TEXT" />
+
+
+                                    <a href="#" id="thebutton_4" class="button light">Add Text</a>
+                                </div>
+                                <div class="row">
+                                    <span>Add Imagery*: </span>
+                                    <div class="buttons">
+                                        <form id="uploadImageForm">
+                                            <input type="text" name="ID" id="ID" />
+                                            <input type="file" name="upload-image_4" id="upload-image_4" accept="image/jpeg, image/png" />
+                                            <!-- <input type="submit" value="submit test" /> -->
+                                        </form>
+                                        <a href="#" class="button custom-browse">BROWSE</a> <a href="#" class="button stock-logos">STOCK LOGOS</a>
+                                        <input type="button" value="BROWSE" class="add-image_4 hide" /> <input type="button" class="hide" value="STOCK LOGOS" />
+                                    </div>
+                                    <div class="embroidery-note"><strong>NOTE:</strong> Text and stock logos are also available in embroidery or tackle twill. You will need to <strong>call</strong> Customer Support at <strong>1-800-992-0799</strong> for accurate pricing. The prices shown here will only be an approximation.</div>
+                                </div>
+                                <!-- <div class="copy">
+                                    *Note: Please do not use either copyrighted or low resolution images.<br />
+                                    (Supported formats are: .jpg, .png, .gif and .swf)<br />
+                                    *When custom <strong>logos/images</strong> are added and or <strong>Embroidery</strong> and or <strong>Tackle Twill</strong> are selected you will need to <strong>call</strong> Customer Support at <strong>1-800-992-0799</strong> for accurate pricing. The prices shown here will only be an approximation.
+                                </div-->
+                                <div class="sub-title">Asset List</div>
+                                <div id="text_palette_4">
+                                    <div id="text_palette_4_Front_4" class="palette_view"></div>
+                                    <div id="text_palette_4_Back_4" class="palette_view"></div>
+                                    <div id="text_palette_4_Left_4" class="palette_view"></div>
+                                    <div id="text_palette_4_Right_4" class="palette_view"></div>
+                                </div>
+                                <div id="print_type_4">
+                                    <h4>Print Type:</h4>
+
+                                    <input type="radio" name="print_option" id="print_option_screen_printing" value="Screen Printing" checked>
+                                    <label for="print_option_screen_printing">Screen Printing</label>
+
+                                    <input type="radio" name="print_option" id="print_option_sublimation_printing" value="Sublimation Printing">
+                                    <label for="print_option_sublimation_printing">Sublimation Printing</label>
+
+                                </div>
+                                <div id="pricing_chart_4" class="disabled">
+                                    <h4>Lettering Price: <div id="pricing_chart_total_4">Total: $0</div></h4>
+                                    <div class="price-chart-heading">Location <span> Price (in $)</span></div>
+                                    <div class="price-chart-heading">Location <span> Price (in $)</span></div>
+                                    <div id="pricing_chart_content_4">
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="single">
+                            <div class="option-set content" data-step="2">
+                                <div class="row" style="font-size: 14px; line-height: 16px; font-weight: 600; font-style: italic;">
+                                    To add text to your garment enter the text in the box shown and press add text. In the panel drop down please select the area where you want it added. To lock it in place please select either front or back from the small icons to the right of the garment you are customizing. Follow the same procedure when adding your own logo or one of ours from the stock logos listed.
+                                </div>
+
+                                <div class="row">
+                                    <span>Add Text: </span>
+                                    <input type="text" id="thetext" value="" placeholder="CUSTOM TEXT" />
+
+
+                                    <a href="#" id="thebutton" class="button light">Place Text</a>
+                                </div>
+                                <div class="row">
+                                    <span>Add Logo: </span>
+                                    <div class="buttons">
+                                        <form id="uploadImageForm">
+                                            @*<div id="container">
+                                                <input type="file" class="f1">
+                                            </div>*@
+                                            <input type="text" name="ID" id="ID" />
+                                            <input type="file" name="upload-image" id="upload-image" accept="image/jpeg, image/png" />
+                                            <!-- <input type="submit" value="submit test" /> -->
+                                        </form>
+                                        <a href="#" class="button custom-browse">BROWSE</a> <a href="#" class="button stock-logos">STOCK LOGOS</a>
+                                        <input type="button" value="BROWSE" class="add-image hide" /> <input type="button" class="hide" value="STOCK LOGOS" />
+                                    </div>
+                                    <div class="embroidery-note"><strong>NOTE:</strong> Text and stock logos are also available in embroidery or tackle twill. You will need to <strong>call</strong> Customer Support at <strong>1-800-992-0799</strong> for accurate pricing. The prices shown here will only be an approximation.</div>
+                                    <div class="embroideryNoteForCustomWarmUps"><strong>NOTE:</strong> Text and logos are also available in embroidery or tackle twill. You will need to <strong>call</strong> Customer Support at <strong>1-800-992-0799</strong> for accurate pricing. The prices shown here will only be an approximation.</div>
+                                
+</div>
+                                <!-- <div class="copy">
+                                    *Note: Please do not use either copyrighted or low resolution images.<br />
+                                    (Supported formats are: .jpg, .png, .gif and .swf)<br />
+                                    *When custom <strong>logos/images</strong> are added and or <strong>Embroidery</strong> and or <strong>Tackle Twill</strong> are selected you will need to <strong>call</strong> Customer Support at <strong>1-800-992-0799</strong> for accurate pricing. The prices shown here will only be an approximation.
+                                </div-->
+                                <div class="sub-title">@*Asset List*@</div>
+                                <div id="text_palette">
+                                    <div id="text_palette_Front" class="palette_view"></div>
+                                    <div id="text_palette_Back" class="palette_view"></div>
+                                    <div id="text_palette_Left" class="palette_view"></div>
+                                    <div id="text_palette_Right" class="palette_view"></div>
+                                </div>
+                                  <div >
+                                  <div id="NotesForSecificProduSepicificLocation"></div>
+                                   <div id="NotificationSection"></div>                                   
+                                   <div id="print_type">
+                                        <h4 id="HidePrintTypeForSomeProduct">Print Type:</h4>
+                                       <input type="radio" name="print_option" id="print_option_screen_printing" value="Screen Printing" checked>
+                                       <label for="print_option_screen_printing">Screen Printing</label>
+
+                                       <input type="radio" name="print_option" id="print_option_sublimation_printing" value="Sublimation Printing">
+                                       <label for="print_option_sublimation_printing">Sublimation Printing</label>
+                                   </div>
+                                    <div id="print_typeBasedOnColor">
+                                                                           
+                                    </div>
+                                </div>
+
+                                <div id="pricing_chart" class="disabled">
+                                    <h4>Lettering Price: <div id="pricing_chart_total">Total: $0</div></h4>
+                                    <div class="price-chart-heading">Location <span> Price (in $)</span></div>
+                                    <div class="price-chart-heading">Location <span> Price (in $)</span></div>
+                                    <div id="pricing_chart_content">
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="option-set sizing" data-step="3" id="DotUseForKit">
+                            <div class="sub-title"><span class="style">Men</span>'s Sizing Chart <span class="tabs"><a href="#" class="button mens active" data-style="Men">MEN'S</a><a href="#" class="button womens" data-style="Women">WOMEN'S</a></span></div>
+                            <div class="charts-wrapper">
+                                <div class="charts">
+                                    <div class="sizing-chart mens">
+                                        <div class="row head">
+                                            <div class="col">Size</div>
+                                            <div class="col">Quantity</div>
+                                            <div class="col two">Minimum order quanity: <span data-min></span></div>
+                                        </div>
+                                        <div class="sizing-chart-options"></div>
+                                    </div>
+                                    <div class="sizing-chart womens">
+                                        <div class="row head">
+                                            <div class="col">Size</div>
+                                            <div class="col">Quantity</div>
+                                            <div class="col two">Minimum order quanity: <span data-min></span></div>
+                                        </div>
+                                        <div class="sizing-chart-options-women"></div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="notes">
+                                <div class="sub-title">Additional Notes/Requests:</div>
+                                <textarea name="additional-notes" id="notes"></textarea>
+                            </div>
+                        </div>
+
+                        <div class="single"> @*id="ForDealerViewOnlyMode"*@
+                            <div class="option-set review" data-step="4">
+                                <div class="sub-title">Design Details</div>
+                                <div class="did">Design Id: <span>2015729155747</span></div>
+                                <div class="sizing-chart">
+                                    <div class="row design">
+                                        <h3>DESIGN</h3>
+                                        <div class="rev-container">
+                                            <ul>
+                                                <li class="category">
+                                                    <strong>Design Type</strong>: <span></span>
+                                                </li>
+                                                <li class="sku">
+                                                    <strong>Product Id</strong>: <span></span>
+                                                </li>
+                                                <li class="fabric">
+                                                    <strong>Body Fabric Type</strong>: <span></span>
+                                                </li>
+                                                <li class="print_type" style="display:flex;">
+                                                    <strong>Printing Type</strong>: <span style="width:183px;"></span>
+                                                </li>
+                                            </ul>
+                                        </div>
+                                    </div>
+                                    <div class="row colors">
+                                        <h3>COLORS</h3>
+                                        <div class="rev-container">
+                                            <ul></ul>
+                                        </div>
+                                    </div>
+                                    <div class="row lettering">
+                                        <h3>ARTWORK</h3>
+                                        <div class="rev-container">
+                                            <ul></ul>
+                                        </div>
+                                    </div>
+
+                                    <div class="row quantity">
+                                        <h3>QUANTITY</h3>
+                                        <div class="rev-container">
+                                            <div class="header">
+                                                <span>Size</span>
+                                                <span>Quantity</span>
+                                                <span>Unit Price</span>
+                                                <span>Total Price</span>
+                                            </div>
+
+                                            <div class="table"></div>
+
+                                            <div class="total-quantity">
+                                                <strong>Total Quantity:</strong> <span>6</span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="row setup-fee">
+                                        <h3>STANDARD SETUP FEE</h3>
+                                        <div class="rev-container">
+                                            <ul>
+                                                <li id="setup_fee">
+                                                    <strong>Setup Fee</strong>: <span id="SetupFeeForSinglate">$70.00</span>
+                                                </li>
+                                            </ul>
+                                        </div>
+                                    </div>
+                                    <div class="row setup-fee">
+                                        <h3>TOTAL PRICE</h3>
+                                        <div class="rev-container total-price">
+                                            <ul>
+                                                <li id="price_total">
+                                                    <strong>Total Price</strong>: <span>$0.00</span>
+                                                </li>
+                                            </ul>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            @*<div class="prev-next-wrapper">
+                                <a href="#" class="button prev" data-nav="prev">&lt; PREV</a><a href="#" class="button next" data-nav="next">NEXT &gt;</a>
+                            </div>*@
+                        </div>
+
+                        <div class="kits kit_0">
+                            <div class="option-set review" data-step="4">
+                                <div class="sub-title">Design Details</div>
+                                <div class="did">Design Id: <span>2015729155747</span></div>
+                                <div class="sizing-chart">
+                                    <div class="row design">
+                                        <h3>DESIGN</h3>
+                                        <div class="rev-container">
+                                            <ul>
+                                                <li class="category">
+                                                    <strong>Design Type</strong>: <span></span>
+                                                </li>
+                                                <li class="sku">
+                                                    <strong>Product Id</strong>: <span></span>
+                                                </li>
+                                                <li class="fabric">
+                                                    <strong>Body Fabric Type</strong>: <span></span>
+                                                </li>
+                                                <li class="print_type">
+                                                @*<li class="print_type" style="display:none;">*@
+                                                <strong>Printing Type</strong>:
+                                                <span></span>
+                                                </li>
+                                            </ul>
+                                        </div>
+                                    </div>
+                                    <div class="row colors">
+                                        <h3>COLORS</h3>
+                                        <div class="rev-container">
+                                            <ul></ul>
+                                        </div>
+                                    </div>
+                                    <div class="row lettering">
+                                        <h3>ARTWORK</h3>
+                                        <div class="rev-container">
+                                            <ul></ul>
+                                        </div>
+                                    </div>
+                                    <div class="row setup-fee">
+                                        <h3>TOTAL PRINTING FEE</h3>
+                                        <div class="rev-container">
+                                            <ul>
+                                                <li class="tot_print_fee">
+                                                    <strong >Printing Fee</strong>: <span>$00.00</span>
+                                                </li>
+                                            </ul>
+                                        </div>
+                                    </div>
+                                    <div class="row quantity">
+                                        <h3>QUANTITY</h3>
+                                        <div class="rev-container">
+                                            <div class="header">
+                                                <span>Size</span>
+                                                <span>Quantity</span>
+                                                <span>Unit Price</span>
+                                                <span>Total Price</span>
+                                            </div>
+
+                                            <div class="table"></div>
+
+                                            <div class="total-quantity">
+                                                <strong>Total Quantity:</strong> <span>6</span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="row setup-fee">
+                                        <h3>STANDARD SETUP FEE</h3>
+                                        <div class="rev-container">
+                                            <ul>
+                                                <li id="setup_fee">
+                                                    <strong >Setup Fee</strong>: <span id="SetupFeeForKit">$70.00</span>
+                                                </li>
+                                            </ul>
+                                        </div>
+                                    </div>
+                                    <div class="row setup-fee">
+                                        <h3>TOTAL PRICE</h3>
+                                        <div class="rev-container total-price">
+                                            <ul>
+                                                <li id="price_total">
+                                                    <strong>Total Price</strong>: <span>$0.00</span>
+                                                </li>
+                                            </ul>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            @*<div class="review-prev">
+                                <a href="#" class="button prev" data-nav="prev">&lt; PREV</a>
+                            </div>*@
+                        </div>
+                        <div class="kits kit_1">
+                            <div class="option-set review" data-step="4">
+                                <div class="sub-title">Design Details</div>
+                                <div class="did">Design Id: <span>2015729155747</span></div>
+                                <div class="sizing-chart">
+                                    <div class="row design">
+                                        <h3>DESIGN</h3>
+                                        <div class="rev-container">
+                                            <ul>
+                                                <li class="category">
+                                                    <strong>Design Type</strong>: <span></span>
+                                                </li>
+                                                <li class="sku">
+                                                    <strong>Product Id</strong>: <span></span>
+                                                </li>
+                                                <li class="fabric">
+                                                    <strong>Body Fabric Type</strong>: <span></span>
+                                                </li>
+                                                <li class="print_type">
+                                                @*<li class="print_type" style="display:none;">*@
+                                                    <strong>Printing Type</strong>: <span></span>
+                                                </li>
+                                            </ul>
+                                        </div>
+                                    </div>
+                                    <div class="row colors">
+                                        <h3>COLORS</h3>
+                                        <div class="rev-container">
+                                            <ul></ul>
+                                        </div>
+                                    </div>
+                                    <div class="row lettering">
+                                        <h3>ARTWORK</h3>
+                                        <div class="rev-container">
+                                            <ul></ul>
+                                        </div>
+                                    </div>
+                                    <div class="row setup-fee">
+                                        <h3>TOTAL PRINTING FEE</h3>
+                                        <div class="rev-container">
+                                            <ul>
+                                                <li class="tot_print_fee">
+                                                    <strong>Printing Fee</strong>: <span>$00.00</span>
+                                                </li>
+                                            </ul>
+                                        </div>
+                                    </div>
+                                    <div class="row quantity">
+                                        <h3>QUANTITY</h3>
+                                        <div class="rev-container">
+                                            <div class="header">
+                                                <span>Size3</span>
+                                                <span>Quantity</span>
+                                                <span>Unit Price</span>
+                                                <span>Total Price</span>
+                                            </div>
+
+                                            <div class="table"></div>
+
+                                            <div class="total-quantity">
+                                                <strong>Total Quantity:</strong> <span>6</span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="row setup-fee">
+                                        <h3>STANDARD SETUP FEE</h3>
+                                        <div class="rev-container">
+                                            <ul>
+                                                <li id="setup_fee">
+                                                    <strong>Setup Fee</strong>: <span>$70.00</span>
+                                                </li>
+                                            </ul>
+                                        </div>
+                                    </div>
+                                    <div class="row setup-fee">
+                                        <h3>TOTAL PRICE</h3>
+                                        <div class="rev-container total-price">
+                                            <ul>
+                                                <li id="price_total">
+                                                    <strong>Total Price</strong>: <span>$0.00</span>
+                                                </li>
+                                            </ul>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            @*<div class="review-prev">
+                                <a href="#" class="button prev" data-nav="prev">&lt; PREV</a>
+                            </div>*@
+                        </div>
+
+                        <div class="kits kit_2 option_3_review">
+                            <div class="option-set review " data-step="4">
+                                <div class="sub-title">Design Details</div>
+                                <div class="did">Design Id: <span>2015729155747</span></div>
+                                <div class="sizing-chart">
+                                    <div class="row design">
+                                        <h3>DESIGN</h3>
+                                        <div class="rev-container">
+                                            <ul>
+                                                <li class="category">
+                                                    <strong>Design Type</strong>: <span></span>
+                                                </li>
+                                                <li class="sku">
+                                                    <strong>Product Id</strong>: <span></span>
+                                                </li>
+                                                <li class="fabric">
+                                                    <strong>Body Fabric Type</strong>: <span></span>
+                                                </li>
+                                                <li class="print_type">
+                                                    @*<li class="print_type" style="display:none;">*@
+                                                    <strong>Printing Type</strong>: <span></span>
+                                                </li>
+                                            </ul>
+                                        </div>
+                                    </div>
+                                    <div class="row colors">
+                                        <h3>COLORS</h3>
+                                        <div class="rev-container">
+                                            <ul></ul>
+                                        </div>
+                                    </div>
+                                    <div class="row lettering">
+                                        <h3>ARTWORK</h3>
+                                        <div class="rev-container">
+                                            <ul></ul>
+                                        </div>
+                                    </div>
+                                    <div class="row setup-fee">
+                                        <h3>TOTAL PRINTING FEE</h3>
+                                        <div class="rev-container">
+                                            <ul>
+                                                <li class="tot_print_fee">
+                                                    <strong>Printing Fee</strong>: <span>$00.00</span>
+                                                </li>
+                                            </ul>
+                                        </div>
+                                    </div>
+                                    <div class="row quantity">
+                                        <h3>QUANTITY</h3>
+                                        <div class="rev-container">
+                                            <div class="header">
+                                                <span>Size</span>
+                                                <span>Quantity</span>
+                                                <span>Unit Price</span>
+                                                <span>Total Price</span>
+                                            </div>
+
+                                            <div class="table"></div>
+
+                                            <div class="total-quantity">
+                                                <strong>Total Quantity:</strong> <span>6</span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    @*<div class="row setup-fee">
+                                        <h3>STANDARD SETUP FEE</h3>
+                                        <div class="rev-container">
+                                            <ul>
+                                                <li id="setup_fee">
+                                                    <strong>Setup Fee</strong>: <span>$70.00</span>
+                                                </li>
+                                            </ul>
+                                        </div>
+                                    </div>*@
+                                    <div class="row setup-fee">
+                                        <h3>TOTAL PRICE</h3>
+                                        <div class="rev-container total-price">
+                                            <ul>
+                                                <li id="price_total">
+                                                    <strong>Total Price</strong>: <span>$0.00</span>
+                                                </li>
+                                            </ul>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            @*<div class="review-prev">
+                                    <a href="#" class="button prev" data-nav="prev">&lt; PREV</a>
+                                </div>*@
+                        </div>
+
+                        <div class="kits kit_3">
+                            <div class="option-set review" data-step="4">
+                                <div class="sub-title">Design Details</div>
+                                <div class="did">Design Id: <span>2015729155747</span></div>
+                                <div class="sizing-chart">
+                                    <div class="row design">
+                                        <h3>DESIGN</h3>
+                                        <div class="rev-container">
+                                            <ul>
+                                                <li class="category">
+                                                    <strong>Design Type</strong>: <span></span>
+                                                </li>
+                                                <li class="sku">
+                                                    <strong>Product Id</strong>: <span></span>
+                                                </li>
+                                                <li class="fabric">
+                                                    <strong>Body Fabric Type</strong>: <span></span>
+                                                </li>
+                                                <li class="print_type">
+                                                    @*<li class="print_type" style="display:none;">*@
+                                                    <strong>Printing Type</strong>: <span></span>
+                                                </li>
+                                            </ul>
+                                        </div>
+                                    </div>
+                                    <div class="row colors">
+                                        <h3>COLORS</h3>
+                                        <div class="rev-container">
+                                            <ul></ul>
+                                        </div>
+                                    </div>
+                                    <div class="row lettering">
+                                        <h3>ARTWORK</h3>
+                                        <div class="rev-container">
+                                            <ul></ul>
+                                        </div>
+                                    </div>
+                                    <div class="row setup-fee">
+                                        <h3>TOTAL PRINTING FEE</h3>
+                                        <div class="rev-container">
+                                            <ul>
+                                                <li class="tot_print_fee">
+                                                    <strong>Printing Fee</strong>: <span>$00.00</span>
+                                                </li>
+                                            </ul>
+                                        </div>
+                                    </div>
+                                    <div class="row quantity">
+                                        <h3>QUANTITY</h3>
+                                        <div class="rev-container">
+                                            <div class="header">
+                                                <span>Size</span>
+                                                <span>Quantity</span>
+                                                <span>Unit Price</span>
+                                                <span>Total Price</span>
+                                            </div>
+
+                                            <div class="table"></div>
+
+                                            <div class="total-quantity">
+                                                <strong>Total Quantity:</strong> <span>6</span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="row setup-fee">
+                                        <h3>STANDARD SETUP FEE</h3>
+                                        <div class="rev-container">
+                                            <ul>
+                                                <li id="setup_fee">
+                                                    <strong>Setup Fee</strong>: <span>$70.00</span>
+                                                </li>
+                                            </ul>
+                                        </div>
+                                    </div>
+                                    <div class="row setup-fee">
+                                        <h3>TOTAL PRICE</h3>
+                                        <div class="rev-container total-price">
+                                            <ul>
+                                                <li id="price_total">
+                                                    <strong>Total Price</strong>: <span>$0.00</span>
+                                                </li>
+                                            </ul>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            @*<div class="review-prev">
+                                <a href="#" class="button prev" data-nav="prev">&lt; PREV</a>
+                            </div>*@
+                        </div>
+
+                        <div class="kits kit_4">
+                            <div class="option-set review" data-step="4">
+                                <div class="sub-title">Design Details</div>
+                                <div class="did">Design Id: <span>2015729155747</span></div>
+                                <div class="sizing-chart">
+                                    <div class="row design">
+                                        <h3>DESIGN</h3>
+                                        <div class="rev-container">
+                                            <ul>
+                                                <li class="category">
+                                                    <strong>Design Type</strong>: <span></span>
+                                                </li>
+                                                <li class="sku">
+                                                    <strong>Product Id</strong>: <span></span>
+                                                </li>
+                                                <li class="fabric">
+                                                    <strong>Body Fabric Type</strong>: <span></span>
+                                                </li>
+                                                <li class="print_type">
+                                                    @*<li class="print_type" style="display:none;">*@
+                                                    <strong>Printing Type</strong>: <span></span>
+                                                </li>
+                                            </ul>
+                                        </div>
+                                    </div>
+                                    <div class="row colors">
+                                        <h3>COLORS</h3>
+                                        <div class="rev-container">
+                                            <ul></ul>
+                                        </div>
+                                    </div>
+                                    <div class="row lettering">
+                                        <h3>ARTWORK</h3>
+                                        <div class="rev-container">
+                                            <ul></ul>
+                                        </div>
+                                    </div>
+                                    <div class="row setup-fee">
+                                        <h3>TOTAL PRINTING FEE</h3>
+                                        <div class="rev-container">
+                                            <ul>
+                                                <li class="tot_print_fee">
+                                                    <strong>Printing Fee</strong>: <span>$00.00</span>
+                                                </li>
+                                            </ul>
+                                        </div>
+                                    </div>
+                                    <div class="row quantity">
+                                        <h3>QUANTITY</h3>
+                                        <div class="rev-container">
+                                            <div class="header">
+                                                <span>Size</span>
+                                                <span>Quantity</span>
+                                                <span>Unit Price</span>
+                                                <span>Total Price</span>
+                                            </div>
+
+                                            <div class="table"></div>
+
+                                            <div class="total-quantity">
+                                                <strong>Total Quantity:</strong> <span>6</span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="row setup-fee">
+                                        <h3>STANDARD SETUP FEE</h3>
+                                        <div class="rev-container">
+                                            <ul>
+                                                <li id="setup_fee">
+                                                    <strong>Setup Fee</strong>: <span>$70.00</span>
+                                                </li>
+                                            </ul>
+                                        </div>
+                                    </div>
+                                    <div class="row setup-fee">
+                                        <h3>TOTAL PRICE</h3>
+                                        <div class="rev-container total-price">
+                                            <ul>
+                                                <li id="price_total_For_Kit4">
+                                                    <strong>Total Price</strong>: <span>$0.00</span>
+                                                </li>
+                                            </ul>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            @*<div class="review-prev">
+                                <a href="#" class="button prev" data-nav="prev">&lt; PREV</a>
+                            </div>*@
+                        </div>
+                        <div class="option-set ctas" data-step="4">
+                            <div class="buttons">
+                                  <div class="prev-next-wrapper" style="display: inline-block;">
+                                    <a href="#" class="button prev" data-nav="prev">&lt; PREV</a><a href="#" class="button next" data-nav="next">NEXT &gt;</a>
+                                </div>
+                                <!--  -->
+                                <br>
+                                <br>
+                                <a href="#" class="save button" data-save><span>SAVE TO MY LOCKER</span><img src="/images/button-ajax-spinner.gif" /></a>
+                                <a href="#" class="print button"><span>PRINT DESIGN</span><img src="/images/button-ajax-spinner.gif" /></a>
+
+                                <a href="@storeURL/cart/shoppingcart" id="btnCart" target="_ckcart" class="view button"><span>VIEW CART</span><img src="/images/button-ajax-spinner.gif" /></a>
+                            </div>
+                            <div class="garment-notes" id="customWarmUp"></div>
+                            <br />
+                            <div class="garment"><strong>Note:</strong> All orders are subject to review by the Art Department. Please attach your art/logo support files this will speed up the process</div>
+                        </div>
+
+
+                        @*new html for load price on all 5 kits*@
+
+
+                        <div class="kits kit_0">
+                            <div class="option-set sizing" data-step="3">
+                                <div class="sub-title"><span class="style">Men</span>'s Sizing Chart <span class="tabs"><a href="#" class="button mens active" data-style="Men">MEN'S</a><a href="#" class="button womens" data-style="Women">WOMEN'S</a></span></div>
+                                <div class="charts-wrapper">
+                                    <div class="charts">
+                                        <div class="sizing-chart mens">
+                                            <div class="row head">
+                                                <div class="col">Size</div>
+                                                <div class="col">Quantity</div>
+                                                <div class="col two">Minimum order quanity: <span data-min></span></div>
+                                            </div>
+                                            <div class="sizing-chart-optionsForkit_0"></div>
+                                        </div>
+                                        <div class="sizing-chart womens">
+                                            <div class="row head">
+                                                <div class="col">Size</div>
+                                                <div class="col">Quantity</div>
+                                                <div class="col two">Minimum order quanity: <span data-min></span></div>
+                                            </div>
+                                            <div class="sizing-chart-optionsForkit_0-women"></div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="notesForAdditionalRequest">
+                                    <div class="sub-title">Additional Notes/Requests:</div>
+                                    <textarea rows="4" cols="72" name="additional-notes" id="notes"></textarea>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="kits kit_1">
+                            <div class="option-set sizing" data-step="3">
+                                <div class="sub-title"><span class="style">Men</span>'s Sizing Chart For Shirt <span class="tabs"><a href="#" class="button mens active" data-style="Men">MEN'S</a><a href="#" class="button womens" data-style="Women">WOMEN'S</a></span></div>
+                                <div class="charts-wrapper">
+                                    <div class="charts">
+                                        <div class="sizing-chart mens">
+                                            <div class="row head">
+                                                <div class="col">Size</div>
+                                                <div class="col">Quantity</div>
+                                                <div class="col two">Minimum order quanity: <span data-min></span></div>
+                                            </div>
+                                            <div class="sizing-chart-optionsForkit_1"></div>
+                                        </div>
+                                        <div class="sizing-chart womens">
+                                            <div class="row head">
+                                                <div class="col">Size</div>
+                                                <div class="col">Quantity</div>
+                                                <div class="col two">Minimum order quanity: <span data-min></span></div>
+                                            </div>
+                                            <div class="sizing-chart-optionsForkit_1-women"></div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                            </div>
+
+                        </div>
+                        <div class="kits kit_OPTION2_SHORTS">
+                            <div class="option-set sizing" data-step="3">
+                                <div class="sub-title"><span class="style">Men</span>'s Sizing Chart For Shorts <span class="tabs"><a href="#" class="button mens active" data-style="Men">MEN'S</a><a href="#" class="button womens" data-style="Women">WOMEN'S</a></span></div>
+                                <div class="charts-wrapper">
+                                    <div class="charts">
+                                        <div class="sizing-chart mens">
+                                            <div class="row head">
+                                                <div class="col">Size</div>
+                                                <div class="col">Quantity</div>
+                                                <div class="col two">Minimum order quanity: <span data-min></span></div>
+                                            </div>
+                                            <div class="sizing-chart-kit_OPTION2_Shorts_Men"></div>
+                                        </div>
+                                        <div class="sizing-chart womens">
+                                            <div class="row head">
+                                                <div class="col">Size</div>
+                                                <div class="col">Quantity</div>
+                                                <div class="col two">Minimum order quanity: <span data-min></span></div>
+                                            </div>
+                                            <div class="sizing-chart-kit_OPTION2_Shorts_women"></div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="notesForAdditionalRequest">
+                                    <div class="sub-title">Additional Notes/Requests:</div>
+                                    <textarea rows="4" cols="72" name="additional-notes" id="notes"></textarea>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="kits kit_2">
+                            <div class="option-set sizing" data-step="3">
+                                <div class="sub-title"><span class="style">Men</span>'s Sizing Chart <span class="tabs"><a href="#" class="button mens active" data-style="Men">MEN'S</a><a href="#" class="button womens" data-style="Women">WOMEN'S</a></span></div>
+                                <div class="charts-wrapper">
+                                    <div class="charts">
+                                        <div class="sizing-chart mens">
+                                            <div class="row head">
+                                                <div class="col">Size</div>
+                                                <div class="col">Quantity</div>
+                                                <div class="col two">Minimum order quanity: <span data-min></span></div>
+                                            </div>
+                                            <div class="sizing-chart-optionsForkit_2"></div>
+                                        </div>
+                                        <div class="sizing-chart womens">
+                                            <div class="row head">
+                                                <div class="col">Size</div>
+                                                <div class="col">Quantity</div>
+                                                <div class="col two">Minimum order quanity: <span data-min></span></div>
+                                            </div>
+                                            <div class="sizing-chart-optionsForkit_2-women"></div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="notesForAdditionalRequest">
+                                    <div class="sub-title">Additional Notes/Requests:</div>
+                                    <textarea rows="4" cols="72" name="additional-notes" id="notes"></textarea>
+                                </div>
+                            </div>
+
+                        </div>
+
+                        @*<div class="kits kit_4 optionallInKit" data-step="2">
+                                <div class="preview-nav bottom-nav kits kit_4">
+                                    <a href="#" class="front active" data-view="_Front"><br>FRONT</a>
+                                    <a href="#" class="back" data-view="_Back"><br>BACK</a>
+                                    <a href="#" class="left" data-view="_Left"><br>LEFT</a>
+                                    <a href="#" class="right" data-view="_Right"><br>RIGHT</a>
+                                </div>
+
+                            </div>*@
+
+                        @*In Future, Shows frint back ,left rigt,in Quantities and Review section for OPTION 3 Shorts*@
+                        @*<div class="kits kit_4 optionallInKit" data-step="2">
+                                <div class="preview-nav1 kits kit_4" id="QuantityandSizesOption3ForShorts" style="display:none">
+                                    <a href="#" class="front active" data-view="_Front"><br>FRONT</a>
+                                    <a href="#" class="back" data-view="_Back"><br>BACK</a>
+                                    <a href="#" class="left" data-view="_Left"><br>LEFT</a>
+                                    <a href="#" class="right" data-view="_Right"><br>RIGHT</a>
+                                </div>
+                            </div>*@
+
+
+
+                        <div class="kits kit_3">
+                            <div class="option-set sizing" data-step="3">
+                                <div class="sub-title"><span class="style">Men</span>'s Sizing Chart For Shirt <span class="tabs"><a href="#" class="button mens active" data-style="Men">MEN'S</a><a href="#" class="button womens" data-style="Women">WOMEN'S</a></span></div>
+                                <div class="charts-wrapper">
+                                    <div class="charts">
+                                        <div class="sizing-chart mens">
+                                            <div class="row head">
+                                                <div class="col">Size</div>
+                                                <div class="col">Quantity</div>
+                                                <div class="col two">Minimum order quanity: <span data-min></span></div>
+                                            </div>
+                                            <div class="sizing-chart-optionsForkit_3"></div>
+                                        </div>
+                                        <div class="sizing-chart womens">
+                                            <div class="row head">
+                                                <div class="col">Size</div>
+                                                <div class="col">Quantity</div>
+                                                <div class="col two">Minimum order quanity: <span data-min></span></div>
+                                            </div>
+                                            <div class="sizing-chart-optionsForkit_3-women"></div>
+                                        </div>
+                                    </div>
+                                </div>
+                                @*<div class="notes">
+                                        <div class="sub-title">Additional Notes/Requests:</div>
+                                        <textarea name="additional-notes" id="notes"></textarea>
+                                    </div>*@
+                            </div>
+                        </div>
+                        <div class="kits kit_OPTION4_SHORTS">
+                            <div class="option-set sizing" data-step="3">
+                                <div class="sub-title"><span class="style">Men</span>'s Sizing Chart For Shorts <span class="tabs"><a href="#" class="button mens active" data-style="Men">MEN'S</a><a href="#" class="button womens" data-style="Women">WOMEN'S</a></span></div>
+                                <div class="charts-wrapper">
+                                    <div class="charts">
+                                        <div class="sizing-chart mens">
+                                            <div class="row head">
+                                                <div class="col">Size</div>
+                                                <div class="col">Quantity</div>
+                                                <div class="col two">Minimum order quanity: <span data-min></span></div>
+                                            </div>
+                                            <div class="sizing-chart-kit_OPTION4_Shorts_Men"></div>
+                                        </div>
+                                        <div class="sizing-chart womens">
+                                            <div class="row head">
+                                                <div class="col">Size</div>
+                                                <div class="col">Quantity</div>
+                                                <div class="col two">Minimum order quanity: <span data-min></span></div>
+                                            </div>
+                                            <div class="sizing-chart-kit_OPTION4_Shorts_women"></div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="notesForAdditionalRequest">
+                                    <div class="sub-title">Additional Notes/Requests:</div>
+                                    <textarea rows="4" cols="72" name="additional-notes" id="notes"></textarea>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="kits kit_4">
+                            <div class="option-set sizing" data-step="3">
+                                <div class="sub-title"><span class="style">Men</span>'s Sizing Chart <span class="tabs"><a href="#" class="button mens active" data-style="Men">MEN'S</a><a href="#" class="button womens" data-style="Women">WOMEN'S</a></span></div>
+                                <div class="charts-wrapper">
+                                    <div class="charts">
+                                        <div class="sizing-chart mens">
+                                            <div class="row head">
+                                                <div class="col">Size</div>
+                                                <div class="col">Quantity</div>
+                                                <div class="col two">Minimum order quanity: <span data-min></span></div>
+                                            </div>
+                                            <div class="sizing-chart-optionsForkit_4"></div>
+                                        </div>
+                                        <div class="sizing-chart womens">
+                                            <div class="row head">
+                                                <div class="col">Size</div>
+                                                <div class="col">Quantity</div>
+                                                <div class="col two">Minimum order quanity: <span data-min></span></div>
+                                            </div>
+                                            <div class="sizing-chart-optionsForkit_4-women"></div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="notesForAdditionalRequest">
+                                    <div class="sub-title">Additional Notes/Requests:</div>
+                                    <textarea rows="4" cols="72" name="additional-notes" id="notes"></textarea>
+                                </div>
+                            </div>
+
+                        </div>
+
+
+                        @*new html for kit pricing*@
+
+                        <!-- keep this block at the bottom, it applies to multiple sections -->
+                        <div class="option-set pricing">
+                            <div class="sub-title yellow">Lettering Price:</div>
+                            <div class="pricing-tables">
+                                pricing tables
+                            </div>
+                        </div>
+                    </div>
+                    <div class="save-next-wrapper">
+                        <div class="persistent-nav">
+                            <div class="share">
+                                @*2-3-2019   Share on Facebook with Image Url and Web site Url*@
+                                @*<span class='st_facebook_large' displayText='Facebook' st_url="@thisUrl" st_image=""></span>*@  
+                                @*<input type="submit" value="FB testing" onclick="return submitAndShare();">
+                                @*<button type="button" class="btn btn-primary fb" onclick="return submitAndShare('@thisUrl');"><span><i class="fab fa-facebook-f"></i></span></button>*@                                                        
+                                       
+                                 <button type="button" class="btn btn-primary fb" onclick="shareOverrideOGMeta('@thisUrl','Cliff Keen Uniform Builder','')"><span><i class="fab fa-facebook-f"></i></span></button>
+                                @*<span class='st_twitter_large' displayText='Tweet' st_url="@thisUrl" st_image=""></span>*@                               
+                                 <button type="button" class="btn btn-primary twitter" onclick="TwitterShare1('@thisUrl');" value="Twitter"><i class="fab fa-twitter"></i></button>
+                                @*<span class='st_email_large' displayText='Email' st_url="@thisUrl" st_image=""></span>*@
+                                <button type="button" class="btn btn-primary mail" value="Email" onclick="GmailShare('@thisUrl');" data-toggle="tooltip" data-placement="top" title="Gmail"><i class="fas fa-envelope"></i></button>
+                            </div>                     
+                            <div class="prev-next">
+                                <a href="#" class="save" data-save="">SAVE TO MY LOCKER</a>
+                                @*//19/2/2019
+                                    //facebook share*@
+                                <a href="#" class="FacebookShare" name="fabshare"></a>
+                                @*//Twitter share*@
+                                <a href="#" class="TwitterShare" name=""></a>
+                                @*//Email share*@
+                                <a href="#" class="EmailShare" name=""></a>
+                            </div>
+                        </div>
+                        @*21/2/2019*@
+                        @*start*@
+                        <button type="button" class="btn save-share" id="SaveShareButton">
+                            save and share
+                            <i class="fab fa-facebook-f"></i>
+                            <i class="fab fa-twitter"></i>
+                            <i class="far fa-envelope"></i>
+                        </button>
+                        <a href="#" class="CheckLogin" title=""></a>
+                        <a href="#" class="CheckLoginInKit" title=""></a>
+                        @*End*@
+
+                        <div class="prev-next-wrapper">
+                            <a href="#" class="button prev" data-nav="prev">&lt; PREV</a><a href="#" class="button next" data-nav="next">NEXT &gt;</a>
+                        </div>
+                    </div>
+                    <div id="AppendNotes"></div>
+                </div>
+
+                <div class="review-ui">
+                    <div class="share" style="display:none">
+                        <!-- <span>Share:</span> <a href="#" class="facebook"></a> <a href="#" class="twitter"></a> <a href="#" class="email"></a>  -->
+                        <!-- Go to www.addthis.com/dashboard to customize your tools -->
+                        <!-- <div class="addthis_custom_sharing"></div> -->
+                        <span class='st_facebook_large' displayText='Facebook' st_url="http://cliffkeen.com"></span>
+                        <span class='st_twitter_large' displayText='Tweet' st_url="http://cliffkeen.com"></span>
+                        @*<span class='st_email_large' displayText='Email' st_url="http://cliffkeen.com"></span>*@
+                        <span class='st_email_large' displayText='Email' st_url="@thisUrl"></span>
+                    </div>
+                    <div class="upload">
+                        @*<div class="notes mockupnotes"><strong>Note:</strong> Mockup is not to scale</div>*@
+                        <div style="display: flex;width: 100%;">
+                            <h3>Support Files</h3>
+                            <div style="margin-left: auto; font-size: 13px; font-weight: 600;">
+                                Original Order No: <input id="OriginalOrderNo" type="text" name="firstname"><br>
+                            </div>
+                        </div>
+                        
+                        <p><font size="3">If you have vector files associated with your design, please create a zip file to include with your order and attach below.</font></p>
+                       
+                        <div class="zip-link"></div>
+                        <br/>
+                        <div>
+                            <input type="file" name="upload" id="upload-zip" value="Upload Zip" accept="application/zip,application/x-zip,application/x-zip-compressed" />
+                        </div>
+                    </div>
+                    <div class="disclaimers">
+                    </div>
+                </div>
+
+                <div class="footer-clear">&nbsp;</div>
+            </div>
+        </div>
+
+        <div class="modal dealer">
+            <div class="wrap">
+                <div class="header">Email your design to an authorized Cliff Keen Dealer</div>
+                <div class="form">
+                    <div class="column left">
+                        <div class="required">Your Name:</div>
+                        <div class="required">Your email address:</div>
+                        <div class="required">Dealer information:<span>*</span></div>
+                    </div>
+                    <div class="column right user-info">
+                        <div class="name">John Doe</div>
+                        <div class="email">johndoe@example.com</div>
+                        <div><input type="text" class="required" name="dealer-email" id="dealer-email" style="width:217px;" /></div>
+                    </div>
+                    <div class="column left">
+                        <div class="required">If you do not know your dealer<input type="checkbox" name="cliffkeen_checkbox" id="cliffkeen_checkbox" style="margin-left:46px"><br /> Please check the box: </div>
+                    </div>
+                    <div class="column right user-info">
+                        <div>
+                            <input type="text" value="sales@cliffkeen.com" readonly="readonly" name="cliffkeen-email" style="width:239px" id="cliffkeen-email" />
+                        </div>
+                    </div>
+                    <div class="column left">
+                        <div class="required">Notes:</div>
+                    </div>
+
+                    <div class="column right">
+                        <div><textarea name="note" id="EmailNotes"></textarea></div>
+                    </div>
+                    <div class="doublewide alert">(* Required field)</div>
+                    <div class="doublewide buttons"><input id="SubmitEmail" type="button" value="SUBMIT" class="submit" /> 
+                      @*11/3/2019  
+                       Created By Anurag
+                       Start
+                       *@
+                     @*<input type="button" value="test" class="test" />*@
+                    @*End*@                    
+                    <input type="button" value="CANCEL" class="cancel close" /></div>
+                </div>
+            </div>
+        </div>
+
+        <!-- change "ok" to "yes-no" to change button config
+        add .active to .modal and .modal-bknd
+        -->
+        <div class="modal error ok">
+            <div class="wrap">
+                <div class="header">&nbsp;</div>
+                <div class="copy">General Error</div>
+                <div class="doublewide buttons ok"><a href="#" class="close button" id="okBtn">OK</a></div>
+                <div class="doublewide buttons yes-no"><a href="#" class="close yes button">YES</a><a href="#" class="close button no">NO</a></div>
+            </div>
+        </div>
+
+        <div class="modal expand">
+            <a href="#" class="button close" id="zoomClick">X</a>
+            <div class="content">
+
+            </div>
+        </div>
+
+        <div class="modal stock-logos">
+            <div class="logo-container">
+                <div class="buttons">
+                    <a href="#" class="button tab" id="one-color">SINGLE COLOR</a>
+                    <a href="#" class="button tab light" id="two-color">TWO COLOR</a>
+                    <a href="#" class="button tab light" id="three-color">THREE COLOR</a>
+
+                    <a href="#" class="button close">X</a>
+                </div>
+                <div class="logos">
+                    <ul id="one-color" class="one-color active">
+                        <li data-svg="1/N 01 KNIGHT"><div><img src="/images/ajax-loader-small.gif" /></div><span>1</span></li>
+                        <li data-svg="1/N 02 KNIGHT"><div><img src="/images/ajax-loader-small.gif" /></div><span>2</span></li>
+                        <li data-svg="1/N 03 BEAR PAW"><div><img src="/images/ajax-loader-small.gif" /></div><span>3</span></li>
+                        <li data-svg="1/N 04 BEAR"><div><img src="/images/ajax-loader-small.gif" /></div><span>4</span></li>
+                        <li data-svg="1/N 05 CARDINAL"><div><img src="/images/ajax-loader-small.gif" /></div><span>5</span></li>
+                        <li data-svg="1/N 06 TOMAHAWK"><div><img src="/images/ajax-loader-small.gif" /></div><span>6</span></li>
+                        <li data-svg="1/N 07 INDIAN"><div><img src="/images/ajax-loader-small.gif" /></div><span>7</span></li>
+                        <li data-svg="1/N 08 INDIAN CHIEF"><div><img src="/images/ajax-loader-small.gif" /></div><span>8</span></li>
+                        <li data-svg="1/N 09 BEE"><div><img src="/images/ajax-loader-small.gif" /></div><span>9</span></li>
+                        <li data-svg="1/N 10 SKULL"><div><img src="/images/ajax-loader-small.gif" /></div><span>10</span></li>
+                        <li data-svg="1/N 11 RAM"><div><img src="/images/ajax-loader-small.gif" /></div><span>11</span></li>
+                        <li data-svg="1/N 12 BULLDOG"><div><img src="/images/ajax-loader-small.gif" /></div><span>12</span></li>
+                        <li data-svg="1/N 13 BULLDOG"><div><img src="/images/ajax-loader-small.gif" /></div><span>13</span></li>
+                        <li data-svg="1/N 14 HUSKY"><div><img src="/images/ajax-loader-small.gif" /></div><span>14</span></li>
+                        <li data-svg="1/N 15 WOLF"><div><img src="/images/ajax-loader-small.gif" /></div><span>15</span></li>
+                        <li data-svg="1/N 16 PIRATE"><div><img src="/images/ajax-loader-small.gif" /></div><span>16</span></li>
+                        <li data-svg="1/N 17 TROJAN"><div><img src="/images/ajax-loader-small.gif" /></div><span>17</span></li>
+                        <li data-svg="1/N 18 SPARTAN"><div><img src="/images/ajax-loader-small.gif" /></div><span>18</span></li>
+                        <li data-svg="1/N 19 CLOVER"><div><img src="/images/ajax-loader-small.gif" /></div><span>19</span></li>
+                        <li data-svg="1/N 20 FUZZY PAW"><div><img src="/images/ajax-loader-small.gif" /></div><span>20</span></li>
+                        <li data-svg="1/N 21 VIKING"><div><img src="/images/ajax-loader-small.gif" /></div><span>21</span></li>
+                        <li data-svg="1/N 22 VIKING"><div><img src="/images/ajax-loader-small.gif" /></div><span>22</span></li>
+                        <li data-svg="1/N 23 LONGHORN"><div><img src="/images/ajax-loader-small.gif" /></div><span>23</span></li>
+                        <li data-svg="1/N 24 LION"><div><img src="/images/ajax-loader-small.gif" /></div><span>24</span></li>
+                        <li data-svg="1/N 25 LION"><div><img src="/images/ajax-loader-small.gif" /></div><span>25</span></li>
+                        <li data-svg="1/N 26 PAW"><div><img src="/images/ajax-loader-small.gif" /></div><span>26</span></li>
+                        <li data-svg="1/N 27 TIGER"><div><img src="/images/ajax-loader-small.gif" /></div><span>27</span></li>
+                        <li data-svg="1/N 28 COUGAR"><div><img src="/images/ajax-loader-small.gif" /></div><span>28</span></li>
+                        <li data-svg="1/N 29 CAT"><div><img src="/images/ajax-loader-small.gif" /></div><span>29</span></li>
+                        <li data-svg="1/N 30 PANTHER"><div><img src="/images/ajax-loader-small.gif" /></div><span>30</span></li>
+                        <li data-svg="1/N 31 PATRIOT"><div><img src="/images/ajax-loader-small.gif" /></div><span>31</span></li>
+                        <li data-svg="1/N 32 EAGLE"><div><img src="/images/ajax-loader-small.gif" /></div><span>32</span></li>
+                        <li data-svg="1/N 33 EAGLE"><div><img src="/images/ajax-loader-small.gif" /></div><span>33</span></li>
+                        <li data-svg="1/N 34 EAGLE"><div><img src="/images/ajax-loader-small.gif" /></div><span>34</span></li>
+                        <li data-svg="1/N 35 FALCON"><div><img src="/images/ajax-loader-small.gif" /></div><span>35</span></li>
+                        <li data-svg="1/N 36 DEVIL"><div><img src="/images/ajax-loader-small.gif" /></div><span>36</span></li>
+                        <li data-svg="1/N 37 MUSTANG"><div><img src="/images/ajax-loader-small.gif" /></div><span>37</span></li>
+                        <li data-svg="1/N 38 MUSTANG"><div><img src="/images/ajax-loader-small.gif" /></div><span>38</span></li>
+                        <li data-svg="1/N 39 WRESTLERS"><div><img src="/images/ajax-loader-small.gif" /></div><span>39</span></li>
+                        <li data-svg="1/N 40 WRESTLERS"><div><img src="/images/ajax-loader-small.gif" /></div><span>40</span></li>
+                        <li data-svg="1/N 41-BEAR"><div><img src="/images/ajax-loader-small.gif" /></div><span>41</span></li>
+                        <li data-svg="1/N 42-TIGER"><div><img src="/images/ajax-loader-small.gif" /></div><span>42</span></li>
+                        <li data-svg="1/N 43-KNIGHT WITH SHIELD"><div><img src="/images/ajax-loader-small.gif" /></div><span>43</span></li>
+                        <li data-svg="1/N 44 PATRIOT"><div><img src="/images/ajax-loader-small.gif" /></div><span>44</span></li>
+                        <li data-svg="1/N 45-VIKING WITH HAMMER"><div><img src="/images/ajax-loader-small.gif" /></div><span>45</span></li>
+                        <li data-svg="1/N 46-RAM"><div><img src="/images/ajax-loader-small.gif" /></div><span>46</span></li>
+                        <li data-svg="1/N 47-SKULL"><div><img src="/images/ajax-loader-small.gif" /></div><span>47</span></li>
+                    </ul>
+                    <ul id="two-color" class="two-color">
+                        <li data-svg="2/N 01 KNIGHT"><div><img src="/images/ajax-loader-small.gif" /></div><span>1</span></li>
+                        <li data-svg="2/N 02 KNIGHT"><div><img src="/images/ajax-loader-small.gif" /></div><span>2</span></li>
+                        <li data-svg="2/N 03 BEAR PAW"><div><img src="/images/ajax-loader-small.gif" /></div><span>3</span></li>
+                        <li data-svg="2/N 04 BEAR"><div><img src="/images/ajax-loader-small.gif" /></div><span>4</span></li>
+                        <li data-svg="2/N 05 CARDINAL"><div><img src="/images/ajax-loader-small.gif" /></div><span>5</span></li>
+                        <li data-svg="2/N 06 TOMAHAWK"><div><img src="/images/ajax-loader-small.gif" /></div><span>6</span></li>
+                        <li data-svg="2/N 07 INDIAN"><div><img src="/images/ajax-loader-small.gif" /></div><span>7</span></li>
+                        <li data-svg="2/N 08 INDIAN CHIEF"><div><img src="/images/ajax-loader-small.gif" /></div><span>8</span></li>
+                        <li data-svg="2/N 09 BEE"><div><img src="/images/ajax-loader-small.gif" /></div><span>9</span></li>
+                        <li data-svg="2/N 10 SKULL"><div><img src="/images/ajax-loader-small.gif" /></div><span>10</span></li>
+                        <li data-svg="2/N 11 RAM"><div><img src="/images/ajax-loader-small.gif" /></div><span>11</span></li>
+                        <li data-svg="2/N 12 BULLDOG"><div><img src="/images/ajax-loader-small.gif" /></div><span>12</span></li>
+                        <li data-svg="2/N 13 BULLDOG"><div><img src="/images/ajax-loader-small.gif" /></div><span>13</span></li>
+                        <li data-svg="2/N 14 HUSKY"><div><img src="/images/ajax-loader-small.gif" /></div><span>14</span></li>
+                        <li data-svg="2/N 15 WOLF"><div><img src="/images/ajax-loader-small.gif" /></div><span>15</span></li>
+                        <li data-svg="2/N 16 PIRATE"><div><img src="/images/ajax-loader-small.gif" /></div><span>16</span></li>
+                        <li data-svg="2/N 17 TROJAN"><div><img src="/images/ajax-loader-small.gif" /></div><span>17</span></li>
+                        <li data-svg="2/N 18 SPARTAN"><div><img src="/images/ajax-loader-small.gif" /></div><span>18</span></li>
+                        <li data-svg="2/N 19 CLOVER"><div><img src="/images/ajax-loader-small.gif" /></div><span>19</span></li>
+                        <li data-svg="2/N 20 FUZZY PAW"><div><img src="/images/ajax-loader-small.gif" /></div><span>20</span></li>
+                        <li data-svg="2/N 21 VIKING"><div><img src="/images/ajax-loader-small.gif" /></div><span>21</span></li>
+                        <li data-svg="2/N 22 VIKING"><div><img src="/images/ajax-loader-small.gif" /></div><span>22</span></li>
+                        <li data-svg="2/N 23 LONGHORN"><div><img src="/images/ajax-loader-small.gif" /></div><span>23</span></li>
+                        <li data-svg="2/N 24 LION"><div><img src="/images/ajax-loader-small.gif" /></div><span>24</span></li>
+                        <li data-svg="2/N 25 LION"><div><img src="/images/ajax-loader-small.gif" /></div><span>25</span></li>
+                        <li data-svg="2/N 26 PAW"><div><img src="/images/ajax-loader-small.gif" /></div><span>26</span></li>
+                        <li data-svg="2/N 27 TIGER"><div><img src="/images/ajax-loader-small.gif" /></div><span>27</span></li>
+                        <li data-svg="2/N 28 COUGAR"><div><img src="/images/ajax-loader-small.gif" /></div><span>28</span></li>
+                        <li data-svg="2/N 29 CAT"><div><img src="/images/ajax-loader-small.gif" /></div><span>29</span></li>
+                        <li data-svg="2/N 30 PANTHER"><div><img src="/images/ajax-loader-small.gif" /></div><span>30</span></li>
+                        <li data-svg="2/N 31 PATRIOT"><div><img src="/images/ajax-loader-small.gif" /></div><span>31</span></li>
+                        <li data-svg="2/N 32 EAGLE"><div><img src="/images/ajax-loader-small.gif" /></div><span>32</span></li>
+                        <li data-svg="2/N 33 EAGLE"><div><img src="/images/ajax-loader-small.gif" /></div><span>33</span></li>
+                        <li data-svg="2/N 34 EAGLE"><div><img src="/images/ajax-loader-small.gif" /></div><span>34</span></li>
+                        <li data-svg="2/N 35 FALCON"><div><img src="/images/ajax-loader-small.gif" /></div><span>35</span></li>
+                        <li data-svg="2/N 36 DEVIL"><div><img src="/images/ajax-loader-small.gif" /></div><span>36</span></li>
+                        <li data-svg="2/N 37 MUSTANG"><div><img src="/images/ajax-loader-small.gif" /></div><span>37</span></li>
+                        <li data-svg="2/N 38 MUSTANG"><div><img src="/images/ajax-loader-small.gif" /></div><span>38</span></li>
+                        <li data-svg="2/N 39 WRESTLERS"><div><img src="/images/ajax-loader-small.gif" /></div><span>39</span></li>
+                        <li data-svg="2/N 40 WRESTLERS"><div><img src="/images/ajax-loader-small.gif" /></div><span>40</span></li>
+                        <li data-svg="2/N 41-BEAR"><div><img src="/images/ajax-loader-small.gif" /></div><span>41</span></li>
+                        <li data-svg="2/N 42-TIGER"><div><img src="/images/ajax-loader-small.gif" /></div><span>42</span></li>
+                        <li data-svg="2/N 43-KNIGHT WITH SHIELD"><div><img src="/images/ajax-loader-small.gif" /></div><span>43</span></li>
+                        <li data-svg="2/N 44 PATRIOT"><div><img src="/images/ajax-loader-small.gif" /></div><span>44</span></li>
+                        <li data-svg="2/N 45-VIKING WITH HAMMER"><div><img src="/images/ajax-loader-small.gif" /></div><span>45</span></li>
+                        <li data-svg="2/N 46-RAM"><div><img src="/images/ajax-loader-small.gif" /></div><span>46</span></li>
+                        <li data-svg="2/N 47-SKULL"><div><img src="/images/ajax-loader-small.gif" /></div><span>47</span></li>
+                    </ul>
+                    <ul id="three-color" class="three-color">
+
+                        <li data-svg="3/N 01 KNIGHT"><div><img src="/images/ajax-loader-small.gif" /></div><span>1</span></li>
+                        <li data-svg="3/N 02 KNIGHT"><div><img src="/images/ajax-loader-small.gif" /></div><span>2</span></li>
+                        <li data-svg="3/N 03 BEAR PAW"><div><img src="/images/ajax-loader-small.gif" /></div><span>3</span></li>
+                        <li data-svg="3/N 04 BEAR"><div><img src="/images/ajax-loader-small.gif" /></div><span>4</span></li>
+                        <li data-svg="3/N 05 CARDINAL"><div><img src="/images/ajax-loader-small.gif" /></div><span>5</span></li>
+                        <li data-svg="3/N 06 TOMAHAWK"><div><img src="/images/ajax-loader-small.gif" /></div><span>6</span></li>
+                        <li data-svg="3/N 07 INDIAN"><div><img src="/images/ajax-loader-small.gif" /></div><span>7</span></li>
+                        <li data-svg="3/N 08 INDIAN CHIEF"><div><img src="/images/ajax-loader-small.gif" /></div><span>8</span></li>
+                        <li data-svg="3/N 09 BEE"><div><img src="/images/ajax-loader-small.gif" /></div><span>9</span></li>
+                        <li data-svg="3/N 10 SKULL"><div><img src="/images/ajax-loader-small.gif" /></div><span>10</span></li>
+                        <li data-svg="3/N 11 RAM"><div><img src="/images/ajax-loader-small.gif" /></div><span>11</span></li>
+                        <li data-svg="3/N 12 BULLDOG"><div><img src="/images/ajax-loader-small.gif" /></div><span>12</span></li>
+                        <li data-svg="3/N 13 BULLDOG"><div><img src="/images/ajax-loader-small.gif" /></div><span>13</span></li>
+                        <li data-svg="3/N 14 HUSKY"><div><img src="/images/ajax-loader-small.gif" /></div><span>14</span></li>
+                        <li data-svg="3/N 15 WOLF"><div><img src="/images/ajax-loader-small.gif" /></div><span>15</span></li>
+                        <li data-svg="3/N 16 PIRATE"><div><img src="/images/ajax-loader-small.gif" /></div><span>16</span></li>
+                        <li data-svg="3/N 17 TROJAN"><div><img src="/images/ajax-loader-small.gif" /></div><span>17</span></li>
+                        <li data-svg="3/N 18 SPARTAN"><div><img src="/images/ajax-loader-small.gif" /></div><span>18</span></li>
+                        <li data-svg="3/N 19 CLOVER"><div><img src="/images/ajax-loader-small.gif" /></div><span>19</span></li>
+                        <li data-svg="3/N 20 FUZZY PAW"><div><img src="/images/ajax-loader-small.gif" /></div><span>20</span></li>
+                        <li data-svg="3/N 21 VIKING"><div><img src="/images/ajax-loader-small.gif" /></div><span>21</span></li>
+                        <li data-svg="3/N 22 VIKING"><div><img src="/images/ajax-loader-small.gif" /></div><span>22</span></li>
+                        <li data-svg="3/N 23 LONGHORN"><div><img src="/images/ajax-loader-small.gif" /></div><span>23</span></li>
+                        <li data-svg="3/N 24 LION"><div><img src="/images/ajax-loader-small.gif" /></div><span>24</span></li>
+                        <li data-svg="3/N 25 LION"><div><img src="/images/ajax-loader-small.gif" /></div><span>25</span></li>
+                        <li data-svg="3/N 26 PAW"><div><img src="/images/ajax-loader-small.gif" /></div><span>26</span></li>
+                        <li data-svg="3/N 27 TIGER"><div><img src="/images/ajax-loader-small.gif" /></div><span>27</span></li>
+                        <li data-svg="3/N 28 COUGAR"><div><img src="/images/ajax-loader-small.gif" /></div><span>28</span></li>
+                        <li data-svg="3/N 29 CAT"><div><img src="/images/ajax-loader-small.gif" /></div><span>29</span></li>
+                        <li data-svg="3/N 30 PANTHER"><div><img src="/images/ajax-loader-small.gif" /></div><span>30</span></li>
+                        <li data-svg="3/N 31 PATRIOT"><div><img src="/images/ajax-loader-small.gif" /></div><span>31</span></li>
+                        <li data-svg="3/N 32 EAGLE"><div><img src="/images/ajax-loader-small.gif" /></div><span>32</span></li>
+                        <li data-svg="3/N 33 EAGLE"><div><img src="/images/ajax-loader-small.gif" /></div><span>33</span></li>
+                        <li data-svg="3/N 34 EAGLE"><div><img src="/images/ajax-loader-small.gif" /></div><span>34</span></li>
+                        <li data-svg="3/N 35 FALCON"><div><img src="/images/ajax-loader-small.gif" /></div><span>35</span></li>
+                        <li data-svg="3/N 36 DEVIL"><div><img src="/images/ajax-loader-small.gif" /></div><span>36</span></li>
+                        <li data-svg="3/N 37 MUSTANG"><div><img src="/images/ajax-loader-small.gif" /></div><span>37</span></li>
+                        <li data-svg="3/N 38 MUSTANG"><div><img src="/images/ajax-loader-small.gif" /></div><span>38</span></li>
+                        <li data-svg="3/N 39 WRESTLERS"><div><img src="/images/ajax-loader-small.gif" /></div><span>39</span></li>
+                        <li data-svg="3/N 40 WRESTLERS"><div><img src="/images/ajax-loader-small.gif" /></div><span>40</span></li>
+                        <li data-svg="3/N 41-BEAR"><div><img src="/images/ajax-loader-small.gif" /></div><span>41</span></li>
+                        <li data-svg="3/N 42-TIGER"><div><img src="/images/ajax-loader-small.gif" /></div><span>42</span></li>
+                        <li data-svg="3/N 43-KNIGHT WITH SHIELD"><div><img src="/images/ajax-loader-small.gif" /></div><span>43</span></li>
+                        <li data-svg="3/N 44 PATRIOT"><div><img src="/images/ajax-loader-small.gif" /></div><span>44</span></li>
+                        <li data-svg="3/N 45-VIKING WITH HAMMER"><div><img src="/images/ajax-loader-small.gif" /></div><span>45</span></li>
+                        <li data-svg="3/N 46-RAM"><div><img src="/images/ajax-loader-small.gif" /></div><span>46</span></li>
+                        <li data-svg="3/N 47-SKULL"><div><img src="/images/ajax-loader-small.gif" /></div><span>47</span></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <div class="modal-bknd"></div>
+
+
+        <div id="svg_templates">
+            <span class="fonts">
+                <span data-value="aachen" style="font-family:aachen">Aachen</span>
+                <span data-value="americana_bt" style="font-family:americana_bt">Americana BT</span>
+                <span data-value="athletic" style="font-family:athletic" selected="selected">ATHLETIC</span>
+                <span data-value="yearbook_cg_solidregular" style="font-family:yearbook_cg_solidregular">CG Yearbook</span>
+                <span data-value="copperplate_gothic" style="font-family:copperplate_gothic">Copperplate Gothic</span>
+                <span data-value="eight_track" style="font-family:eight_track">Eight Track</span>
+                <span data-value="eurostilebold" style="font-family:eurostilebold">Eurostile</span>
+                <span data-value="freshmannormal" style="font-family:freshmannormal">Freshman Normal</span>
+                <span data-value="geo_slab" style="font-family:geo_slab">Geo Slab</span>
+                <span data-value="impact" style="font-family:impact">Impact</span>
+                <span data-value="hobo_bt" style="font-family:hobo_bt">Hobo BT</span>
+                <span data-value="old_english" style="font-family:old_english">Old English</span>
+                <span data-value="reservoirgrunge" style="font-family:reservoirgrunge">Reservoir Grunge</span>
+                <span data-value="square_slabserif" style="font-family:square_slabserif">Square Slabserif</span>
+                <span data-value="steelwolf" style="font-family:steelwolf">Steelwolf</span>
+                <span data-value="superstar_m54" style="font-family:superstar_m54">Superstar M54</span>
+                <span data-value="times_new_roman" style="font-family:times_new_roman">Times New Roman</span>
+            </span>
+            <div id="svg_nopath">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 200" preserveAspectRatio="none"
+                     xmlns:xlink="http://www.w3.org/1999/xlink" id="tempId">
+                    <g data-type="rotategroup">
+                        <g data-type="textbounds">
+                            <text data-style="stroketxt" data-type="stroketxt" x="50%" y="50%" text-anchor="middle" style="font-family:athletic; font-style:normal; font-weight:normal;
+						stroke:#000000;stroke-width:1;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:3;stroke-opacity:1;">
+                            </text>
+                            <text data-style="filltxt" data-type="filltxt" x="50%" y="50%" text-anchor="middle" style="font-family:athletic; font-style:normal; font-weight:normal;
+					fill:#f00;fill-opacity:1;">
+                            </text>
+                        </g>
+                    </g>
+                    <g fill="rgba(255,0,0,0)">
+                        <path class="outlines" d="M0,0 20,0 20,10 0,10 0,0"></path>
+                    </g>
+                </svg>
+            </div>
+            @*New layer for Canvas Integration*@
+            <div id="CanvasLayerTemplate">
+                <div id="paletteLayerTextIndex" class="text_layer">
+                    <span class="title"></span>
+                    <span class="text"></span>
+                    <span class="move_up"></span>
+                    <span class="move_down"></span>
+                    <span class="delete"></span>
+                    <div class="panel">
+                        <div class="mask-menu">
+                            <h4>Panel</h4>
+                            <select class="mask-panel"></select>
+                        </div>
+                        <div class="font-menu">
+                            <h4>Font</h4>
+                            <select class="font-fam">
+                                <option value="aachen" style="font-family:aachen">Aachen</option>
+                                <option value="americana_bt" style="font-family:americana_bt">Americana BT</option>
+                                <option value="athletic" style="font-family:athletic" selected="selected">ATHLETIC</option>
+                                <option value="yearbook_cg_solidregular" style="font-family:yearbook_cg_solidregular" selected="selected">CG Yearbook</option>
+                                <option value="copperplate_gothic" style="font-family:copperplate_gothic">Copperplate Gothic</option>
+                                <option value="eight_track" style="font-family:eight_track">Eight Track</option>
+                                <option value="eurostilebold" style="font-family:eurostilebold">Eurostile</option>
+                                <option value="freshmannormal" style="font-family:freshmannormal">Freshman Normal</option>
+                                <option value="geo_slab" style="font-family:geo_slab">Geo Slab</option>
+                                <option value="impact" style="font-family:impact">Impact</option>
+                                <option value="hobo_bt" style="font-family:hobo_bt">Hobo BT</option>
+                                <option value="old_english" style="font-family:old_english">Old English</option>
+                                <option value="reservoirgrunge" style="font-family:reservoirgrunge">Reservoir Grunge</option>
+                                <option value="square_slabserif" style="font-family:square_slabserif">Square Slabserif</option>
+                                <option value="steelwolf" style="font-family:steelwolf">Steelwolf</option>
+                                <option value="superstar_m54" style="font-family:superstar_m54">Superstar M54</option>
+                                <option value="times_new_roman" style="font-family:times_new_roman">Times New Roman</option>
+                            </select>
+                        </div>
+                        <div class="width25">
+                            <h4>Text Color</h4> <span class="text-color swatch-container"></span>
+                        </div>
+                        <div class="width25">
+                            <h4>Outline Size</h4> <span class="btn-updown"><span class="btn-up stroke-up"></span><span class="btn-down stroke-down"></span></span>
+                        </div>
+                        <div class="width25">
+                            <h4>Outline Color</h4> <span class="stroke-color swatch-container"></span>
+                        </div>
+
+                        <div class="width50">
+                            <h4>Rotation</h4> <div class="sliders rotation-slider"></div>
+                        </div>
+                        <div class="width25">
+                            <h4>Opacity</h4> <div class="sliders opacity-slider"></div>
+                        </div>
+                        <div class="width50 noborder">
+                            <h4>Shapes</h4>
+                            <select class="layout-change">
+                                <option value="straight" checked>STRAIGHT</option>
+                                <option value="staggered">STAGGERED</option>
+                                <option value="bowtie">BOWTIE</option>
+                                <option value="pennant">PENNANT</option>
+                                <option value="vertical">VERTICAL</option>
+                                <option value="bookends">BOOK ENDS</option>
+                                <option value="stdarc">STD. ARC</option>
+                                <option value="revarc">REV. ARC</option>
+                                <option value="verticalarch">VERTICAL ARCH</option>
+                                <option value="bridge">BRIDGE</option>
+                                <option value="diagonal">DIAGONAL</option>
+                                <option value="reversearch">REVERSE ARCH</option>
+                            </select>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+            @*End*@
+
+            <div id="imageLayerTemplate">
+                <div id="paletteLayerImageIndex" class="image_layer">
+                    <span class="title"></span>
+                    <span class="text"></span>
+                    <span class="move_up"></span>
+                    <span class="move_down"></span>
+                    <span class="delete"></span>
+                    <div class="panel">
+                        <div class="mask-menu">
+                            <h4>Panel</h4>
+                            <select class="mask-panel"></select>
+                        </div>
+                        <div class="width50">
+                            <h4>Rotation</h4> <div class="sliders rotation-slider"></div>
+                        </div>
+                        <div class="width50">
+                            <h4>Opacity</h4> <div class="sliders opacity-slider"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div id="logoLayerTemplate">
+                <div id="paletteLayerLogoIndex" class="logo_layer">
+                    <span class="title"></span>
+                    <span class="text"></span>
+                    <span class="move_up"></span>
+                    <span class="move_down"></span>
+                    <span class="delete"></span>
+                    <div class="panel">
+                        <div class="mask-menu">
+                            <h4>Panel</h4>
+                            <select class="mask-panel"></select>
+                        </div>
+                        <div class="flip-menu">
+                            <h4>Flip Art</h4>
+                            <input type="checkbox" class="art-flip" />
+                        </div>
+                        <div class="width50">
+                            <h4>Rotation</h4> <div class="sliders rotation-slider"></div>
+                        </div>
+                        <div class="width50">
+                            <h4>Opacity</h4> <div class="sliders opacity-slider"></div>
+                        </div>
+                        <div class="width25 background">
+                            <h4>Area 1 Color</h4> <span class="area1-color swatch-container"></span>
+                        </div>
+                        <div class="width25 detail">
+                            <h4>Area 2 Color</h4> <span class="area2-color swatch-container"></span>
+                        </div>
+                        <div class="width25 outline">
+                            <h4>Area 3 Color</h4> <span class="area3-color swatch-container"></span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div id="textLayerTemplate">
+                <div id="paletteLayerTextIndex" class="text_layer">
+                    <span class="title"></span>
+                    <span class="text"></span>
+                    <span class="move_up"></span>
+                    <span class="move_down"></span>
+                    <span class="delete"></span>
+                    <div class="panel">
+                        <div class="mask-menu">
+                            <h4>Panel</h4>
+                            <select class="mask-panel"></select>
+                        </div>
+                        <div class="font-menu">
+                            <h4>Font</h4>
+                            <select class="font-fam">
+                                <option value="aachen" style="font-family:aachen">Aachen</option>
+                                <option value="americana_bt" style="font-family:americana_bt">Americana BT</option>
+                                <option value="athletic" style="font-family:athletic" selected="selected">ATHLETIC</option>
+                                <option value="yearbook_cg_solidregular" style="font-family:yearbook_cg_solidregular" selected="selected">CG Yearbook</option>
+                                <option value="copperplate_gothic" style="font-family:copperplate_gothic">Copperplate Gothic</option>
+                                <option value="eight_track" style="font-family:eight_track">Eight Track</option>
+                                <option value="eurostilebold" style="font-family:eurostilebold">Eurostile</option>
+                                <option value="freshmannormal" style="font-family:freshmannormal">Freshman Normal</option>
+                                <option value="geo_slab" style="font-family:geo_slab">Geo Slab</option>
+                                <option value="impact" style="font-family:impact">Impact</option>
+                                <option value="hobo_bt" style="font-family:hobo_bt">Hobo BT</option>
+                                <option value="old_english" style="font-family:old_english">Old English</option>
+                                <option value="reservoirgrunge" style="font-family:reservoirgrunge">Reservoir Grunge</option>
+                                <option value="square_slabserif" style="font-family:square_slabserif">Square Slabserif</option>
+                                <option value="steelwolf" style="font-family:steelwolf">Steelwolf</option>
+                                <option value="superstar_m54" style="font-family:superstar_m54">Superstar M54</option>
+                                <option value="times_new_roman" style="font-family:times_new_roman">Times New Roman</option>
+                            </select>
+                        </div>
+                        <div class="width25">
+                            <h4>Text Color</h4> <span class="text-color swatch-container"></span>
+                        </div>
+                        <div class="width25">
+                            <h4>Outline Size</h4> <span class="btn-updown"><span class="btn-up stroke-up"></span><span class="btn-down stroke-down"></span></span>
+                        </div>
+                        <div class="width25">
+                            <h4>Outline Color</h4> <span class="stroke-color swatch-container"></span>
+                        </div>
+                        <div class="width25">
+                            <h4>Spacing</h4> <div class="sliders spacing-slider">
+                            </div>
+                        </div>
+                        <div class="width25">
+                            <h4>Rotation</h4> <div class="sliders rotation-slider"></div>
+                        </div>
+                        <div class="width25">
+                            <h4>Opacity</h4> <div class="sliders opacity-slider"></div>
+                        </div>
+                        <div class="width50 noborder">
+                            <h4>Shapes</h4>
+                            <select class="layout-change">
+                                <option value="straight" checked>STRAIGHT</option>
+                                <option value="staggered">STAGGERED</option>
+                                <option value="bowtie">BOWTIE</option>
+                                <option value="pennant">PENNANT</option>
+                                <option value="vertical">VERTICAL</option>
+                                <option value="bookends">BOOK ENDS</option>
+                                <option value="stdarc">STD. ARC</option>
+                                <option value="revarc">REV. ARC</option>
+                                <option value="verticalarch">VERTICAL ARCH</option>
+                                <option value="bridge">BRIDGE</option>
+                                <option value="diagonal">DIAGONAL</option>
+                                <option value="reversearch">REVERSE ARCH</option>
+                            </select>
+                        </div>
+                        <div class="width50 curveradius noborder">
+                            <h4>Curve Radius</h4> <div class="sliders radius-slider"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div id="captions">
+
+        </div>
+        @*Changes for Canvas 30/11/2018*@
+        <div id="Canvas" style="display:none">
+            <canvas style="display:none" id=demo width=700 height=300></canvas>
+            <input id="iCurve" type="range" min=0 max=200 value=130>
+            <span id="vCurve">110</span>
+            <br><span>OffsetY:</span>
+            <input id="iOffset" type="range" min=0 max=100 value=11>
+            <span id="vOffset">0</span>
+            <br><span>Text height:</span>
+            <input id="iHeight" type="range" min=0 max=200 value=150>
+            <span id="vHeight">64</span>
+            <br><span>Bottom:</span>
+            <input id="iBottom" type="range" min=0 max=250 value=250>
+            <span id="vBottom">200</span>
+            <br><span>Text:</span>
+            <input id="iText" type="text">
+        </div>
+        <div id="CanvasForBowtie" style="display:none">
+            <canvas style="display:none" id=demobowtie width=700 height=300></canvas>
+            <input id="iCurveforBowtie" type="range" min=0 max=200 value=130>
+            <span id="vCurveforBowtie">110</span>
+            <br><span>OffsetY:</span>
+            <input id="iOffsetforBowtie" type="range" min=0 max=100 value=60>
+            <span id="vOffsetforBowtie">0</span>
+            <br><span>Text height:</span>
+            <input id="iHeightforBowtie" type="range" min=0 max=200 value=100>
+            <span id="vHeightforBowtie">64</span>
+            <br><span>Bottom:</span>
+            <input id="iBottomforBowtie" type="range" min=0 max=210 value=210>
+            <span id="vBottomforBowtie">200</span>
+            <br><span>Text:</span>
+            <input id="iText" type="text">
+        </div>
+        <div id="CanvasForPennant" style="display:none">
+            <canvas style="display:none" id=demoforPennant width=1200 height=800></canvas>
+            <input id="iCurveforPennant" type="range" min=0 max=200 value=200>
+            <span id="vCurveforPennant">110</span>
+            <br><span>OffsetY:</span>
+            <input id="iOffsetforPennant" type="range" min=0 max=100 value=60>
+            <span id="vOffsetforPennant">0</span>
+            <br><span>Text height:</span>
+            <input id="iHeightforPennant" type="range" min=0 max=200 value=120>
+            <span id="vHeightforPennant">64</span>
+            <br><span>Bottom:</span>
+            <input id="iBottomforPennant" type="range" min=-200 max=200 value=80>
+            <span id="vBottomforPennant">200</span>
+            <br><span>Text:</span>
+            <input id="iText" type="text">
+        </div>
+        <div id="CanvasForVertical" style="display:none">
+            <canvas style="display:none" id=demoforVertical width=1350 height=950></canvas>
+            <input id="iCurveforVertical" type="range" min=0 max=550 value=420>
+            <span id="vCurveforVertical">110</span>
+            <br><span>OffsetY:</span>
+            <input id="iOffsetforVertical" type="range" min=0 max=200 value=150>
+            <span id="vOffsetforVertical">0</span>
+            <br><span>Text height:</span>
+            <input id="iHeightforVertical" type="range" min=0 max=350 value=250>
+            <span id="vHeightforVertical">64</span>
+            <br><span>Bottom:</span>
+            <input id="iBottomforVertical" type="range" min=-100 max=250 value=125>
+            <span id="vBottomforVertical">200</span>
+            <br><span>Text:</span>
+            <input id="iText" type="text">
+        </div>
+        <div id="CanvasForVerticalforlargetext" style="display:none">
+            <canvas style="display:none" id=demoforVerticalforlargetext width=2100 height=1200></canvas>
+            <input id="iCurveforVerticalforlargetext" type="range" min=0 max=550 value=440>
+            <span id="vCurveforVerticalforlargetext">110</span>
+            <br><span>OffsetY:</span>
+            <input id="iOffsetforVerticalforlargetext" type="range" min=0 max=200 value=150>
+            <span id="vOffsetforVerticalforlargetext">0</span>
+            <br><span>Text height:</span>
+            <input id="iHeightforVerticalforlargetext" type="range" min=0 max=350 value=270>
+            <span id="vHeightforVerticalforlargetext">64</span>
+            <br><span>Bottom:</span>
+            <input id="iBottomforVerticalforlargetext" type="range" min=-100 max=250 value=125>
+            <span id="vBottomforVerticalforlargetext">200</span>
+            <br><span>Text:</span>
+            <input id="iText" type="text">
+        </div>
+        <div id="captions"></div>
+        @*End*@
+    </div>
+    <div>
+        <canvas id="mySvgCanvas" style="display:none" width=500 height=800></canvas>
+        <canvas id="mySvgCanvasforsaveshare" style="display:none" width=300 height=600></canvas>
+        <canvas id="mySvgCanvaImage" style="display:none" width=500 height=800></canvas>
+        <canvas id="mySvgCanvasForKit" style="display:none" width=700 height=800></canvas>
+        <canvas id="mySvgCanvasForKit1Back" style="display:none" width=700 height=800></canvas>
+    </div>
+    <div id="base"></div>
+</body>
+</html>
+<script>
+    $("#logout").click(function () {
+        localStorage.clear();
+    });
+
+    $('#boundingbox').bind('touchstart', function () {
+        $('body').addClass("touch");
+    });
+    $('#boundingbox').bind('touchend', function () {
+        $('body').removeClass("touch");
+    });
+    function goToURL() {
+        var WebSiteUrl=window.location.origin + window.location.pathname.split("/")[0];
+        if (WebSiteUrl ==="http://ub.ckatesting.com") {
+            location.href = 'http://ckstore.ckatesting.com/';
+        }
+        else {
+            location.href = 'http://www.cliffkeen.com/';
+        }
+    }
+
+
+ //19/8/2019
+    var _idleSecondsCounter = 0;
+     var ShowNotifyPopup = 1800;   //30 minutes  and 1 min=60
+    var _notificationSecondsCounter = 0;
+    var Box;
+    //for scrolling
+    document.onwheel = function () {
+        _idleSecondsCounter = 0;
+    };
+    document.onclick = function () {
+        _idleSecondsCounter = 0;
+    };
+    document.onmousemove = function () {
+        _idleSecondsCounter = 0;
+    };
+    document.onkeypress = function () {
+        _idleSecondsCounter = 0;
+    };
+    var myInterval = window.setInterval(CheckIdleTime, 1000);     
+</script>

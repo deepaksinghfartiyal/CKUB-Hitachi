@@ -1,0 +1,46 @@
+﻿@{
+    ViewBag.Title = "Dealers";
+}
+
+@section headcss {
+    <link href="https://cdn.datatables.net/1.10.16/css/jquery.dataTables.min.css" rel="stylesheet" type="text/css" />
+}
+
+@section headjs {
+    <script type="text/javascript" src="https://cdn.datatables.net/1.10.16/js/jquery.dataTables.min.js"></script>
+}
+
+<div id="dealerList">
+    @{ Html.RenderAction("GetAllDealers", "DealerViewModels"); }
+</div>
+
+<hr />
+<div>
+    <div class="row">
+        <div class="col-md-2 col-xs-12"></div>
+        <div class="col-md-5 col-xs-12">
+            @using (Html.BeginForm("Upload", "DealerViewModels", FormMethod.Post, new { enctype = "multipart/form-data" }))
+            {
+                <label for="file"><strong>Upload Spreadsheet:</strong></label>
+                <input type="file" name="file" id="file" /><br /><br />
+                <input type="submit" value="Upload File" />
+                <br /><br />
+                @ViewBag.Message
+            }
+        </div>
+        <hr/>
+        <div class="col-md-5 col-xs-12">
+            @using (Html.BeginForm("Export", "DealerViewModels", FormMethod.Post, new { enctype = "multipart/form-data" }))
+            {
+                <label><strong>Export Data to Spreadsheet:</strong></label><br />
+                <input type="submit" value="Export" />
+                <br /><br />
+                @ViewBag.ExportMessage
+            }
+        </div>
+    </div>
+
+</div>
+
+
+

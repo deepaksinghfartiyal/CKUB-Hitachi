@@ -1,0 +1,137 @@
+﻿<style>
+    .gmail-wrapper {
+    text-align: center;
+    margin: calc(1 / 1 * 4%) auto;
+    box-shadow: 0px 0px 40px rgba(0,0,0,0.3);
+    border-radius: 10px;
+    max-width: 600px;
+    padding: calc(1 / 1 * 3%) calc(1 / 1 * 5%);
+}
+.gmail-wrapper h3 {
+    margin-bottom: 30px;
+}
+.gmail-wrapper form {
+    display: inline-block;
+    text-align: left;
+}
+.gmail-wrapper input {
+    height: 40px;
+}
+.gmail-wrapper .form-group {
+    display: inline-block;
+    width: 100%;
+}
+.gmail-wrapper button {
+    background: #e4980d;
+    color: #fff;
+    border: none;
+}
+</style>
+
+@{ 
+    Layout = null;
+    <title>Send Email</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+     <link rel="stylesheet" href="~/Content/bootstrap.min.css">
+    <script src="~/js/jquery-1.11.3.min.js"></script>
+    <script src="~/Scripts/bootstrap.min.js"></script>
+    var fromEmail = "";
+    if (TempData["fromEmail"] != null)
+    {
+        fromEmail = TempData["fromEmail"].ToString();
+    }
+    var attachment = "";
+    if (TempData["emailAttachment"] != null)
+    {
+        attachment = TempData["emailAttachment"].ToString();
+    }
+    var alert_Msg = "";
+    if (TempData["EmailSuccessful_Error"] != null)
+    {
+        alert_Msg = TempData["EmailSuccessful_Error"].ToString();
+    }
+
+}
+<div id="error">
+    @if (TempData["Error"] != null)
+    {
+        <b> @TempData["Error"] </b>
+    }
+</div>
+
+  <div class="gmail-wrapper">
+    
+        <h3>Write Email</h3>
+        @using (Html.BeginForm("SendEmailMimekit", "Builder", FormMethod.Post))
+        {
+            <div class="form-group">
+                <label class="control-label col-sm-2" for="email">From:</label>
+                <div class="col-sm-12">
+                    <input type="email" class="form-control" id="fromEmail" placeholder="Enter From Email" name="fromEmail" required>
+                </div>
+            </div>
+        <div class="form-group">
+            <label class="control-label col-sm-2" for="email">To:</label>
+            <div class="col-sm-12">
+                <input type="email" class="form-control" id="Toemail" placeholder="Enter email" name="Toemail" required>
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="control-label col-sm-2" for="usr">Subject:</label>
+            <div class="col-sm-12">
+                <input type="text" class="form-control" id="subject" placeholder="Enter Subject" name="subject" required>
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="control-label col-sm-2">Body:</label>
+            <div class="col-sm-12">
+                <textarea class="form-control" rows="5" id="emailBody" name="bodytext" required></textarea>
+            </div>
+        </div>
+        <input type="hidden" value="@attachment" id="myHiddenVar" name="attachment" />
+        <input type="hidden" value="@TempData["returnUrl"]" id="myHiddenUrl" name="returnUrl" />
+        <input type="hidden" value="@TempData["CurrentUser"]" id="myHiddenUser" name="CurrentUser" />
+        <input type="hidden" value="@alert_Msg" id="myHiddenMesage" name="myHiddenMesage" />
+        <div class="form-group">
+            <div class="col-sm-12">
+                <button type = "submit" class="btn btn-default">Send</button>
+            </div>
+        </div>
+            }
+</div>
+
+<script>
+    $(document).ready(function () {
+        debugger;
+        if(($("#fromEmail").val()) !=  "" || ($("#fromEmail").val()) != "")
+        {
+            debugger;
+            if (!ValidateEmail($("#fromEmail").val()) || !ValidateEmail($("#fromEmail").val())) {
+                alert("Invalid email address.");
+            }
+        }
+        var alert_msg = $("#myHiddenMesage").val();
+        if (alert_msg != "")
+        {
+            debugger;
+            if (alert_msg == "True")
+            {
+            alert("Email has been sent successfully.")
+            setTimeout(window.close, 1500);
+        }
+        else
+        {
+            if (alert_msg == "False")
+            {
+                alert("There is something wrong.")
+                setTimeout(window.close, 1500);
+            }
+        }
+        }
+    });
+    function ValidateEmail(email) {
+        var expr = /[A-Z0-9._%+-]+@@[A-Z0-9.-]+.[A-Z]{2,4}/igm;
+        return expr.test(email);
+    };
+</script>

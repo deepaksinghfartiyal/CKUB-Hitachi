@@ -1,0 +1,22 @@
+﻿@model UBuilder.Models.RegistrationModal
+
+<div class="form-group">
+    @Html.LabelFor(m => m.Email, "Enter your email")
+    @Html.TextBoxFor(m => m.Email, new { @class = "form-control" })
+    @Html.ValidationMessageFor(m => m.Email, "", new { @class = "text-danger" })
+</div>
+<div class="form-group">
+    @Html.LabelFor(m => m.Password, "Enter your password")
+    @Html.PasswordFor(m => m.Password, new { @class = "form-control" })
+    @Html.ValidationMessageFor(m => m.Password, "", new { @class = "text-danger" })
+</div>
+<div class="form-group">
+    @Html.LabelFor(m => m.ConfirmPassword, "Confirm password")
+    @Html.PasswordFor(m => m.ConfirmPassword, new { @class = "form-control" })
+    @Html.ValidationMessageFor(m => m.ConfirmPassword, "", new { @class = "text-danger" })
+</div>
+<div class="form-group">
+    @Html.LabelFor(m => m.UserName, "Enter your name")
+    @Html.TextBoxFor(m => m.UserName, new { @class = "form-control" })
+    @Html.ValidationMessageFor(m => m.UserName, "", new { @class = "text-danger" })
+</div>

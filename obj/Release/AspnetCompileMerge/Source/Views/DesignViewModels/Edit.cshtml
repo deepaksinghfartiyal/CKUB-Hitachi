@@ -1,0 +1,228 @@
+﻿@model UBuilder.Domain.Designs
+
+@{
+    ViewBag.Title = "Edit";
+}
+@section headcss {
+    <link href="~/Content/bootstrap.min.css" rel="stylesheet">
+    <link href="//cdnjs.cloudflare.com/ajax/libs/summernote/0.8.8/summernote.css" rel="stylesheet">
+    <link href="~/css/ck.css" rel="stylesheet" />
+}
+@section headjs {
+    @Scripts.Render("~/bundles/bootstrap")
+    
+    @*<script src="~/js/ck.content.js"></script>*@
+    <script src="//cdnjs.cloudflare.com/ajax/libs/summernote/0.8.8/summernote.js"></script>
+}
+
+
+<h4>Edit Design @Model.ProductId</h4>
+
+@using (Html.BeginForm("EditDesignPost", "DesignViewModels"))
+{
+    @Html.AntiForgeryToken()
+    <div class="form-horizontal">
+        <hr />
+        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+        @Html.HiddenFor(model => model.ID)
+        @Html.HiddenFor(model => model.Created)
+        @Html.HiddenFor(model => model.ProductId)
+        @Html.HiddenFor(model=>model.ParentID)
+
+        <!-- Product ID and Sort -->
+        <div class="form-group">
+            @Html.LabelFor(model => model.ProductId, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-4">
+                <input type="text" class="form-control" disabled="disabled" value="@Model.ProductId" />
+            </div>
+            @Html.LabelFor(model => model.Sort, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-2">
+                @Html.EditorFor(model => model.Sort, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.Sort, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <!-- Description -->
+        <div class="form-group">
+            @Html.LabelFor(model => model.Description, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-8">
+                @Html.EditorFor(model => model.Description, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.Description, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <!-- Notes -->
+        <div class="form-group">
+            @Html.LabelFor(model => model.Notes, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-8">
+                @Html.TextAreaFor(model => model.Notes)
+            </div>
+        </div>
+
+        <div class="collapse" id="backendstuff">
+
+            <div class="form-group">
+                @Html.LabelFor(model => model.DesignGUID, htmlAttributes: new { @class = "control-label col-md-2" })
+                <div class="col-md-4">
+                    @Html.EditorFor(model => model.DesignGUID, new { htmlAttributes = new { @class = "form-control" } })
+                    @Html.ValidationMessageFor(model => model.DesignGUID, "", new { @class = "text-danger" })
+                </div>
+                @Html.LabelFor(model => model.Category, htmlAttributes: new { @class = "control-label col-md-2" })
+                <div class="col-md-4">
+                    @Html.EditorFor(model => model.Category, new { htmlAttributes = new { @class = "form-control" } })
+                    @Html.ValidationMessageFor(model => model.Category, "", new { @class = "text-danger" })
+                </div>
+            </div>
+
+            <!-- Image path and Thumnails-->
+            <div class="form-group">
+                @Html.LabelFor(model => model.Image_path, htmlAttributes: new { @class = "control-label col-md-2" })
+                <div class="col-md-4">
+                    @Html.EditorFor(model => model.Image_path, new { htmlAttributes = new { @class = "form-control" } })
+                    @Html.ValidationMessageFor(model => model.Image_path, "", new { @class = "text-danger" })
+                </div>
+
+                @Html.LabelFor(model => model.Thumbnails, htmlAttributes: new { @class = "control-label col-md-2" })
+                <div class="col-md-4">
+                    @Html.EditorFor(model => model.Thumbnails, new { htmlAttributes = new { @class = "form-control" } })
+                    @Html.ValidationMessageFor(model => model.Thumbnails, "", new { @class = "text-danger" })
+                </div>
+            </div>
+
+            <div class="form-group">
+                @Html.LabelFor(model => model.UserId, htmlAttributes: new { @class = "control-label col-md-2" })
+                <div class="col-md-4">
+                    @Html.EditorFor(model => model.UserId, new { htmlAttributes = new { @class = "form-control" } })
+                    @Html.ValidationMessageFor(model => model.UserId, "", new { @class = "text-danger" })
+                </div>
+
+                @Html.LabelFor(model => model.DealerId, htmlAttributes: new { @class = "control-label col-md-2" })
+                <div class="col-md-4">
+                    @Html.EditorFor(model => model.DealerId, new { htmlAttributes = new { @class = "form-control" } })
+                    @Html.ValidationMessageFor(model => model.DealerId, "", new { @class = "text-danger" })
+                </div>
+            </div>
+
+            <!-- Status and Zip Path -->
+            <div class="form-group">
+                @Html.LabelFor(model => model.Status, htmlAttributes: new { @class = "control-label col-md-2" })
+                <div class="col-md-4">
+                    @Html.EditorFor(model => model.Status, new { htmlAttributes = new { @class = "form-control" } })
+                    @Html.ValidationMessageFor(model => model.Status, "", new { @class = "text-danger" })
+                </div>
+
+                @Html.LabelFor(model => model.Zip_path, htmlAttributes: new { @class = "control-label col-md-2" })
+                <div class="col-md-4">
+                    @Html.EditorFor(model => model.Zip_path, new { htmlAttributes = new { @class = "form-control" } })
+                    @Html.ValidationMessageFor(model => model.Zip_path, "", new { @class = "text-danger" })
+                </div>
+            </div>
+
+            <!-- Email From/Email To-->
+            <div class="form-group">
+                @Html.LabelFor(model => model.EmailFrom, htmlAttributes: new { @class = "control-label col-md-2" })
+                <div class="col-md-4">
+                    @Html.EditorFor(model => model.EmailFrom, new { htmlAttributes = new { @class = "form-control" } })
+                    @Html.ValidationMessageFor(model => model.EmailFrom, "", new { @class = "text-danger" })
+                </div>
+
+                @Html.LabelFor(model => model.EmailTo, htmlAttributes: new { @class = "control-label col-md-2" })
+                <div class="col-md-4">
+                    @Html.EditorFor(model => model.EmailTo, new { htmlAttributes = new { @class = "form-control" } })
+                    @Html.ValidationMessageFor(model => model.EmailTo, "", new { @class = "text-danger" })
+                </div>
+            </div>
+
+            <!-- Email Message -->
+            <div class="form-group">
+                @Html.LabelFor(model => model.EmailMessage, htmlAttributes: new { @class = "control-label col-md-2" })
+                <div class="col-md-10">
+                    @Html.EditorFor(model => model.EmailMessage, new { htmlAttributes = new { @class = "form-control" } })
+                    @Html.ValidationMessageFor(model => model.EmailMessage, "", new { @class = "text-danger" })
+                </div>
+            </div>
+
+            <!-- Email Body -->
+            <div class="form-group">
+                @Html.LabelFor(model => model.EmailBody, htmlAttributes: new { @class = "control-label col-md-2" })
+                <div class="col-md-10">
+                    @Html.EditorFor(model => model.EmailBody, new { htmlAttributes = new { @class = "form-control" } })
+                    @Html.ValidationMessageFor(model => model.EmailBody, "", new { @class = "text-danger" })
+                </div>
+            </div>
+
+            <!-- Quantities -->
+            <div class="form-group">
+                @Html.LabelFor(model => model.Quantities, htmlAttributes: new { @class = "control-label col-md-2" })
+                <div class="col-md-10">
+                    @Html.EditorFor(model => model.Quantities, new { htmlAttributes = new { @class = "form-control" } })
+                    @Html.ValidationMessageFor(model => model.Quantities, "", new { @class = "text-danger" })
+                </div>
+            </div>
+
+            <!-- Customization -->
+            <div class="form-group">
+                @Html.LabelFor(model => model.Customization, htmlAttributes: new { @class = "control-label col-md-2" })
+                <div class="col-md-10">
+                    @Html.EditorFor(model => model.Customization, new { htmlAttributes = new { @class = "form-control" } })
+                    @Html.ValidationMessageFor(model => model.Customization, "", new { @class = "text-danger" })
+                </div>
+            </div>
+        </div>
+
+        <div class="form-group">
+            <div class="col-md-offset-2 col-md-10">
+                <input type="submit" value="Save Design" class="btn btn-success" />
+            </div>
+        </div>
+
+
+        <div class="modal-bknd"></div>
+        <div class="modal error ok">
+            <div class="wrap">
+                <div class="header">&nbsp;</div>
+                <div class="copy">General Error</div>
+                <div class="doublewide buttons ok"><a href="#" class="abc button" id="okBtn">OK</a></div>
+                <div class="doublewide buttons yes-no"><a href="#" class=" yes button">YES</a><a href="#" class=" button no">NO</a></div>
+            </div>
+        </div>
+    </div>
+}
+
+<div>
+    @Html.ActionLink("Back to List", "Index")
+</div>
+<script type="text/javascript">
+    $(document).ready(function () {
+        $('#Notes').summernote({
+            height: 150,
+            toolbar: [
+                ['style', ['bold', 'italic', 'underline', 'clear']],
+                ['font', ['strikethrough', 'superscript', 'subscript']],
+                ['fontsize', ['fontsize']],
+                ['color', ['color']],
+                ['para', ['ul', 'ol', 'paragraph']],
+                ['height', ['height']]
+            ]
+        });       
+    });
+
+
+    @if (ViewBag.JavaScriptFunction != null)
+    {
+      @Html.Raw(ViewBag.JavaScriptFunction)
+    }
+    function displayalertmessage(message) {
+        CK.alert(700);
+    };
+
+    $('body').on('click', '.modal .abc', function (e) {
+        e.preventDefault();
+        $(".modal, .modal-bknd").removeClass("active");
+
+    });
+
+</script>
+
+
+

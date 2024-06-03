@@ -1,0 +1,684 @@
+﻿@{
+    Layout = null;
+    string storeURL = System.Configuration.ConfigurationManager.AppSettings["CKStoreURL"];
+    string servicesURL = System.Configuration.ConfigurationManager.AppSettings["CKServicesURL"];
+    string deepLinkUrl = System.Configuration.ConfigurationManager.AppSettings["DEEPLINKURL"];
+ string thisUrl = Request.Url.AbsoluteUri;
+}
+
+<!DOCTYPE html>
+<html>
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Cliff Keen Uniform Builder</title>
+    <style>
+        .no-more.show {
+            padding: 80px 0;
+            text-align: center;
+            font-size: 20px;
+            font-weight: bold;
+            margin-bottom: 10px;
+            display: block;
+        }
+
+        .no-more {
+            display: none;
+        }
+
+        .bootpag li:first-child {
+            border-top-left-radius: .25rem;
+            border-bottom-left-radius: .25rem;
+        }
+
+        .bootpag li {
+            padding: 10px;
+            border: 1px solid #e6a413;
+            margin: 0;
+        }
+
+            .bootpag li:last-child {
+                border-top-right-radius: .25rem;
+                border-bottom-right-radius: .25rem;
+            }
+
+        p#pagination-here {
+            text-align: center;
+        }
+
+        .bootpag li:hover a {
+            color: #fff;
+            text-decoration: none;
+        }
+
+        .bootpag li:hover {
+            background: #e6a413;
+            color: #fff;
+        }
+
+        li .active a {
+            color: #fff;
+            text-decoration: none;
+        }
+
+        .bootpag li .active {
+            background: #e6a413;
+            color: #fff;
+        }
+
+        li.active {
+            background: #e6a413;
+        }
+
+        li a.active {
+            background: #;
+        }
+
+        .active a {
+            color: #fff;
+        }
+
+        /*Important-- Ceter loader input at Locaker*/
+        /*Start*/
+        .lds-wrapper {
+            position: fixed;
+            width: 100%;
+            height: 100vh;
+            background: rgba(0,0,0,0.5);
+            z-index: 9;
+            left: 0;
+            top: 0;
+        }
+        /*End*/
+        .pagination li {
+            display: inline;
+            margin: 0 0px !important;
+        }
+
+        #demoModal .modal-dialog {
+            width: 600px;
+            margin: 0px auto;
+            z-index: 999;
+        }
+
+        .locker-page #demoModal {
+            z-index: 9999;
+        }
+    </style>
+    <script type="text/javascript" src="//code.jquery.com/jquery-1.10.2.js"></script>
+
+    @*<script src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
+        <link href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" rel="stylesheet">*@
+    <script src="~/RegistrtionLogin/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+    <link href="/css/ck.css" rel="stylesheet" type="text/css" />
+    <script type="text/javascript">
+        var ckstoreURL = '@storeURL';
+    </script>
+
+    <script type="text/javascript" src="/js/jquery-1.11.3.min.js"></script>
+    <script type="text/javascript" src="/js/ck.content_V_3.js"></script>
+    <script type="text/javascript" src="/js/ck.api.js"></script>
+    <script type="text/javascript" src="/js/ck.locker_V_3.js"></script>
+    <script type="text/javascript" src="/js/ck.js"></script>
+
+    <!-- Global site tag (gtag.js) - Google Analytics -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=UA-133681645-1"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag() { dataLayer.push(arguments); }
+        gtag('js', new Date());
+        gtag('config', 'UA-133681645-1');
+    </script>
+</head>
+<body class="locker-page">
+
+    @*19/8/2019*@
+    @if (Session[UBuilder.Helper.Constants.AdminSessionName] != null && Session[UBuilder.Helper.Constants.AdminSessionName].ToString() == "true")
+    {
+        <form id="frmLogout" action="/adminlogin/kill" method="post">
+            <input type="hidden" value="true" id="hdnLoggedOff" name="inActivityLogout" />
+        </form>
+        if (HttpContext.Current.Request.Cookies.AllKeys.Contains("Clifkeen_UserNameInfo"))
+        {
+            if (HttpContext.Current.Request.Cookies["Clifkeen_UserNameInfo"].Value != null)
+            {
+                var Data = HttpContext.Current.Request.Cookies["Clifkeen_UserNameInfo"].Value;
+            }
+        }
+    }
+    else
+    {
+        if (UBuilder.Helper.Constants.CookieName != null)
+        {
+
+            if (HttpContext.Current.Request.Cookies.AllKeys.Contains("Clifkeen_UserNameInfo"))
+            {
+
+                if (HttpContext.Current.Request.Cookies["Clifkeen_UserNameInfo"].Value != null)
+                {
+                    var Data = HttpContext.Current.Request.Cookies["Clifkeen_UserNameInfo"].Value;
+                    <form id="frmLogout" action="@Url.Action("Logout", "Builder")" method="post">
+                        <input type="hidden" value="@storeURL/account/login?returnurl=@thisUrl" id="hdnLoggedOff" name="inActivityLogout" />
+                    </form>                   
+                }
+            }
+
+        }
+    }
+
+    <div id="page-wrapper">
+        <div class="container">
+            <header>
+                <div class="top-head-wrapper">
+                    <div class="logo">
+                        @*<a href="http://cliffkeen.com"><img src="@Url.Action("~/Content/images/logo.png")"></a>*@
+                        <a onclick="goToURL();"><img src="~/Content/images/logo.png" /></a>
+                    </div>
+                    <div class="titles">
+                        <span class="ub">UNIFORM BUILDER &raquo;</span>
+                        <span class="category">LOCKER</span>
+                    </div>
+                    @if (Session[UBuilder.Helper.Constants.AdminSessionName] != null && Session[UBuilder.Helper.Constants.AdminSessionName].ToString() == "true")
+                    {
+                        <div class="user-info-header">
+                            <div class="name">
+                                Hello, ADMIN ::
+                                <a href="/adminlogin/kill" id="logout" class="logout">Log Out</a>
+                            </div>
+                        </div>
+                    }
+                    else
+                    {
+                        <div class="user-info-header">
+                            <div class="name">Hello, <span></span>! :: <a href="@storeURL/account/logoff">Log Out</a></div>
+                            <a href="@storeURL/account/login?returnurl=@deepLinkUrl" class="button login">Log In</a>                     
+                        </div>
+                    }
+                </div>
+                <div class="navigation">
+                    <div class="row">
+                        <ul>
+                            <li>
+                                <a href="#" id="UniFormPanel">UNIFORMS</a>
+                                <ul class="sub-dropdown">
+                                    <li><a href="/Templates/Index/CustomUniFormKit" onclick="UNIFORMS();">Custom Uniform Kits</a></li>
+                                    <li><a href="/Templates/Index/CustomSublimatedSinglets" onclick="UNIFORMS();">Custom Sublimated Singlets</a></li>
+                                    <li><a href="/Templates/Index/CustomScreenPrintSinglets" onclick="UNIFORMS();">Custom Screen Printed Singlets</a></li>
+                                    <li><a href="/Templates/Index/StockSinglets" onclick="UNIFORMS();">Stock Singlets</a></li>
+                                    <li><a href="/Templates/Index/CustomCompetitionGear" onclick="UNIFORMS();">Custom Competition Gear</a></li>
+                                    <li><a href="/Templates/Index/StockCompetitionGear" onclick="UNIFORMS();">Stock Competition Gear</a></li>
+                                </ul>
+                            </li>
+                            <li>
+                                <a href="/Templates/Index/Headgear" id="HeadgearPanel" onclick="HEADGEAR();">HEADGEAR</a>
+                            </li>
+                            <li>
+                                <a href="/Templates/Index/WomenGear" id="WomenGearPanel" onclick="WOMEN_GEAR();">WOMEN'S GEAR</a>
+                            </li>
+                            <li>
+                                <a href="#"  id="Warm_UpPanel">WARM-UP’S</a>
+                                <ul class="sub-dropdown">
+                                    <li><a href="/Templates/Index/CustomWarm-ups" onclick="WARM_UP();">Custom Warm-ups</a></li>
+                                    <li><a href="/Templates/Index/StockWarm-ups" onclick="WARM_UP();">Stock Warm-ups</a></li>
+                                </ul>
+                            </li>
+                            <li>
+                                <a href="#" id="PERFORMANCEAPPAREL_Panel" >PERFORMANCE APPAREL</a>
+                                <ul class="sub-dropdown">
+                                    <li><a href="/Templates/Index/CustomTraining" onclick="PERFORMANCE_APPAREL();">Custom Sublimated Training Gear</a></li>
+                                    <li><a href="/Templates/Index/StockTraining" onclick="PERFORMANCE_APPAREL();">Stock Training Gear</a></li>
+
+                                </ul>
+                            </li>
+                            <li>
+                                <a href="/Templates/Index/Accessories" id="ACCESSORIES_panel" onclick="ACCESSORIES();">ACCESSORIES</a>
+                            </li>
+
+                            <li> ::&nbsp;&nbsp;&nbsp;&nbsp;<a id="mylocker" href="/locker" onclick="LOCKER();">MY LOCKER</a></li>
+                            @if (Session[UBuilder.Helper.Constants.AdminSessionName] != null && Session[UBuilder.Helper.Constants.AdminSessionName].ToString() == "true")
+                            {
+                                <li>::</li>
+                                <li>
+                                    <a href="#" id="ADMIN_Panel">ADMIN</a>
+                                    <ul class="sub-dropdown">
+                                        <li>@Html.ActionLink("Edit Designs", "Index", "DesignViewModels")</li>
+                                        <li>@Html.ActionLink("Edit Dealers", "Index", "DealerViewModels")</li>
+                                        <li>@Html.ActionLink("Manage Requests", "Index", "Request")</li>
+                                    </ul>
+                                </li>
+                            }
+                        </ul>
+                    </div>
+                </div>
+
+            </header>
+            @*Important--Loader and Popup
+                Start*@
+            <div class="modal error ok" id="PopUpModal">
+                <div class="wrap">
+                    <div class="header">&nbsp;</div>
+                    <div class="copy">General Error</div>
+                    <div class="doublewide buttons ok"><a href="#" class="close button" id="okBtn">OK</a></div>
+                    <div class="doublewide buttons yes-no"><a href="#" class="close yes button">YES</a><a href="#" class="close button no">NO</a></div>
+                </div>
+            </div>
+            <div style="display:none;" class="lds-wrapper">
+                <div class="lds-spinner"><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div></div>
+            </div>
+            @*End*@
+
+            <div class="main" style="margin-top:0px;">
+
+                <div class="locker"></div>
+                @*<div class="loading"><h2>Loading Locker</h2><img src="/images/loader-bar.gif" /></div>*@
+                <div class="no-designs"><h2>You have no designs to display. Please choose from the above categories to get started.</h2></div>
+
+                <div class="login no-designs-login"><h2>If you already have a uniform builder account, please log in.</h2></div>
+
+                @*<div  class="no-more">You have no more designs to display. </div>*@
+                <p id="pagination-here"></p>
+
+            </div>
+        </div>
+        <div class="modal fade" id="demoModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+
+        </div>
+    </div>
+    <!-- Shopping Cart -->
+
+</body>
+</html>
+<script>
+    $("#logout").click(function () {
+        localStorage.clear();
+    });
+</script>
+
+<script src="~/Scripts/ASPSnippets_Pager.min.js"></script>
+<script type="text/javascript">
+      if (sessionStorage.getItem('IsManagerRequestedDesign') === "Yes") {
+        sessionStorage.setItem("IsManagerRequestedDesign", "No");
+    }
+    var pageSize = 10;
+    var pageIndex = 0;
+    var counter = 0;
+    var pagenum = 1;
+    $('#pagination-here').on("page", function (event, num) {
+         pagenum = num;
+        pageIndex = num - 1;      
+        $("#pagination-here .bootpag [data-lp='" + num + "']").addClass("active");
+        if (typeof (Locker) != "undefined") Locker.init();
+    });
+    //$("#mylocker")[0].click(function () {
+    //    alert();
+    //});
+</script>
+<script>
+     function goToURL() {
+        var WebSiteUrl = window.location.origin + window.location.pathname.split("/")[0];
+        if (WebSiteUrl == "http://ub.ckatesting.com") {
+            location.href = 'http://ckstore.ckatesting.com/';
+        }
+        else {
+            location.href = 'http://www.cliffkeen.com/';
+        }
+    }
+
+ //19/8/2019
+    var _idleSecondsCounter = 0;
+     var ShowNotifyPopup = 1800;   //30 minutes  and 1 min=60
+    var _notificationSecondsCounter = 0;
+    var Box;
+
+    document.onclick = function () {
+        _idleSecondsCounter = 0;
+    };
+    //for scrolling
+    document.onwheel = function () {       
+        _idleSecondsCounter = 0;
+    };
+    document.onmousemove = function () {
+        _idleSecondsCounter = 0;
+    };
+    document.onkeypress = function () {
+        _idleSecondsCounter = 0;
+    };
+    var myInterval = window.setInterval(CheckIdleTime, 1000);
+
+    //19/8/2019
+    function CheckIdleTime() {
+        _idleSecondsCounter++;
+        if (_idleSecondsCounter == ShowNotifyPopup) {
+            //CheckTimeOut.NotifyUser();
+            CheckTimeOut.logout();
+        }
+        //if (_idleSecondsCounter >= IDLE_TIMEOUT)
+        //{
+        //    CheckTimeOut.logout();
+        //    window.clearInterval(myInterval);
+        //}
+    }
+    var CheckTimeOut =
+    {
+        logout: function () {
+            $("#frmLogout").submit();
+        },
+        // To notify user about session ending
+        NotifyUser: function () {
+            Box = bootbox.confirm({
+                message: "Your session has been inactive and will end soon!",
+                buttons: {
+                    confirm:
+                    {
+                        label: 'Keep Active'
+                    },
+                    cancel:
+                    {
+                        label: 'Log Off'
+                    }
+                },
+                callback: function (result) {
+                    // result  [ true = Keep Active] [false = Log Off]
+                    if (result) {
+                        _idleSecondsCounter = 0;
+                        window.clearInterval(NotifyInterval);
+                    }
+                    else {
+                        CheckTimeOut.logout();
+                        window.clearInterval(myInterval);
+                    }
+                }
+            });
+            var NotifyInterval = window.setInterval(CheckNotificationTime, 1000);
+        }
+    };
+    $(document).ready(function () {       
+        if (window.location.pathname == "/locker") {
+            sessionStorage.setItem("ID_Of_ClickedPanel", "");
+            $('#UniFormPanel').removeClass('ClickedPanel');
+            $('#HeadgearPanel').removeClass('ClickedPanel');
+            $('#WomenGearPanel').removeClass('ClickedPanel');
+            $('#Warm_UpPanel').removeClass('ClickedPanel');
+            $('#PERFORMANCEAPPAREL_Panel').removeClass('ClickedPanel');
+            $('#ACCESSORIES_panel').removeClass('ClickedPanel');
+            $('#ADMIN_Panel').removeClass('ClickedPanel');     
+            $('#mylocker').addClass('ClickedPanel');
+            sessionStorage.setItem("ID_Of_ClickedPanel", "Locker_panel");
+        }
+        //    var id = sessionStorage.getItem('ID_Of_ClickedPanel');
+        //if (id != "") {
+        //    if (id == "Locker_panel") {
+        //        $('#mylocker').addClass('ClickedPanel');
+        //    }
+        //    else {
+        //        $('#' + id).addClass('ClickedPanel');
+        //    }
+        //    }
+        })
+
+    function UNIFORMS() {
+
+        sessionStorage.setItem("ID_Of_ClickedPanel", "");
+        $('#HeadgearPanel').removeClass('ClickedPanel');
+        $('#WomenGearPanel').removeClass('ClickedPanel');
+        $('#Warm_UpPanel').removeClass('ClickedPanel');
+        $('#PERFORMANCEAPPAREL_Panel').removeClass('ClickedPanel');
+        $('#ACCESSORIES_panel').removeClass('ClickedPanel');
+        $('#Locker_panel').removeClass('ClickedPanel');
+        $('#ADMIN_Panel').removeClass('ClickedPanel');
+
+
+
+        if ($('#UniFormPanel').hasClass('ClickedPanel')) {
+            $('#UniFormPanel').removeClass('ClickedPanel');
+            $('#UniFormPanel').addClass('ClickedPanel');
+            sessionStorage.setItem("ID_Of_ClickedPanel", "UniFormPanel");
+        }
+        else {
+            $('#UniFormPanel').addClass('ClickedPanel');
+            sessionStorage.setItem("ID_Of_ClickedPanel", "UniFormPanel");
+        }
+    }
+    function HEADGEAR() {
+
+        sessionStorage.setItem("ID_Of_ClickedPanel", "");
+        $('#UniFormPanel').removeClass('ClickedPanel');
+        $('#WomenGearPanel').removeClass('ClickedPanel');
+        $('#Warm_UpPanel').removeClass('ClickedPanel');
+        $('#PERFORMANCEAPPAREL_Panel').removeClass('ClickedPanel');
+        $('#ACCESSORIES_panel').removeClass('ClickedPanel');
+        $('#Locker_panel').removeClass('ClickedPanel');
+        $('#ADMIN_Panel').removeClass('ClickedPanel');
+
+
+
+
+
+
+        if ($('#HeadgearPanel').hasClass('ClickedPanel')) {
+            $('#HeadgearPanel').removeClass('ClickedPanel');
+            $('#HeadgearPanel').addClass('ClickedPanel');
+            sessionStorage.setItem("ID_Of_ClickedPanel", "HeadgearPanel");
+        }
+        else {
+            $('#HeadgearPanel').addClass('ClickedPanel');
+            sessionStorage.setItem("ID_Of_ClickedPanel", "HeadgearPanel");
+        }
+    }
+
+    function WOMEN_GEAR() {
+
+        sessionStorage.setItem("ID_Of_ClickedPanel", "");
+        $('#UniFormPanel').removeClass('ClickedPanel');
+        $('#HeadgearPanel').removeClass('ClickedPanel');
+        $('#Warm_UpPanel').removeClass('ClickedPanel');
+        $('#PERFORMANCEAPPAREL_Panel').removeClass('ClickedPanel');
+        $('#ACCESSORIES_panel').removeClass('ClickedPanel');
+        $('#Locker_panel').removeClass('ClickedPanel');
+        $('#ADMIN_Panel').removeClass('ClickedPanel');
+
+
+
+
+
+
+        if ($('#WomenGearPanel').hasClass('ClickedPanel')) {
+            $('#WomenGearPanel').removeClass('ClickedPanel');
+            $('#WomenGearPanel').addClass('ClickedPanel');
+            sessionStorage.setItem("ID_Of_ClickedPanel", "WomenGearPanel");
+        }
+        else {
+            $('#WomenGearPanel').addClass('ClickedPanel');
+            sessionStorage.setItem("ID_Of_ClickedPanel", "WomenGearPanel");
+        }
+    }
+
+
+    function WARM_UP() {
+
+        sessionStorage.setItem("ID_Of_ClickedPanel", "");
+        $('#UniFormPanel').removeClass('ClickedPanel');
+        $('#HeadgearPanel').removeClass('ClickedPanel');
+        $('#WomenGearPanel').removeClass('ClickedPanel');
+        $('#PERFORMANCEAPPAREL_Panel').removeClass('ClickedPanel');
+        $('#ACCESSORIES_panel').removeClass('ClickedPanel');
+        $('#Locker_panel').removeClass('ClickedPanel');
+        $('#ADMIN_Panel').removeClass('ClickedPanel');
+
+
+
+
+
+        if ($('#Warm_UpPanel').hasClass('ClickedPanel')) {
+            $('#Warm_UpPanel').removeClass('ClickedPanel');
+            $('#Warm_UpPanel').addClass('ClickedPanel');
+            sessionStorage.setItem("ID_Of_ClickedPanel", "Warm_UpPanel");
+        }
+        else {
+            $('#Warm_UpPanel').addClass('ClickedPanel');
+            sessionStorage.setItem("ID_Of_ClickedPanel", "Warm_UpPanel");
+        }
+    }
+
+    function PERFORMANCE_APPAREL() {
+
+        sessionStorage.setItem("ID_Of_ClickedPanel", "");
+        $('#UniFormPanel').removeClass('ClickedPanel');
+        $('#HeadgearPanel').removeClass('ClickedPanel');
+        $('#WomenGearPanel').removeClass('ClickedPanel');
+        $('#Warm_UpPanel').removeClass('ClickedPanel');
+        $('#ACCESSORIES_panel').removeClass('ClickedPanel');
+        $('#Locker_panel').removeClass('ClickedPanel');
+        $('#ADMIN_Panel').removeClass('ClickedPanel');
+
+
+
+
+
+        if ($('#PERFORMANCEAPPAREL_Panel').hasClass('ClickedPanel')) {
+            $('#PERFORMANCEAPPAREL_Panel').removeClass('ClickedPanel');
+            $('#PERFORMANCEAPPAREL_Panel').addClass('ClickedPanel');
+            sessionStorage.setItem("ID_Of_ClickedPanel", "PERFORMANCEAPPAREL_Panel");
+        }
+        else {
+            $('#PERFORMANCEAPPAREL_Panel').addClass('ClickedPanel');
+            sessionStorage.setItem("ID_Of_ClickedPanel", "PERFORMANCEAPPAREL_Panel");
+        }
+    }
+
+    function ACCESSORIES() {
+
+        sessionStorage.setItem("ID_Of_ClickedPanel", "");
+        $('#UniFormPanel').removeClass('ClickedPanel');
+        $('#HeadgearPanel').removeClass('ClickedPanel');
+        $('#WomenGearPanel').removeClass('ClickedPanel');
+        $('#Warm_UpPanel').removeClass('ClickedPanel');
+        $('#PERFORMANCEAPPAREL_Panel').removeClass('ClickedPanel');
+        $('#Locker_panel').removeClass('ClickedPanel');
+        $('#ADMIN_Panel').removeClass('ClickedPanel');
+
+
+
+
+
+        if ($('#ACCESSORIES_panel').hasClass('ClickedPanel')) {
+            $('#ACCESSORIES_panel').removeClass('ClickedPanel');
+            $('#ACCESSORIES_panel').addClass('ClickedPanel');
+            sessionStorage.setItem("ID_Of_ClickedPanel", "ACCESSORIES_panel");
+        }
+        else {
+            $('#ACCESSORIES_panel').addClass('ClickedPanel');
+            sessionStorage.setItem("ID_Of_ClickedPanel", "ACCESSORIES_panel");
+        }
+    }
+
+
+    function LOCKER() {
+
+        sessionStorage.setItem("ID_Of_ClickedPanel", "");
+        $('#UniFormPanel').removeClass('ClickedPanel');
+        $('#HeadgearPanel').removeClass('ClickedPanel');
+        $('#WomenGearPanel').removeClass('ClickedPanel');
+        $('#Warm_UpPanel').removeClass('ClickedPanel');
+        $('#PERFORMANCEAPPAREL_Panel').removeClass('ClickedPanel');
+        $('#ACCESSORIES_panel').removeClass('ClickedPanel');
+
+
+
+        if ($('#Locker_panel').hasClass('ClickedPanel')) {
+            $('#Locker_panel').removeClass('ClickedPanel');
+            $('#Locker_panel').addClass('ClickedPanel');
+            sessionStorage.setItem("ID_Of_ClickedPanel", "ACCESSORIES_panel");
+        }
+        else {
+            $('#Locker_panel').addClass('ClickedPanel');
+            sessionStorage.setItem("ID_Of_ClickedPanel", "Locker_panel");
+        }
+    }
+
+
+    function ADMIN() {
+
+        sessionStorage.setItem("ID_Of_ClickedPanel", "");
+        $('#UniFormPanel').removeClass('ClickedPanel');
+        $('#HeadgearPanel').removeClass('ClickedPanel');
+        $('#WomenGearPanel').removeClass('ClickedPanel');
+        $('#Warm_UpPanel').removeClass('ClickedPanel');
+        $('#PERFORMANCEAPPAREL_Panel').removeClass('ClickedPanel');
+        $('#ACCESSORIES_panel').removeClass('ClickedPanel');
+        $('#ADMIN_Panel').removeClass('ClickedPanel');
+        $('#Locker_panel').removeClass('ClickedPanel')
+
+
+
+        if ($('#ADMIN_Panel').hasClass('ClickedPanel')) {
+            $('#ADMIN_Panel').removeClass('ClickedPanel');
+            $('#ADMIN_Panel').addClass('ClickedPanel');
+            sessionStorage.setItem("ID_Of_ClickedPanel", "ADMIN_Panel");
+        }
+        else {
+            $('#Locker_panel').addClass('ClickedPanel');
+            sessionStorage.setItem("ID_Of_ClickedPanel", "ADMIN_Panel");
+        }
+    }
+    
+    function removeClassOnClick() {
+        sessionStorage.setItem("ID_Of_ClickedPanel", "");
+        $('#UniFormPanel').removeClass('ClickedPanel');
+        $('#HeadgearPanel').removeClass('ClickedPanel');
+        $('#WomenGearPanel').removeClass('ClickedPanel');
+        $('#Warm_UpPanel').removeClass('ClickedPanel');
+        $('#PERFORMANCEAPPAREL_Panel').removeClass('ClickedPanel');
+        $('#ACCESSORIES_panel').removeClass('ClickedPanel');
+        $('#Locker_panel').removeClass('ClickedPanel');
+    }
+    $(document).ready(function () {   
+        //this will attach the class to every target 
+        $(document).on('click', function (event) {
+            console.log($(event.target))
+            if ($(event.target)[0].pathname == "/admin/designs" || $(event.target)[0].text == "Edit Designs") {
+                removeClassOnClick();
+                if ($('#ADMIN_Panel').hasClass('ClickedPanel')) {
+                    $('#ADMIN_Panel').removeClass('ClickedPanel');
+                    $('#ADMIN_Panel').addClass('ClickedPanel');
+                    sessionStorage.setItem("ID_Of_ClickedPanel", "ADMIN_Panel");
+                }
+                else {
+                    $('#ADMIN_Panel').addClass('ClickedPanel');
+                    sessionStorage.setItem("ID_Of_ClickedPanel", "ADMIN_Panel");
+                }
+            }
+            if ($(event.target)[0].pathname == "/DealerViewModels" || $(event.target)[0].text == "Edit Dealers") {
+                sessionStorage.setItem("ID_Of_ClickedPanel", "");
+
+                removeClassOnClick();
+
+                if ($('#ADMIN_Panel').hasClass('ClickedPanel')) {
+                    $('#ADMIN_Panel').removeClass('ClickedPanel');
+                    $('#ADMIN_Panel').addClass('ClickedPanel');
+                    sessionStorage.setItem("ID_Of_ClickedPanel", "ADMIN_Panel");
+                }
+                else {
+                    $('#ADMIN_Panel').addClass('ClickedPanel');
+                    sessionStorage.setItem("ID_Of_ClickedPanel", "ADMIN_Panel");
+                }
+            }
+            if ($(event.target)[0].pathname == "/Request" || $(event.target)[0].text == "Manage Requests") {
+                sessionStorage.setItem("ID_Of_ClickedPanel", "");
+
+                removeClassOnClick();
+
+                if ($('#ADMIN_Panel').hasClass('ClickedPanel')) {
+                    $('#ADMIN_Panel').removeClass('ClickedPanel');
+                    $('#ADMIN_Panel').addClass('ClickedPanel');
+                    sessionStorage.setItem("ID_Of_ClickedPanel", "ADMIN_Panel");
+                }
+                else {
+                    $('#ADMIN_Panel').addClass('ClickedPanel');
+                    sessionStorage.setItem("ID_Of_ClickedPanel", "ADMIN_Panel");
+                }
+            }
+
+        });
+
+    });
+</script>

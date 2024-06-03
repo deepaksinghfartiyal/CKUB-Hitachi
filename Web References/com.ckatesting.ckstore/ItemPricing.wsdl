@@ -1,0 +1,126 @@
+<?xml version="1.0" encoding="utf-8"?>
+<wsdl:definitions xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:tm="http://microsoft.com/wsdl/mime/textMatching/" xmlns:mime="http://schemas.xmlsoap.org/wsdl/mime/" xmlns:tns="http://tempuri.org/" xmlns:http="http://schemas.xmlsoap.org/wsdl/http/" xmlns:s="http://www.w3.org/2001/XMLSchema" xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" targetNamespace="http://tempuri.org/" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">
+  <wsdl:types>
+    <s:schema elementFormDefault="qualified" targetNamespace="http://tempuri.org/">
+      <s:element name="InitializePrices">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="ItemCode" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="CustomerID" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="StoreId" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="InitializePricesResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="InitializePricesResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="string" nillable="true" type="s:string" />
+    </s:schema>
+  </wsdl:types>
+  <wsdl:message name="InitializePricesSoapIn">
+    <wsdl:part name="parameters" element="tns:InitializePrices" />
+  </wsdl:message>
+  <wsdl:message name="InitializePricesSoapOut">
+    <wsdl:part name="parameters" element="tns:InitializePricesResponse" />
+  </wsdl:message>
+  <wsdl:message name="InitializePricesHttpGetIn">
+    <wsdl:part name="ItemCode" type="s:string" />
+    <wsdl:part name="CustomerID" type="s:string" />
+    <wsdl:part name="StoreId" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="InitializePricesHttpGetOut">
+    <wsdl:part name="Body" element="tns:string" />
+  </wsdl:message>
+  <wsdl:message name="InitializePricesHttpPostIn">
+    <wsdl:part name="ItemCode" type="s:string" />
+    <wsdl:part name="CustomerID" type="s:string" />
+    <wsdl:part name="StoreId" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="InitializePricesHttpPostOut">
+    <wsdl:part name="Body" element="tns:string" />
+  </wsdl:message>
+  <wsdl:portType name="ItemPricingSoap">
+    <wsdl:operation name="InitializePrices">
+      <wsdl:input message="tns:InitializePricesSoapIn" />
+      <wsdl:output message="tns:InitializePricesSoapOut" />
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:portType name="ItemPricingHttpGet">
+    <wsdl:operation name="InitializePrices">
+      <wsdl:input message="tns:InitializePricesHttpGetIn" />
+      <wsdl:output message="tns:InitializePricesHttpGetOut" />
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:portType name="ItemPricingHttpPost">
+    <wsdl:operation name="InitializePrices">
+      <wsdl:input message="tns:InitializePricesHttpPostIn" />
+      <wsdl:output message="tns:InitializePricesHttpPostOut" />
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="ItemPricingSoap" type="tns:ItemPricingSoap">
+    <soap:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="InitializePrices">
+      <soap:operation soapAction="http://tempuri.org/InitializePrices" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:binding name="ItemPricingSoap12" type="tns:ItemPricingSoap">
+    <soap12:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="InitializePrices">
+      <soap12:operation soapAction="http://tempuri.org/InitializePrices" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:binding name="ItemPricingHttpGet" type="tns:ItemPricingHttpGet">
+    <http:binding verb="GET" />
+    <wsdl:operation name="InitializePrices">
+      <http:operation location="/InitializePrices" />
+      <wsdl:input>
+        <http:urlEncoded />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:binding name="ItemPricingHttpPost" type="tns:ItemPricingHttpPost">
+    <http:binding verb="POST" />
+    <wsdl:operation name="InitializePrices">
+      <http:operation location="/InitializePrices" />
+      <wsdl:input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="ItemPricing">
+    <wsdl:port name="ItemPricingSoap" binding="tns:ItemPricingSoap">
+      <soap:address location="http://ckstore.ckatesting.com/ItemPricing.asmx" />
+    </wsdl:port>
+    <wsdl:port name="ItemPricingSoap12" binding="tns:ItemPricingSoap12">
+      <soap12:address location="http://ckstore.ckatesting.com/ItemPricing.asmx" />
+    </wsdl:port>
+    <wsdl:port name="ItemPricingHttpGet" binding="tns:ItemPricingHttpGet">
+      <http:address location="http://ckstore.ckatesting.com/ItemPricing.asmx" />
+    </wsdl:port>
+    <wsdl:port name="ItemPricingHttpPost" binding="tns:ItemPricingHttpPost">
+      <http:address location="http://ckstore.ckatesting.com/ItemPricing.asmx" />
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>
